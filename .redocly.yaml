@@ -1,16 +1,14 @@
+# See https://redoc.ly/docs/cli/configuration/ for more information.
 apiDefinitions:
-# a set of named keys and values of entrypoints to OpenAPI 3 definitions.
-# example
-  stromkonto: ./openapi/stromkonto.yaml
-  gruenstromindex: ./openapi/gsi.yaml
-
+  main: openapi/openapi.yaml
 lint:
-# the lint options
-
+  extends:
+    - recommended
+  rules:
+    no-unused-components: warning
 referenceDocs:
-# the API reference docs options, including theme options.
-
-registry:
-# the API registry options
-
-# future products may be configured by extending this file
+  htmlTemplate: ./docs/index.html
+  theme:
+    colors:
+      primary:
+        main: "#32329f"
