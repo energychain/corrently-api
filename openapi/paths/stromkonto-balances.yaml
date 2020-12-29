@@ -1,7 +1,7 @@
 get:
   tags:
     - Stromkonto
-  summary: Retrieve balances and transactions of given account.
+  summary: Balances.
   description: >
     Stromkonto represents a core component of the Corrently Ecosystem. It is a ledger for green energy related transactions and gets heavily used by the public Web-UI on www.stromkonto.net .
     Beside of some decoration and reformating operations all data is backed by the [Energychain blockchain](https://github.com/energychain/) to provide consensus of balances and transactions. Use this API Endppoint if you prefere not to work with low level Distributed Ledger Technology (Blockchain).
@@ -19,10 +19,8 @@ get:
         application/json:
           schema:
             type: array
+            items:
               $ref: ../components/schemas/Balance.yaml
-          example:
-            username: user1
-            email: user@example.com
 put:
   tags:
     - User

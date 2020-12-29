@@ -14,5 +14,5 @@ properties:
     example: 20
   txs:
     type: array
-    schema:
+    items:
       $ref: ./Transactions.yaml
