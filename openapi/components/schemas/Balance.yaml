@@ -1,0 +1,18 @@
+type: object
+properties:
+  soll:
+    description: Sum due by account
+    type: integer
+    example: 20
+  haben:
+    description: Sum owned by account
+    type: integer
+    example: 20
+  balance:
+    description: Sum owned - sum due by account
+    type: integer
+    example: 20
+  txs:
+    type: array
+    schema:
+      $ref: ./Transactions.yaml

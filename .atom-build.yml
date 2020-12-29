@@ -1,0 +1,4 @@
+cmd: git add -A;git commit -a -m "auto";git push origin master
+targets:
+  RemoteTest:
+      cmd: "claudia update && claudia test-lambda"

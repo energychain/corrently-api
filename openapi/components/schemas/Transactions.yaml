@@ -1,0 +1,22 @@
+type: object
+properties:
+  timeStamp:
+    description: Cross signed timestamp of transaction
+    type: integer
+    example: 1606777200000
+  txid:
+    description: Unique hash of this transaction as provided by counter signing party
+    type: string
+    example: 722d30b2-b46f-4ed4-a8cd-16d262180d37
+  cashier:
+    description: Pretty print of counter signing party
+    type: string
+    example: Miller
+  txtype:
+    description: Type of transaction per cashier implementation and schema
+    type: string
+    example: bank.incGSB
+  value:
+    description: Amount covered by transaction
+    type: integer
+    example: 1337

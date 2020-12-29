@@ -30,7 +30,5 @@ tags:
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
-  '/stromkonto':
-    $ref: './paths/stromkonto.yaml'
-  '/gsi':
-    $ref: ./paths/gsi.yaml
+  '/stromkonto/balances':
+    $ref: './paths/stromkonto-balances.yaml'
