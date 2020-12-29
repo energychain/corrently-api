@@ -1,0 +1,16 @@
+apiDefinitions:
+# a set of named keys and values of entrypoints to OpenAPI 3 definitions.
+# example
+  stromkonto: ./openapi/stromkonto.yaml
+  gruenstromindex: ./openapi/gsi.yaml
+
+lint:
+# the lint options
+
+referenceDocs:
+# the API reference docs options, including theme options.
+
+registry:
+# the API registry options
+
+# future products may be configured by extending this file
