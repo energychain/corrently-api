@@ -25,10 +25,21 @@ info:
 tags:
   - name: Stromkonto
     description: Managing accounts and balances for market partners (eq. households, grid operators, traders,..)
-  - name: GSI
-    description: Green Power Index (GrünstromIndex), an AI based service to forecast energy sources in the grid (regionale Stromherkunft).
+  - name: GreenPowerIndex (GrünstromIndex)
+    description: >
+      Green Power Index (GrünstromIndex), an AI based service to forecast energy sources in the grid (regionale Stromherkunft).
+
+      Further Details and sample implementation is available at [gruenstromindex.de](https://www.gruenstromindex.de/).
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
+  '/stromkonto/register':
+    $ref: './paths/stromkonto-register.yaml'
+  '/stromkonto/login':
+    $ref: './paths/stromkonto-login.yaml'
   '/stromkonto/balances':
     $ref: './paths/stromkonto-balances.yaml'
+  '/stromkonto/prepareTransaction':
+    $ref: './paths/stromkonto-prepareTransaction.yaml'
+  '/gsi/prediction':
+    $ref: './paths/gsi-prediction.yaml'

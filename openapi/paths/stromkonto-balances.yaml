@@ -1,11 +1,11 @@
 get:
   tags:
     - Stromkonto
-  summary: Balances.
+  summary: Balances
+  operationId: stromkontoBalances
   description: >
     Stromkonto represents a core component of the Corrently Ecosystem. It is a ledger for green energy related transactions and gets heavily used by the public Web-UI on www.stromkonto.net .
     Beside of some decoration and reformating operations all data is backed by the [Energychain blockchain](https://github.com/energychain/) to provide consensus of balances and transactions. Use this API Endppoint if you prefere not to work with low level Distributed Ledger Technology (Blockchain).
-  operationId: getUserByName
   parameters:
     - name: account
       in: query
@@ -21,33 +21,3 @@ get:
             type: array
             items:
               $ref: ../components/schemas/Balance.yaml
-put:
-  tags:
-    - User
-  summary: Updated user
-  description: This can only be done by the logged in user.
-  operationId: updateUser
-  parameters:
-    - name: username
-      in: query
-      description: The name that needs to be updated
-      required: true
-      schema:
-        type: string
-  responses:
-    '200':
-      description: OK
-    '400':
-      description: Invalid user supplied
-    '404':
-      description: User not found
-  requestBody:
-    content:
-      application/json:
-        schema:
-          $ref: ../components/schemas/User.yaml
-      application/xml:
-        schema:
-          $ref: ../components/schemas/User.yaml
-    description: Updated user object
-    required: true

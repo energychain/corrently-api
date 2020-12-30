@@ -1,0 +1,166 @@
+openapi: 3.0.2
+info:
+  version: 2.0.0
+  title: Corrently.io
+  termsOfService: 'https://corrently.io/terms/'
+  contact:
+    email: dev@stromdao.com
+    url: 'https://stromdao.de/kontakt'
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  x-logo:
+    url: 'https://corrently.de/assets/img/Corrently_1000x252.png'
+  description: >
+    *Corrently - from italian corrente, which is energy*
+
+    # Introduction
+
+    The Corrently ecosystem gets maintained by [STROMDAO
+    GmbH](https://www.stromdao.de/) to support green energy services for
+    prosumers, grid operators, regulators, integrators or any other party with
+    an emerging need of consensus driven management.
+
+    As the [energy product Corrently](https://www.corrently.de/) got first
+    launched in Germany parts of this documentation provide simple translations
+    for better understanding.
+tags:
+  - name: Stromkonto
+    description: >-
+      Managing accounts and balances for market partners (eq. households, grid
+      operators, traders,..)
+  - name: GSI
+    description: >-
+      Green Power Index (GrünstromIndex), an AI based service to forecast energy
+      sources in the grid (regionale Stromherkunft).
+servers:
+  - url: 'https://api.corrently.io/v2.0'
+paths:
+  /stromkonto/balances:
+    get:
+      tags:
+        - Stromkonto
+      summary: Balances.
+      description: >
+        Stromkonto represents a core component of the Corrently Ecosystem. It is
+        a ledger for green energy related transactions and gets heavily used by
+        the public Web-UI on www.stromkonto.net . Beside of some decoration and
+        reformating operations all data is backed by the [Energychain
+        blockchain](https://github.com/energychain/) to provide consensus of
+        balances and transactions. Use this API Endppoint if you prefere not to
+        work with low level Distributed Ledger Technology (Blockchain).
+      operationId: getUserByName
+      parameters:
+        - name: account
+          in: query
+          description: Ethereum style address referencing a valid account (AKA Stromkonto).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Balance'
+    put:
+      tags:
+        - User
+      summary: Updated user
+      description: This can only be done by the logged in user.
+      operationId: updateUser
+      parameters:
+        - name: username
+          in: query
+          description: The name that needs to be updated
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+        '400':
+          description: Invalid user supplied
+        '404':
+          description: User not found
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/xml:
+            schema:
+              $ref: '#/components/schemas/User'
+        description: Updated user object
+        required: true
+components:
+  schemas:
+    Transactions:
+      type: object
+      properties:
+        timeStamp:
+          description: Cross signed timestamp of transaction
+          type: integer
+          example: 1606777200000
+        txid:
+          description: Unique hash of this transaction as provided by counter signing party
+          type: string
+          example: 722d30b2-b46f-4ed4-a8cd-16d262180d37
+        cashier:
+          description: Pretty print of counter signing party
+          type: string
+          example: Miller
+        txtype:
+          description: Type of transaction per cashier implementation and schema
+          type: string
+          example: bank.incGSB
+        value:
+          description: Amount covered by transaction
+          type: integer
+          example: 1337
+    Balance:
+      type: object
+      properties:
+        soll:
+          description: Sum due by account
+          type: integer
+          example: 20
+        haben:
+          description: Sum owned by account
+          type: integer
+          example: 20
+        balance:
+          description: Sum owned - sum due by account
+          type: integer
+          example: 20
+        txs:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transactions'
+    Email:
+      description: User email address
+      type: string
+      format: test
+      example: john.smith@example.com
+    User:
+      type: object
+      properties:
+        username:
+          description: User supplied username
+          type: string
+          minLength: 4
+          example: John78
+        firstName:
+          description: User first name
+          type: string
+          minLength: 1
+          example: John
+        lastName:
+          description: User last name
+          type: string
+          minLength: 1
+          example: Smith
+        email:
+          $ref: '#/components/schemas/Email'

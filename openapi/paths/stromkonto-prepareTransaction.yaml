@@ -1,0 +1,35 @@
+post:
+  tags:
+    - Stromkonto
+  summary: Prepare Transaction
+  operationId: prepareTransaction
+  description: >
+    Prepares and inques a transaction (transfer) between two accounts (Stromkonten). This might be used to send any balanced entity.
+    Using this endpoint will only prepare the transaction and enques it for signing and countersigning. This is done from within
+    the user UI using validation process.
+    Note: This API method does not validate any transations. In other words authentication, authorization, validation and actual transfer of value is done using a smart contract during processing in the energy blockchain.
+  requestBody:
+    required: true
+    content:
+       application/json:
+        schema:
+          type: object
+          properties:
+            account:
+              type: string
+              description: Stromkonto account address of sender
+            to:
+              type: string
+              description: Stromkonto account address of reciever
+            value:
+              type: integer
+              description: Amount to transfer (in Watthours for electricity, or pcs for trees)
+            variation:
+              type: string
+              enum: [gsb,erzeugung,eigenstrom,co2,baeume]
+            signature:
+              type: string
+              description: Signature per Stromkonto setting (might be simple email confirmation link)
+  responses:
+    '200':
+      description: Success

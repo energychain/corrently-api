@@ -1,4 +1,4 @@
-# See https://redoc.ly/docs/cli/configuration/ for more information.
+    # See https://redoc.ly/docs/cli/configuration/ for more information.
 apiDefinitions:
   main: ./openapi/openapi.yaml
 lint:
@@ -11,4 +11,4 @@ referenceDocs:
   theme:
     colors:
       primary:
-        main: "#32329f"
+        main: "#095E2C"

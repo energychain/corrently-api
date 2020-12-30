@@ -16,3 +16,7 @@ properties:
     type: array
     items:
       $ref: ./Transactions.yaml
+  variation:
+    description: Type of subbalance (sub account)
+    type: string
+    enum: [gsb, erzeugung, eigenstrom, co2, baeume]
