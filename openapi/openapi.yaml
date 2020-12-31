@@ -23,7 +23,7 @@ info:
     As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts
     of this documentation provide simple translations for better understanding.
 tags:
-  - name: Stromkonto
+  - name: Stromkonto (Ledger)
     description: Managing accounts and balances for market partners (eq. households, grid operators, traders,..)
   - name: GreenPowerIndex (GrünstromIndex)
     description: >

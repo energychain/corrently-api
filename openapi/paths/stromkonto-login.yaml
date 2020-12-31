@@ -1,6 +1,6 @@
 post:
   tags:
-    - Stromkonto
+    - Stromkonto (Ledger)
   summary: Login (via Mail)
   operationId: stromkontoLogin
   description: >

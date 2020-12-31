@@ -1,6 +1,6 @@
 get:
   tags:
-    - Stromkonto
+    - Stromkonto (Ledger)
   summary: Balances
   operationId: stromkontoBalances
   description: >

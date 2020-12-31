@@ -25,7 +25,7 @@ info:
     launched in Germany parts of this documentation provide simple translations
     for better understanding.
 tags:
-  - name: Stromkonto
+  - name: Stromkonto (Ledger)
     description: >-
       Managing accounts and balances for market partners (eq. households, grid
       operators, traders,..)
@@ -53,7 +53,7 @@ paths:
   /stromkonto/register:
     post:
       tags:
-        - Stromkonto
+        - Stromkonto (Ledger)
       summary: Register (new Stromkonto)
       operationId: stromkontoRegister
       description: >
@@ -82,7 +82,7 @@ paths:
   /stromkonto/login:
     post:
       tags:
-        - Stromkonto
+        - Stromkonto (Ledger)
       summary: Login (via Mail)
       operationId: stromkontoLogin
       description: >
@@ -122,7 +122,7 @@ paths:
   /stromkonto/balances:
     get:
       tags:
-        - Stromkonto
+        - Stromkonto (Ledger)
       summary: Balances
       operationId: stromkontoBalances
       description: >
@@ -151,7 +151,7 @@ paths:
   /stromkonto/prepareTransaction:
     post:
       tags:
-        - Stromkonto
+        - Stromkonto (Ledger)
       summary: Prepare Transaction
       operationId: prepareTransaction
       description: >
