@@ -1,0 +1,10 @@
+type: object
+properties:
+  ap:
+    description: Energy price in cent per kwh. (Arbeitspreis) including all taxes and fees.
+    type: integer
+    example: 22.12
+  gp:
+    description: Base price in euro per montah (Grundpreis) including all taxes and fees.
+    type: integer
+    example: 7.50

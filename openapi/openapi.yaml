@@ -36,6 +36,8 @@ tags:
       In principal this service decorates meter [OBIS Code](https://de.wikipedia.org/wiki/OBIS-Kennzahlen) 1.8.0 values to 1.8.1 and 1.8.2 according to the local and actual GSI value.
       A signature gets applied to the reading and all three OBIS values get hashed into the Energychain for consensus (e.q. creating balancing groups).
       CO2 footprint of a meter gets provided (as of first reading pushed).This works in conjunction with German Smart Meter Gateways (as of March 2020).
+  - name: Tariff (Price API)
+    description: Tariff information for the German market region. Provides base price and energy price information for private households (Standardlastprofil H0, SLP H0 Tarifinformation).
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -51,3 +53,5 @@ paths:
     $ref: './paths/gsi-prediction.yaml'
   '/metering/reading':
     $ref: './paths/metering-reading.yaml'
+  '/tariff/slph0':
+    $ref: './paths/tariff-slph0.yaml'

@@ -47,6 +47,11 @@ tags:
       Energychain for consensus (e.q. creating balancing groups). CO2 footprint
       of a meter gets provided (as of first reading pushed).This works in
       conjunction with German Smart Meter Gateways (as of March 2020).
+  - name: Tariff (Price API)
+    description: >-
+      Tariff information for the German market region. Provides base price and
+      energy price information for private households (Standardlastprofil H0,
+      SLP H0 Tarifinformation).
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -388,6 +393,30 @@ paths:
                     description: >-
                       Update credits this meter has. Gets refilled automtically
                       to prevent too frequent updates
+  /tariff/slph0:
+    get:
+      tags:
+        - Tariff (Price API)
+      summary: Energy Tariff information
+      operationId: tariffSLPH0
+      description: >
+        Provides pricing data for private households with standard load profiles
+        (Standardlastprofil H0).
+      parameters:
+        - name: zipcode
+          in: query
+          description: Zipcode (Postzleitzahl) of a city in Germany.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Tariffh0'
 components:
   schemas:
     Transactions:
@@ -473,3 +502,18 @@ components:
           description: CO2 footprint in Gramm per kwh (only Green Power)
           type: integer
           example: 23
+    Tariffh0:
+      type: object
+      properties:
+        ap:
+          description: >-
+            Energy price in cent per kwh. (Arbeitspreis) including all taxes and
+            fees.
+          type: integer
+          example: 22.12
+        gp:
+          description: >-
+            Base price in euro per montah (Grundpreis) including all taxes and
+            fees.
+          type: integer
+          example: 7.5
