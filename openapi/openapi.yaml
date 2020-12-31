@@ -30,6 +30,12 @@ tags:
       Green Power Index (GrünstromIndex), an AI based service to forecast energy sources in the grid (regionale Stromherkunft).
 
       Further Details and sample implementation is available at [gruenstromindex.de](https://www.gruenstromindex.de/).
+  - name: Metering (Decorator)
+    description: >
+      Allows to virtualy act as an Meter Point Operator by decorating meter readings with GreenPowerIndex (GrünstromIndex) handles.
+      In principal this service decorates meter [OBIS Code](https://de.wikipedia.org/wiki/OBIS-Kennzahlen) 1.8.0 values to 1.8.1 and 1.8.2 according to the local and actual GSI value.
+      A signature gets applied to the reading and all three OBIS values get hashed into the Energychain for consensus (e.q. creating balancing groups).
+      CO2 footprint of a meter gets provided (as of first reading pushed).This works in conjunction with German Smart Meter Gateways (as of March 2020).
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -43,3 +49,5 @@ paths:
     $ref: './paths/stromkonto-prepareTransaction.yaml'
   '/gsi/prediction':
     $ref: './paths/gsi-prediction.yaml'
+  '/metering/reading':
+    $ref: './paths/metering-reading.yaml'

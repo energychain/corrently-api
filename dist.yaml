@@ -29,18 +29,102 @@ tags:
     description: >-
       Managing accounts and balances for market partners (eq. households, grid
       operators, traders,..)
-  - name: GSI
-    description: >-
+  - name: GreenPowerIndex (GrünstromIndex)
+    description: >
       Green Power Index (GrünstromIndex), an AI based service to forecast energy
       sources in the grid (regionale Stromherkunft).
+
+      Further Details and sample implementation is available at
+      [gruenstromindex.de](https://www.gruenstromindex.de/).
+  - name: Metering (Decorator)
+    description: >
+      Allows to virtualy act as an Meter Point Operator by decorating meter
+      readings with GreenPowerIndex (GrünstromIndex) handles. In principal this
+      service decorates meter [OBIS
+      Code](https://de.wikipedia.org/wiki/OBIS-Kennzahlen) 1.8.0 values to 1.8.1
+      and 1.8.2 according to the local and actual GSI value. A signature gets
+      applied to the reading and all three OBIS values get hashed into the
+      Energychain for consensus (e.q. creating balancing groups). CO2 footprint
+      of a meter gets provided (as of first reading pushed).This works in
+      conjunction with German Smart Meter Gateways (as of March 2020).
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
+  /stromkonto/register:
+    post:
+      tags:
+        - Stromkonto
+      summary: Register (new Stromkonto)
+      operationId: stromkontoRegister
+      description: >
+        Calling this method with an unregistered (new) email will create a new
+        account (Stromkonto) with all balances having a value of `0` and no
+        transaction history. In addition some basic properties like region and
+        zipcode are set to allow further operation of account.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                zipcode:
+                  type: string
+      responses:
+        '200':
+          description: Success
+  /stromkonto/login:
+    post:
+      tags:
+        - Stromkonto
+      summary: Login (via Mail)
+      operationId: stromkontoLogin
+      description: >
+        Sends a mail to a given email address to login this user. This function
+        makes life a bit easier in order to not having to deal with private key
+        protection on the user side as a shared key is used to sign transactions
+        onbehalf of a particular account.  However viewing consensus information
+        (balances) are public and *might move* from account to account without
+        prior notification. Best practice for third party uses is to always
+        start a session with the login RESP call and only create a user in case
+        the response indicates an `unregistered` status.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    description: >-
+                      Registration status of a user. In case unregistered gets
+                      returned use the `register` endpoint to (re-)register.
+                    type: string
+                    enum:
+                      - registered
+                      - unregistered
   /stromkonto/balances:
     get:
       tags:
         - Stromkonto
-      summary: Balances.
+      summary: Balances
+      operationId: stromkontoBalances
       description: >
         Stromkonto represents a core component of the Corrently Ecosystem. It is
         a ledger for green energy related transactions and gets heavily used by
@@ -49,7 +133,6 @@ paths:
         blockchain](https://github.com/energychain/) to provide consensus of
         balances and transactions. Use this API Endppoint if you prefere not to
         work with low level Distributed Ledger Technology (Blockchain).
-      operationId: getUserByName
       parameters:
         - name: account
           in: query
@@ -65,36 +148,246 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Balance'
-    put:
+  /stromkonto/prepareTransaction:
+    post:
       tags:
-        - User
-      summary: Updated user
-      description: This can only be done by the logged in user.
-      operationId: updateUser
+        - Stromkonto
+      summary: Prepare Transaction
+      operationId: prepareTransaction
+      description: >
+        Prepares and inques a transaction (transfer) between two accounts
+        (Stromkonten). This might be used to send any balanced entity. Using
+        this endpoint will only prepare the transaction and enques it for
+        signing and countersigning. This is done from within the user UI using
+        validation process. Note: This API method does not validate any
+        transations. In other words authentication, authorization, validation
+        and actual transfer of value is done using a smart contract during
+        processing in the energy blockchain.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account:
+                  type: string
+                  description: Stromkonto account address of sender
+                to:
+                  type: string
+                  description: Stromkonto account address of reciever
+                value:
+                  type: integer
+                  description: >-
+                    Amount to transfer (in Watthours for electricity, or pcs for
+                    trees)
+                variation:
+                  type: string
+                  enum:
+                    - gsb
+                    - erzeugung
+                    - eigenstrom
+                    - co2
+                    - baeume
+                signature:
+                  type: string
+                  description: >-
+                    Signature per Stromkonto setting (might be simple email
+                    confirmation link)
+      responses:
+        '200':
+          description: Success
+  /gsi/prediction:
+    get:
+      tags:
+        - GreenPowerIndex (GrünstromIndex)
+      summary: Prediction
+      operationId: gsiPrediction
+      description: >
+        Retrieval the GreenPowerIndex (GrünstromIndex) for a given city (by
+        zipcode) in Germany.
       parameters:
-        - name: username
+        - name: zip
           in: query
-          description: The name that needs to be updated
-          required: true
+          description: Zipcode (Postleitzahl) of a city in Germany.
+          schema:
+            type: string
+        - name: key
+          in: query
+          description: Any valid Stromkonto account (address).
           schema:
             type: string
       responses:
         '200':
-          description: OK
-        '400':
-          description: Invalid user supplied
-        '404':
-          description: User not found
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  forecast:
+                    description: Prediction for the upcomming hours
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ForecastItem'
+                  location:
+                    description: Standarized location info sourced for prediction
+                    type: object
+                    properties:
+                      zip:
+                        type: string
+                        description: Zipcode (Postleitzahl)
+                      city:
+                        type: string
+                        description: Pretty Print city name
+                  matrix:
+                    description: Device switching recommendation.
+                    type: array
+  /metering/reading:
+    post:
+      tags:
+        - Metering (Decorator)
+      summary: Meter Reading
+      operationId: meteringPost
+      description: >
+        Post meter reading and get it decorated. Best practice is to first
+        create a new Stromkonto with the register method and choose a nice
+        secret to protect updates. Now regularly send updates to get readings
+        (consumption) split into green power (1.8.1) and grey power (1.8.2).
       requestBody:
+        required: true
         content:
           application/json:
             schema:
-              $ref: '#/components/schemas/User'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/User'
-        description: Updated user object
-        required: true
+              type: object
+              properties:
+                account:
+                  type: string
+                  description: Stromkonto account (address) associated with this metering.
+                secret:
+                  type: string
+                  description: >-
+                    Some private password you might choose on first update.
+                    However you need to use the same secret on every further
+                    posts.
+                1.8.0:
+                  type: integer
+                  description: Meter Reading (prefered in Wh)
+                value:
+                  type: integer
+                  description: Alias for 1.8.0
+                energy:
+                  type: integer
+                  description: Alias for 1.8.0
+                zip:
+                  type: string
+                  description: Zipcode (Postleitzahl) of metered location
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    description: >-
+                      Stromkonto/Metering address allocated (this is not the
+                      MELOID!)
+                    type: string
+                  1.8.0:
+                    description: Reading as provided as input in Wh
+                    type: integer
+                  1.8.1:
+                    description: >-
+                      Green energy calculated using Green Power Index
+                      (GrünstromIndex) in Wh
+                    type: integer
+                  1.8.2:
+                    description: >-
+                      Grey energy calculated using Green Power Index
+                      (GrünstromIndex) in Wh
+                    type: integer
+                  timeStamp:
+                    description: API Consensus time this reading was fully received
+                    type: integer
+                  _processingTime:
+                    description: >-
+                      Time this reading got imported into consensus (e.q. signed
+                      timestamp).
+                    type: integer
+                  co2_g_standard:
+                    description: CO2 Emission of metered energy in a standard mix
+                    type: integer
+                  co2_g_oekostrom:
+                    description: >-
+                      CO2 Emission of metered energy in a green energy mix (e.q.
+                      Ökostromtarif)
+                    type: integer
+    get:
+      tags:
+        - Metering (Decorator)
+      summary: Meter Reading
+      operationId: meteringGet
+      description: |
+        Retrieves a metered reading using account (Stromkonto).
+      parameters:
+        - name: account
+          in: query
+          description: Account/Address (Stromkonto) to retrieve reading for.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  account:
+                    description: >-
+                      Stromkonto/Metering address allocated (this is not the
+                      MELOID!)
+                    type: string
+                  1.8.0:
+                    description: Reading as provided as input in Wh
+                    type: integer
+                  1.8.1:
+                    description: >-
+                      Green energy calculated using Green Power Index
+                      (GrünstromIndex) in Wh
+                    type: integer
+                  1.8.2:
+                    description: >-
+                      Grey energy calculated using Green Power Index
+                      (GrünstromIndex) in Wh
+                    type: integer
+                  timeStamp:
+                    description: API Consensus time this reading was fully received
+                    type: integer
+                  _processingTime:
+                    description: >-
+                      Time this reading got imported into consensus (e.q. signed
+                      timestamp).
+                    type: integer
+                  co2_g_standard:
+                    description: CO2 Emission of metered energy in a standard mix
+                    type: integer
+                  co2_g_oekostrom:
+                    description: >-
+                      CO2 Emission of metered energy in a green energy mix (e.q.
+                      Ökostromtarif)
+                    type: integer
+                  ttl:
+                    description: >-
+                      Time to Live for this reader. If no update is provided it
+                      gets decommissioned.
+                    type: integer
+                  credits:
+                    description: >-
+                      Update credits this meter has. Gets refilled automtically
+                      to prevent too frequent updates
 components:
   schemas:
     Transactions:
@@ -139,28 +432,44 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Transactions'
-    Email:
-      description: User email address
-      type: string
-      format: test
-      example: john.smith@example.com
-    User:
+        variation:
+          description: Type of subbalance (sub account)
+          type: string
+          enum:
+            - gsb
+            - erzeugung
+            - eigenstrom
+            - co2
+            - baeume
+    ForecastItem:
       type: object
       properties:
-        username:
-          description: User supplied username
-          type: string
-          minLength: 4
-          example: John78
-        firstName:
-          description: User first name
-          type: string
-          minLength: 1
-          example: John
-        lastName:
-          description: User last name
-          type: string
-          minLength: 1
-          example: Smith
-        email:
-          $ref: '#/components/schemas/Email'
+        epochtime:
+          description: Timestamps in Seconds
+          type: integer
+          example: 1609293600
+        timeStamp:
+          description: Timestamp in Standard Milliseconds
+          type: integer
+          example: 1609293600000
+        gsi:
+          description: Actual GreenPowerIndex for given Timestamp (between 0-100)
+          type: integer
+          example: 43
+        scaled:
+          description: Indicates if scaling is in operation to predict values
+          type: boolean
+        sci:
+          description: Subindex just for Solar Energy
+          type: integer
+          example: 43
+        energyprice:
+          description: >-
+            Local/regional energyprice modification (cent per kWh or euro per
+            MWh).
+          type: number
+          example: -0.219
+        co2_g_oekostrom:
+          description: CO2 footprint in Gramm per kwh (only Green Power)
+          type: integer
+          example: 23
