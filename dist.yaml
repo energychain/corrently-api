@@ -26,9 +26,12 @@ info:
     for better understanding.
 tags:
   - name: Stromkonto (Ledger)
-    description: >-
+    description: >
       Managing accounts and balances for market partners (eq. households, grid
-      operators, traders,..)
+      operators, traders,..) Stromkonto is based on distributed ledger
+      technology (AKA Blockchain). Instead of using the REST Api to access any
+      energy ledger, you might act as a blockchain node and use the published
+      ABI definitions to get the same results and/or run transactions directly.
   - name: GreenPowerIndex (GrünstromIndex)
     description: >
       Green Power Index (GrünstromIndex), an AI based service to forecast energy
@@ -36,6 +39,14 @@ tags:
 
       Further Details and sample implementation is available at
       [gruenstromindex.de](https://www.gruenstromindex.de/).
+  - name: Dispatch (Green Energy Distribution API)
+    description: >
+      Provides latest dispatch information of green energy at a specific
+      location in Germany (Herkunft/GrünstromMix). It allows to do schedule
+      management (Fahrplanmanagement) of green energy generation facilities,
+      demand and resilience management for grid operators. The public version
+      (OpenAPI) is always post fact. If you are interessted in pre fact
+      (forecast) data, you might get in contact with STROMDAO GmbH.
   - name: Metering (Decorator)
     description: >
       Allows to virtualy act as an Meter Point Operator by decorating meter
@@ -248,6 +259,79 @@ paths:
                   matrix:
                     description: Device switching recommendation.
                     type: array
+  /gsi/dispatch:
+    get:
+      tags:
+        - GreenPowerIndex (GrünstromIndex)
+        - Dispatch (Green Energy Distribution API)
+      summary: Dispatch (Green Energy Distribution Schedule)
+      operationId: gsiDispatch
+      description: >
+        Dispatch of green energy has two aspects to consider:
+          - Availability of gerneration facility (depends on weather and installed capacity)
+          - Demand of energy
+        Using the green power index (GrünstromIndex) we have received a tool to
+        automate distribution of energy in order to prevent redispatch
+        situations. Doing this alows to opimize resource usage (tactical) and
+        leverage data for investment planning (strategic).
+      parameters:
+        - name: zip
+          in: query
+          description: Zipcode (Postleitzahl) of a city in Germany.
+          schema:
+            type: string
+        - name: key
+          in: query
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  premix:
+                    description: Green Energy Mix prior to dispatch of given city
+                    type: object
+                  postmix:
+                    description: Green Energy Mix after dispatch of given city
+                    type: object
+                  dispatch_from:
+                    description: >-
+                      List of current sources of green energy (into requested
+                      location)
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DispatchLocation'
+                  dispatch_target:
+                    description: >-
+                      List of current targets of green energy (out of requested
+                      location)
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/DispatchLocation'
+                  timeframe:
+                    type: object
+                    description: Evaluated timeframe for this request
+                    properties:
+                      start:
+                        type: integer
+                        description: >-
+                          Starting time of window evaluated in order to get
+                          dispatches
+                      end:
+                        type: integer
+                        description: >-
+                          Ending time of window evaluated for this
+                          request/dispatches.
+                  avg_distance_km:
+                    type: number
+                    description: >-
+                      Averaged geospatial distance in kilometers between energy
+                      generation and usage at requested location.
   /metering/reading:
     post:
       tags:
@@ -502,6 +586,16 @@ components:
           description: CO2 footprint in Gramm per kwh (only Green Power)
           type: integer
           example: 23
+    DispatchLocation:
+      type: object
+      properties:
+        energy:
+          description: Percentage of energy
+          type: number
+          example: 0.2345677
+        location:
+          description: GeoJSON encoded location of target or source of green energy.
+          type: object
     Tariffh0:
       type: object
       properties:

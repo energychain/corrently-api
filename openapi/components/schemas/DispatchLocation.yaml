@@ -1,0 +1,9 @@
+type: object
+properties:
+  energy:
+    description: Percentage of energy
+    type: number
+    example: 0.2345677
+  location:
+    description: GeoJSON encoded location of target or source of green energy.
+    type: object
