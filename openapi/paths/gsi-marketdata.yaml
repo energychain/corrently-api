@@ -1,0 +1,26 @@
+get:
+  tags:
+    - GreenPowerIndex (GrünstromIndex)
+  summary: Marketdata
+  operationId: gsiMarketdata
+  description: >
+    Compatible to awattar (https://api.awattar.de/v1/marketdata) API interface but data comes from GreenPowerIndex instead of EPEXSpot.
+  parameters:
+    - name: zip
+      in: query
+      description: Zipcode (Postleitzahl) of a city in Germany.
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                description: Energyprice for the upcomming hours
+                type: array
+                items:
+                  $ref: ../components/schemas/MarketData.yaml

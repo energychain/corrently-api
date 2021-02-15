@@ -1,0 +1,14 @@
+type: object
+properties:
+  start_timestamp:
+    description: Timestamp in Standard Milliseconds
+    type: integer
+    example: 1609293600000
+  end_timestamp:
+    description: Timestamp in Standard Milliseconds
+    type: integer
+    example: 1609293600000
+  marketprice:
+    description: Actual Marketprice for regional green power in EUR per MWh
+    type: number
+    example: 43

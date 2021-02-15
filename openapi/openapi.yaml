@@ -44,6 +44,8 @@ tags:
       CO2 footprint of a meter gets provided (as of first reading pushed).This works in conjunction with German Smart Meter Gateways (as of March 2020).
   - name: Tariff (Price API)
     description: Tariff information for the German market region. Provides base price and energy price information for private households (Standardlastprofil H0, SLP H0 Tarifinformation).
+  - name: SmartHome
+    description: Helper services and endpoints for smarthome and home automation systems.
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -63,3 +65,5 @@ paths:
     $ref: './paths/metering-reading.yaml'
   '/tariff/slph0':
     $ref: './paths/tariff-slph0.yaml'
+  '/gsi/bestHour':
+    $ref: './paths/gsi-besthour.yaml'
