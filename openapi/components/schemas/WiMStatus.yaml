@@ -1,0 +1,10 @@
+type: object
+properties:
+  wim_status:
+    description: Latest Status
+    type: string
+    example: Erfolgreiche Prüfung
+  wim_started:
+    description: Starting time of process
+    type: integer
+    example: 1615914297977

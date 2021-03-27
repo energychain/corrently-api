@@ -44,6 +44,8 @@ tags:
       CO2 footprint of a meter gets provided (as of first reading pushed).This works in conjunction with German Smart Meter Gateways (as of March 2020).
   - name: Tariff (Price API)
     description: Tariff information for the German market region. Provides base price and energy price information for private households (Standardlastprofil H0, SLP H0 Tarifinformation).
+  - name: WiM (Wechselprozesse im Messwesen Strom - Status API)
+    description: Access to status information of an existing metering change and allocation process.
   - name: SmartHome
     description: Helper services and endpoints for smarthome and home automation systems.
 servers:
@@ -61,9 +63,13 @@ paths:
     $ref: './paths/gsi-prediction.yaml'
   '/gsi/dispatch':
     $ref: './paths/gsi-dispatch.yaml'
+  '/gsi/marketdata':
+    $ref: './paths/gsi-marketdata.yaml'
   '/metering/reading':
     $ref: './paths/metering-reading.yaml'
   '/tariff/slph0':
     $ref: './paths/tariff-slph0.yaml'
+  '/wim/status':
+    $ref: './paths/wim-status.yaml'
   '/gsi/bestHour':
     $ref: './paths/gsi-besthour.yaml'
