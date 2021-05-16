@@ -55,6 +55,8 @@ paths:
     $ref: './paths/stromkonto-register.yaml'
   '/stromkonto/login':
     $ref: './paths/stromkonto-login.yaml'
+  '/stromkonto/choices':
+    $ref: './paths/stromkonto-choices.yaml'
   '/stromkonto/balances':
     $ref: './paths/stromkonto-balances.yaml'
   '/stromkonto/prepareTransaction':

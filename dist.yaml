@@ -141,6 +141,31 @@ paths:
                     enum:
                       - registered
                       - unregistered
+  /stromkonto/choices:
+    get:
+      tags:
+        - Stromkonto (Ledger)
+      summary: Selectable Choices for customer
+      operationId: stromkontoChoices
+      description: |
+        Signable choices (contract changes) for customer.
+      parameters:
+        - name: account
+          in: query
+          description: >-
+            Ethereum style address referencing a valid account alias (never use
+            Stromkonto directly!).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Balance'
   /stromkonto/balances:
     get:
       tags:
