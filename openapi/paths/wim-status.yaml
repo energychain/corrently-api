@@ -17,6 +17,8 @@ get:
       content:
         application/json:
           schema:
+            type: object
+            properties:
               wim_status:
                 description: Latest Status
                 type: string

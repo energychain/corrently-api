@@ -41,4 +41,18 @@ get:
                         description: Pretty Print city name
               matrix:
                 description: Device switching recommendation.
-                type: array
+                type: object
+                properties:
+                    h0:
+                      type: object
+                      description: Indicates number of hours a device should run
+                      properties:
+                          avg_1:
+                            type: string
+                            description: device should run in 1 hour
+                          avg_2:
+                            type: string
+                            description: device should run in 2 hours
+                          avg_3:
+                            type: string
+                            description: device should run in 3 hour
