@@ -1,7 +1,7 @@
 get:
   tags:
     - Tariff (Price API)
-  summary: Energy Tariff price omponents
+  summary: Energy Tariff price components
   operationId: tariffcomponents
   description: >
     Provides insides into the different cost components of energy for a private household.
@@ -26,4 +26,6 @@ get:
       description: Success
       content:
         application/json:
-          $ref: ../components/schemas/componentsh0.yaml
+          schema:
+            type: object
+            $ref: ../components/schemas/componentsh0.yaml
