@@ -1,0 +1,29 @@
+get:
+  tags:
+    - Tariff (Price API)
+  summary: Energy Tariff price omponents
+  operationId: tariffcomponents
+  description: >
+    Provides insides into the different cost components of energy for a private household.
+  parameters:
+    - name: zipcode
+      in: query
+      description: Zipcode (Postzleitzahl) of a city in Germany.
+      schema:
+        type: string
+    - name: email
+      in: query
+      description: Valid email address to assign request to (pre offer generation). Ensure GDPR (DSGVO) at any time
+      schema:
+        type: string
+    - name: kwha
+      in: query
+      description: Total amount of energy in kilo-watt-hours per year. (sample 2100)
+      schema:
+        type: integer
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          $ref: ../components/schemas/componentsh0.yaml

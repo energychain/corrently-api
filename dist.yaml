@@ -574,6 +574,61 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Tariffh0'
+  /tariff/components:
+    get:
+      tags:
+        - Tariff (Price API)
+      summary: Energy Tariff price omponents
+      operationId: tariffcomponents
+      description: >
+        Provides insides into the different cost components of energy for a
+        private household.
+      parameters:
+        - name: zipcode
+          in: query
+          description: Zipcode (Postzleitzahl) of a city in Germany.
+          schema:
+            type: string
+        - name: email
+          in: query
+          description: >-
+            Valid email address to assign request to (pre offer generation).
+            Ensure GDPR (DSGVO) at any time
+          schema:
+            type: string
+        - name: kwha
+          in: query
+          description: Total amount of energy in kilo-watt-hours per year. (sample 2100)
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              type: object
+              properties:
+                sum:
+                  description: Total sum in Euro for this price component.
+                  type: double
+                  example: 22.12
+                describtion:
+                  description: What is this price component about
+                  type: string
+                  example: Grundgebühr
+                mutlityplier:
+                  description: Frequency/dependency of component
+                  type: string
+                  example: month
+                per:
+                  description: Single unit price multiyplier is based on
+                  type: double
+                  example: 0.012
+                components:
+                  description: Sub components of this price
+                  type: array
+                  items:
+                    $ref: ./componentsh0.yaml
   /wim/status:
     get:
       tags:

@@ -71,6 +71,8 @@ paths:
     $ref: './paths/metering-reading.yaml'
   '/tariff/slph0':
     $ref: './paths/tariff-slph0.yaml'
+  '/tariff/components':
+    $ref: './paths/tariff-components.yaml'
   '/wim/status':
     $ref: './paths/wim-status.yaml'
   '/gsi/bestHour':
