@@ -5,6 +5,9 @@ get:
   operationId: tariffcomponents
   description: >
     Provides insides into the different cost components of energy for a private household.
+
+    Sample Request: https://api.corrently.io/v2.0/tariff/components?email=demo%40corrently.io&zip=69168&kwha=3300
+
   parameters:
     - name: zipcode
       in: query
