@@ -69,6 +69,8 @@ tags:
       process.
   - name: SmartHome
     description: Helper services and endpoints for smarthome and home automation systems.
+  - name: OpenMETER
+    description: Alternative access to OpenMeter Data.
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -684,6 +686,69 @@ paths:
               schema:
                 type: boolean
                 description: true if device should be turned on now. false if not.
+  /alternative/openmeter/meters:
+    get:
+      tags:
+        - OpenMETER
+      summary: >-
+        Public shared smart meters installed in Germany and available for
+        subservices and exploration.
+      operationId: omMeters
+      description: >
+        Provides a list of available meterrs in the OpenMETER project (
+        https://www.openmeter.de/ ) which grants access for analytics as data
+        discovery.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ommeters'
+  /alternative/openmeter/activities:
+    get:
+      tags:
+        - OpenMETER
+      summary: >-
+        Public shared smart meters installed in Germany and available for
+        subservices and exploration.
+      operationId: omMeters
+      description: >
+        Provides a list of available meterrs in the OpenMETER project (
+        https://www.openmeter.de/ ) which grants access for analytics as data
+        discovery.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ommeters'
+  /alternative/openmeter/readings:
+    get:
+      tags:
+        - OpenMETER
+      summary: >-
+        Public shared smart meters installed in Germany and available for
+        subservices and exploration.
+      operationId: omMeters
+      description: >
+        Provides a list of available meterrs in the OpenMETER project (
+        https://www.openmeter.de/ ) which grants access for analytics as data
+        discovery.
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ommeters'
 components:
   schemas:
     Transactions:
@@ -833,3 +898,38 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/componentsh0'
+    ommeters:
+      type: object
+      properties:
+        meterId:
+          description: identifier to be used in other methods like readings or activities.
+          type: string
+          example: >-
+            gAAAAABgsYVSfcCjJZV5w2wGBTzOXCihY7dMaDyypwcbJzAELvxeCDaXiy65H2QwtY-7usSOfoqEIomTJjQb1yyIXZfFnTY2pmLgIu_DVw1rjppFte56yWBD5Fgrmbh2KyOkMNUr8zxO
+        manufacturerId:
+          description: DLMS manufacturerId
+          type: string
+        location:
+          description: Basic address information for geo coding
+          type: string
+        type:
+          description: Device type of the meter
+          type: string
+        measurementType:
+          description: Physical quantity being measured by the meter
+          type: string
+        loadProfileType:
+          description: Metering load profile type associated with the meter
+          type: string
+        scalingFactor:
+          description: Factor imposed on metered current AND voltage by a transducer
+          type: integer
+        currentScalingFactor:
+          description: Factor imposed on metered current by a transducer
+          type: integer
+        voltageScalingFactor:
+          description: Factor imposed on metered voltage by a transducer
+          type: integer
+        meta:
+          description: Statistical metadata for this household
+          type: string

@@ -48,6 +48,8 @@ tags:
     description: Access to status information of an existing metering change and allocation process.
   - name: SmartHome
     description: Helper services and endpoints for smarthome and home automation systems.
+  - name: OpenMETER
+    description: Alternative access to OpenMeter Data.
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -77,3 +79,9 @@ paths:
     $ref: './paths/wim-status.yaml'
   '/gsi/bestHour':
     $ref: './paths/gsi-besthour.yaml'
+  '/alternative/openmeter/meters':
+    $ref: './paths/openmeter-meters.yaml'
+  '/alternative/openmeter/activities':
+    $ref: './paths/openmeter-activities.yaml'
+  '/alternative/openmeter/readings':
+    $ref: './paths/openmeter-readings.yaml'            

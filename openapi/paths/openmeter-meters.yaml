@@ -1,0 +1,16 @@
+get:
+  tags:
+    - OpenMETER
+  summary: Public shared smart meters installed in Germany and available for subservices and exploration.
+  operationId: omMeters
+  description: >
+    Provides a list of available meterrs in the OpenMETER project ( https://www.openmeter.de/ ) which grants access for analytics as data discovery.
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/ommeters.yaml
