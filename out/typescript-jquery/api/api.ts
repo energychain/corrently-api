@@ -1,0 +1,17 @@
+export * from './DispatchGreenEnergyDistributionAPIApi';
+import { DispatchGreenEnergyDistributionAPIApi } from './DispatchGreenEnergyDistributionAPIApi';
+export * from './GreenPowerIndexGrnstromIndexApi';
+import { GreenPowerIndexGrnstromIndexApi } from './GreenPowerIndexGrnstromIndexApi';
+export * from './MeteringDecoratorApi';
+import { MeteringDecoratorApi } from './MeteringDecoratorApi';
+export * from './OpenMETERApi';
+import { OpenMETERApi } from './OpenMETERApi';
+export * from './SmartHomeApi';
+import { SmartHomeApi } from './SmartHomeApi';
+export * from './StromkontoLedgerApi';
+import { StromkontoLedgerApi } from './StromkontoLedgerApi';
+export * from './TariffPriceAPIApi';
+import { TariffPriceAPIApi } from './TariffPriceAPIApi';
+export * from './WiMWechselprozesseImMesswesenStromStatusAPIApi';
+import { WiMWechselprozesseImMesswesenStromStatusAPIApi } from './WiMWechselprozesseImMesswesenStromStatusAPIApi';
+export const APIS = [DispatchGreenEnergyDistributionAPIApi, GreenPowerIndexGrnstromIndexApi, MeteringDecoratorApi, OpenMETERApi, SmartHomeApi, StromkontoLedgerApi, TariffPriceAPIApi, WiMWechselprozesseImMesswesenStromStatusAPIApi];

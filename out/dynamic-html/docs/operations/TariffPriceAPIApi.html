@@ -1,0 +1,97 @@
+<div class="main-content">
+  <h2><a name=""></a></h2>
+  <p>This is the  API</p>
+
+  <h2><a name="tariffSLPH0"></a>tariffSLPH0</h2>
+  <hr>
+  <p></p>
+  <p>Provides pricing data for private households with standard load profiles (Standardlastprofil H0). </p>
+  <h3 class="section">URL</h3>
+  <code>https://api.corrently.io/v2.0/tariff/slph0</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="Tariffh0"><a href="">List</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">zipcode</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Zipcode (Postzleitzahl) of a city in Germany.</p>
+	  </li>
+  </ul>
+  <h2><a name="tariffcomponents"></a>tariffcomponents</h2>
+  <hr>
+  <p></p>
+  <p>Provides insides into the different cost components of energy for a private household. Sample Request: https://api.corrently.io/v2.0/tariff/components?email&#x3D;demo%40corrently.io&amp;zip&#x3D;69168&amp;kwha&#x3D;3300 </p>
+  <h3 class="section">URL</h3>
+  <code>https://api.corrently.io/v2.0/tariff/components</code>
+  <h3 class="section">HTTP Method</h3>
+  <code>GET</code>
+  <h3 class="section">Response Type</h3>
+  <div class="model" data-model="componentsh0"><a href="">componentsh0</a></div>
+  <h3 class="section">Parameters</h3>
+  <ul>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">zipcode</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Zipcode (Postzleitzahl) of a city in Germany.</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">email</span>
+      <span class="param-type">String</span>
+      
+      <p class="param-description">Valid email address to assign request to (pre offer generation). Ensure GDPR (DSGVO) at any time</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">kwha</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">Total amount of energy in kilo-watt-hours per year. (sample 2100)</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">milliseconds</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">If provided all results will be scaled to this timeframe</p>
+	  </li>
+	  <li class="parameter">
+      
+      <span class="param-in">Query: </span>
+      
+      
+      
+      <span class="param-name">wh</span>
+      <span class="param-type">Integer</span>
+      
+      <p class="param-description">If provided together with milliseconds, a cost component stament for a particular event (like charging a car) will be created.</p>
+	  </li>
+  </ul>
+</div>
