@@ -24,6 +24,16 @@ get:
       description: Total amount of energy in kilo-watt-hours per year. (sample 2100)
       schema:
         type: integer
+    - name: milliseconds
+      in: query
+      description: If provided all results will be scaled to this timeframe
+      schema:
+        type: integer
+    - name: wh
+      in: query
+      description: If provided together with milliseconds, a cost component stament for a particular event (like charging a car) will be created.
+      schema:
+        type: integer
   responses:
     '200':
       description: Success
