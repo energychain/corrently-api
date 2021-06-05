@@ -743,11 +743,11 @@ paths:
   /alternative/openmeter/readings:
     get:
       tags:
-        - omReadings
+        - OpenMETER
       summary: >-
         Public shared smart meters installed in Germany and available for
         subservices and exploration.
-      operationId: omMeters
+      operationId: omReadings
       description: >
         Provides a list of available meterrs in the OpenMETER project (
         https://www.openmeter.de/ ) which grants access for analytics as data
