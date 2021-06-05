@@ -743,7 +743,7 @@ paths:
   /alternative/openmeter/readings:
     get:
       tags:
-        - OpenMETER
+        - omReadings
       summary: >-
         Public shared smart meters installed in Germany and available for
         subservices and exploration.
