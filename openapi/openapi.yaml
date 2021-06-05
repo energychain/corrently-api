@@ -23,8 +23,8 @@ info:
     As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts
     of this documentation provide simple translations for better understanding.
 
-    ## Released SDKs 
-    [Download via Github|https://github.com/energychain/corrently-api/releases]
+    ## Released SDKs
+    [Download via Github](https://github.com/energychain/corrently-api/releases)
 tags:
   - name: Stromkonto (Ledger)
     description: >
