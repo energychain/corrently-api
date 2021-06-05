@@ -2,3 +2,5 @@ cmd: git add -A;git commit -a -m "auto";git push origin master
 targets:
   publish:
       cmd: "npm run build;cp ./dist.yaml /home/zoernert/Development/public-corrently-api/public; cd /home/zoernert/Development/public-corrently-api/; git commit -a -m 'Documentation updated';git push origin;ssh root@api.corrently.io deploy_corrently.sh"
+  build-sdk:
+      cmd: "./docker-sdk-gen.sh"
