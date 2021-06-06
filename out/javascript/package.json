@@ -4,6 +4,7 @@
   "description": "Corrently___from_italian_corrente_which_is_energy_IntroductionThe_Corrently_ecosystem_gets_maintained_by__STROMDAO_GmbH_https__www_stromdao_de__to_support_green_energy_services_for_prosumers_grid_operators_regulators_integrators_or_any_other_party_with_an_emerging_need_of_consensus_driven_management_As_the__energy_product_Corrently_https__www_corrently_de__got_first_launched_in_Germany_parts_of_this_documentation_provide_simple_translations_for_better_understanding_",
   "license": "Apache 2.0",
   "main": "dist/index.js",
+  "homepage": "https://corrently.io/",
   "scripts": {
     "build": "babel src -d dist",
     "prepare": "npm run build",
@@ -36,6 +37,8 @@
     "@babel/plugin-syntax-import-meta": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
     "@babel/register": "^7.0.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^7.0.0-bridge.0",
     "expect.js": "^0.3.1",
     "mocha": "^8.0.1",
     "sinon": "^7.2.0"
