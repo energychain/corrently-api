@@ -74,6 +74,8 @@ tags:
     description: Helper services and endpoints for smarthome and home automation systems.
   - name: OpenMETER
     description: Alternative access to OpenMeter Data.
+  - name: easee
+    description: Alternative access to EASEE.cloud Data.
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -764,6 +766,36 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ommeters'
+  /alternative/easee/lastSessions:
+    get:
+      tags:
+        - easee
+      summary: >-
+        Returns lastSession info for all easee wallboxes (chargers) given user
+        has access to.
+      operationId: easeeSessions
+      description: |
+        Refer to easee.cloud API for details.
+      parameters:
+        - name: username
+          in: query
+          description: Username as used on easy.cloud
+          schema:
+            type: string
+        - name: password
+          in: query
+          description: Password as used on easy.cloud
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/easee-charger'
 components:
   schemas:
     Transactions:
@@ -947,4 +979,17 @@ components:
           type: integer
         meta:
           description: Statistical metadata for this household
+          type: string
+    easee-charger:
+      type: object
+      properties:
+        id:
+          description: Given ID by easee api
+          type: string
+          example: EH780684
+        name:
+          description: Name set for charger
+          type: string
+        lastSession:
+          description: lastSession Info as given by easee API
           type: string
