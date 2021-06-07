@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="quittungCreate"></a>
 # **quittungCreate**
-> InlineResponse2006 quittungCreate(inlineObject4)
+> String quittungCreate(inlineObject4)
 
 Create a receipt for an energy delivery (only valid in Germany).
 
@@ -32,7 +32,7 @@ public class Example {
     StromQuittungApi apiInstance = new StromQuittungApi(defaultClient);
     InlineObject4 inlineObject4 = new InlineObject4(); // InlineObject4 | 
     try {
-      InlineResponse2006 result = apiInstance.quittungCreate(inlineObject4);
+      String result = apiInstance.quittungCreate(inlineObject4);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling StromQuittungApi#quittungCreate");
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+**String**
 
 ### Authorization
 

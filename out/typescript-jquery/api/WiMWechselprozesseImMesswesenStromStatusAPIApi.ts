@@ -52,7 +52,7 @@ export class WiMWechselprozesseImMesswesenStromStatusAPIApi {
      * @param vid VID key of the process.
      */
     public wimstatus(vid?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body: models.InlineResponse2007;  },
+    { response: JQueryXHR; body: models.InlineResponse2006;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/wim/status';
@@ -94,11 +94,11 @@ export class WiMWechselprozesseImMesswesenStromStatusAPIApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body: models.InlineResponse2007;  },
+            { response: JQueryXHR; body: models.InlineResponse2006;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: models.InlineResponse2007, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.InlineResponse2006, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})

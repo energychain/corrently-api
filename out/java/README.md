@@ -2,7 +2,7 @@
 
 Corrently.io
 - API version: 2.0.0
-  - Build date: 2021-06-07T17:49:18.134057Z[Etc/UTC]
+  - Build date: 2021-06-07T17:52:38.075125Z[Etc/UTC]
 
 *Corrently - from italian corrente, which is energy*
 # Introduction
@@ -160,7 +160,6 @@ Class | Method | HTTP request | Description
  - [InlineResponse2004](docs/InlineResponse2004.md)
  - [InlineResponse2005](docs/InlineResponse2005.md)
  - [InlineResponse2006](docs/InlineResponse2006.md)
- - [InlineResponse2007](docs/InlineResponse2007.md)
  - [MarketData](docs/MarketData.md)
  - [Ommeters](docs/Ommeters.md)
  - [Tariffh0](docs/Tariffh0.md)

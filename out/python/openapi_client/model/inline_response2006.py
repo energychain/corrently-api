@@ -82,7 +82,8 @@ class InlineResponse2006(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'token': (str,),  # noqa: E501
+            'wim_status': (str,),  # noqa: E501
+            'wim_started': (int,),  # noqa: E501
         }
 
     @cached_property
@@ -91,7 +92,8 @@ class InlineResponse2006(ModelNormal):
 
 
     attribute_map = {
-        'token': 'token',  # noqa: E501
+        'wim_status': 'wim_status',  # noqa: E501
+        'wim_started': 'wim_started',  # noqa: E501
     }
 
     read_only_vars = {
@@ -135,7 +137,8 @@ class InlineResponse2006(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            token (str): Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc). [optional]  # noqa: E501
+            wim_status (str): Latest Status. [optional]  # noqa: E501
+            wim_started (int): Starting time of process. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -217,7 +220,8 @@ class InlineResponse2006(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            token (str): Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc). [optional]  # noqa: E501
+            wim_status (str): Latest Status. [optional]  # noqa: E501
+            wim_started (int): Starting time of process. [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

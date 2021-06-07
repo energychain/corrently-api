@@ -124,7 +124,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\InlineResponse2007
+     * @return \OpenAPI\Client\Model\InlineResponse2006
      */
     public function wimstatus($vid = null)
     {
@@ -141,7 +141,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
      */
     public function wimstatusWithHttpInfo($vid = null)
     {
@@ -177,20 +177,20 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\InlineResponse2007' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\InlineResponse2006' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InlineResponse2007', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InlineResponse2006', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\InlineResponse2007';
+            $returnType = '\OpenAPI\Client\Model\InlineResponse2006';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -208,7 +208,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InlineResponse2007',
+                        '\OpenAPI\Client\Model\InlineResponse2006',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -250,7 +250,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi
      */
     public function wimstatusAsyncWithHttpInfo($vid = null)
     {
-        $returnType = '\OpenAPI\Client\Model\InlineResponse2007';
+        $returnType = '\OpenAPI\Client\Model\InlineResponse2006';
         $request = $this->wimstatusRequest($vid);
 
         return $this->client

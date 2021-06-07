@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **wimstatus**
-> InlineResponse2007 wimstatus()
+> InlineResponse2006 wimstatus()
 
 WiM Proess Informtion
 
@@ -20,7 +20,7 @@ Access to status information of an existing metering change and allocation proce
 import time
 import openapi_client
 from openapi_client.api import wi_m__wechselprozesse_im_messwesen_strom___status_api_api
-from openapi_client.model.inline_response2007 import InlineResponse2007
+from openapi_client.model.inline_response2006 import InlineResponse2006
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.corrently.io/v2.0
 # See configuration.py for a list of all supported configuration parameters.
@@ -54,7 +54,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 

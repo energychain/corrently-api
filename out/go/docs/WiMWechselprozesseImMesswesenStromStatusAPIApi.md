@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## Wimstatus
 
-> InlineResponse2007 Wimstatus(ctx).Vid(vid).Execute()
+> InlineResponse2006 Wimstatus(ctx).Vid(vid).Execute()
 
 WiM Proess Informtion
 
@@ -38,7 +38,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `WiMWechselprozesseImMesswesenStromStatusAPIApi.Wimstatus``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `Wimstatus`: InlineResponse2007
+    // response from `Wimstatus`: InlineResponse2006
     fmt.Fprintf(os.Stdout, "Response from `WiMWechselprozesseImMesswesenStromStatusAPIApi.Wimstatus`: %v\n", resp)
 }
 ```
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 

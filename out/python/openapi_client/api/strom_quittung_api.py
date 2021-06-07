@@ -23,7 +23,6 @@ from openapi_client.model_utils import (  # noqa: F401
     validate_and_convert_types
 )
 from openapi_client.model.inline_object4 import InlineObject4
-from openapi_client.model.inline_response2006 import InlineResponse2006
 
 
 class StromQuittungApi(object):
@@ -77,7 +76,7 @@ class StromQuittungApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                InlineResponse2006
+                str
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -106,7 +105,7 @@ class StromQuittungApi(object):
 
         self.quittung_create = _Endpoint(
             settings={
-                'response_type': (InlineResponse2006,),
+                'response_type': (str,),
                 'auth': [],
                 'endpoint_path': '/quittung/create',
                 'operation_id': 'quittung_create',

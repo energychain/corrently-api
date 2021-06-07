@@ -124,7 +124,7 @@ class StromQuittungApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\InlineResponse2006
+     * @return string
      */
     public function quittungCreate($inline_object4)
     {
@@ -141,7 +141,7 @@ class StromQuittungApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function quittungCreateWithHttpInfo($inline_object4)
     {
@@ -177,20 +177,20 @@ class StromQuittungApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\InlineResponse2006' === '\SplFileObject') {
+                    if ('string' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InlineResponse2006', []),
+                        ObjectSerializer::deserialize($content, 'string', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\InlineResponse2006';
+            $returnType = 'string';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -208,7 +208,7 @@ class StromQuittungApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InlineResponse2006',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -250,7 +250,7 @@ class StromQuittungApi
      */
     public function quittungCreateAsyncWithHttpInfo($inline_object4)
     {
-        $returnType = '\OpenAPI\Client\Model\InlineResponse2006';
+        $returnType = 'string';
         $request = $this->quittungCreateRequest($inline_object4);
 
         return $this->client

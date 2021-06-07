@@ -52,7 +52,7 @@ export class StromQuittungApi {
      * @param inlineObject4 
      */
     public quittungCreate(inlineObject4: models.InlineObject4, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body: models.InlineResponse2006;  },
+    { response: JQueryXHR; body: string;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/quittung/create';
@@ -100,11 +100,11 @@ export class StromQuittungApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body: models.InlineResponse2006;  },
+            { response: JQueryXHR; body: string;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: models.InlineResponse2006, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: string, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})

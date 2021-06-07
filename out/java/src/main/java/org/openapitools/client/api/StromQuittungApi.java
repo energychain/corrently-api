@@ -28,7 +28,6 @@ import java.io.IOException;
 
 
 import org.openapitools.client.model.InlineObject4;
-import org.openapitools.client.model.InlineResponse2006;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -115,7 +114,7 @@ public class StromQuittungApi {
      * Create a receipt for an energy delivery (only valid in Germany).
      * Creates a full featured receipt (Quittung) for an energy delivery as it appears on a charging session or similar events. Allows to embed receipt generation directly into external services. 
      * @param inlineObject4  (required)
-     * @return InlineResponse2006
+     * @return String
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -123,8 +122,8 @@ public class StromQuittungApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2006 quittungCreate(InlineObject4 inlineObject4) throws ApiException {
-        ApiResponse<InlineResponse2006> localVarResp = quittungCreateWithHttpInfo(inlineObject4);
+    public String quittungCreate(InlineObject4 inlineObject4) throws ApiException {
+        ApiResponse<String> localVarResp = quittungCreateWithHttpInfo(inlineObject4);
         return localVarResp.getData();
     }
 
@@ -132,7 +131,7 @@ public class StromQuittungApi {
      * Create a receipt for an energy delivery (only valid in Germany).
      * Creates a full featured receipt (Quittung) for an energy delivery as it appears on a charging session or similar events. Allows to embed receipt generation directly into external services. 
      * @param inlineObject4  (required)
-     * @return ApiResponse&lt;InlineResponse2006&gt;
+     * @return ApiResponse&lt;String&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -140,9 +139,9 @@ public class StromQuittungApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2006> quittungCreateWithHttpInfo(InlineObject4 inlineObject4) throws ApiException {
+    public ApiResponse<String> quittungCreateWithHttpInfo(InlineObject4 inlineObject4) throws ApiException {
         okhttp3.Call localVarCall = quittungCreateValidateBeforeCall(inlineObject4, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -159,10 +158,10 @@ public class StromQuittungApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call quittungCreateAsync(InlineObject4 inlineObject4, final ApiCallback<InlineResponse2006> _callback) throws ApiException {
+    public okhttp3.Call quittungCreateAsync(InlineObject4 inlineObject4, final ApiCallback<String> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = quittungCreateValidateBeforeCall(inlineObject4, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
+        Type localVarReturnType = new TypeToken<String>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

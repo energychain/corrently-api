@@ -17,8 +17,10 @@ import (
 
 // InlineResponse2006 struct for InlineResponse2006
 type InlineResponse2006 struct {
-	// Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
-	Token *string `json:"token,omitempty"`
+	// Latest Status
+	WimStatus *string `json:"wim_status,omitempty"`
+	// Starting time of process
+	WimStarted *int32 `json:"wim_started,omitempty"`
 }
 
 // NewInlineResponse2006 instantiates a new InlineResponse2006 object
@@ -38,42 +40,77 @@ func NewInlineResponse2006WithDefaults() *InlineResponse2006 {
 	return &this
 }
 
-// GetToken returns the Token field value if set, zero value otherwise.
-func (o *InlineResponse2006) GetToken() string {
-	if o == nil || o.Token == nil {
+// GetWimStatus returns the WimStatus field value if set, zero value otherwise.
+func (o *InlineResponse2006) GetWimStatus() string {
+	if o == nil || o.WimStatus == nil {
 		var ret string
 		return ret
 	}
-	return *o.Token
+	return *o.WimStatus
 }
 
-// GetTokenOk returns a tuple with the Token field value if set, nil otherwise
+// GetWimStatusOk returns a tuple with the WimStatus field value if set, nil otherwise
 // and a boolean to check if the value has been set.
-func (o *InlineResponse2006) GetTokenOk() (*string, bool) {
-	if o == nil || o.Token == nil {
+func (o *InlineResponse2006) GetWimStatusOk() (*string, bool) {
+	if o == nil || o.WimStatus == nil {
 		return nil, false
 	}
-	return o.Token, true
+	return o.WimStatus, true
 }
 
-// HasToken returns a boolean if a field has been set.
-func (o *InlineResponse2006) HasToken() bool {
-	if o != nil && o.Token != nil {
+// HasWimStatus returns a boolean if a field has been set.
+func (o *InlineResponse2006) HasWimStatus() bool {
+	if o != nil && o.WimStatus != nil {
 		return true
 	}
 
 	return false
 }
 
-// SetToken gets a reference to the given string and assigns it to the Token field.
-func (o *InlineResponse2006) SetToken(v string) {
-	o.Token = &v
+// SetWimStatus gets a reference to the given string and assigns it to the WimStatus field.
+func (o *InlineResponse2006) SetWimStatus(v string) {
+	o.WimStatus = &v
+}
+
+// GetWimStarted returns the WimStarted field value if set, zero value otherwise.
+func (o *InlineResponse2006) GetWimStarted() int32 {
+	if o == nil || o.WimStarted == nil {
+		var ret int32
+		return ret
+	}
+	return *o.WimStarted
+}
+
+// GetWimStartedOk returns a tuple with the WimStarted field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *InlineResponse2006) GetWimStartedOk() (*int32, bool) {
+	if o == nil || o.WimStarted == nil {
+		return nil, false
+	}
+	return o.WimStarted, true
+}
+
+// HasWimStarted returns a boolean if a field has been set.
+func (o *InlineResponse2006) HasWimStarted() bool {
+	if o != nil && o.WimStarted != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetWimStarted gets a reference to the given int32 and assigns it to the WimStarted field.
+func (o *InlineResponse2006) SetWimStarted(v int32) {
+	o.WimStarted = &v
 }
 
 func (o InlineResponse2006) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
-	if o.Token != nil {
-		toSerialize["token"] = o.Token
+	if o.WimStatus != nil {
+		toSerialize["wim_status"] = o.WimStatus
+	}
+	if o.WimStarted != nil {
+		toSerialize["wim_started"] = o.WimStarted
 	}
 	return json.Marshal(toSerialize)
 }

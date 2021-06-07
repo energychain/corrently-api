@@ -27,7 +27,7 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import org.openapitools.client.model.InlineResponse2007;
+import org.openapitools.client.model.InlineResponse2006;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -113,7 +113,7 @@ public class WiMWechselprozesseImMesswesenStromStatusApiApi {
      * WiM Proess Informtion
      * Access to status information of an existing metering change and allocation process. 
      * @param vid VID key of the process. (optional)
-     * @return InlineResponse2007
+     * @return InlineResponse2006
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -121,8 +121,8 @@ public class WiMWechselprozesseImMesswesenStromStatusApiApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public InlineResponse2007 wimstatus(String vid) throws ApiException {
-        ApiResponse<InlineResponse2007> localVarResp = wimstatusWithHttpInfo(vid);
+    public InlineResponse2006 wimstatus(String vid) throws ApiException {
+        ApiResponse<InlineResponse2006> localVarResp = wimstatusWithHttpInfo(vid);
         return localVarResp.getData();
     }
 
@@ -130,7 +130,7 @@ public class WiMWechselprozesseImMesswesenStromStatusApiApi {
      * WiM Proess Informtion
      * Access to status information of an existing metering change and allocation process. 
      * @param vid VID key of the process. (optional)
-     * @return ApiResponse&lt;InlineResponse2007&gt;
+     * @return ApiResponse&lt;InlineResponse2006&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -138,9 +138,9 @@ public class WiMWechselprozesseImMesswesenStromStatusApiApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<InlineResponse2007> wimstatusWithHttpInfo(String vid) throws ApiException {
+    public ApiResponse<InlineResponse2006> wimstatusWithHttpInfo(String vid) throws ApiException {
         okhttp3.Call localVarCall = wimstatusValidateBeforeCall(vid, null);
-        Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -157,10 +157,10 @@ public class WiMWechselprozesseImMesswesenStromStatusApiApi {
         <tr><td> 200 </td><td> Success </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call wimstatusAsync(String vid, final ApiCallback<InlineResponse2007> _callback) throws ApiException {
+    public okhttp3.Call wimstatusAsync(String vid, final ApiCallback<InlineResponse2006> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = wimstatusValidateBeforeCall(vid, _callback);
-        Type localVarReturnType = new TypeToken<InlineResponse2007>(){}.getType();
+        Type localVarReturnType = new TypeToken<InlineResponse2006>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

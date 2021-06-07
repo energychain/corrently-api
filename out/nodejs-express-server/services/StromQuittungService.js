@@ -6,7 +6,7 @@ const Service = require('./Service');
 * Creates a full featured receipt (Quittung) for an energy delivery as it appears on a charging session or similar events. Allows to embed receipt generation directly into external services. 
 *
 * inlineObject4 InlineObject4 
-* returns inline_response_200_6
+* returns String
 * */
 const quittungCreate = ({ inlineObject4 }) => new Promise(
   async (resolve, reject) => {

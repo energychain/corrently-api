@@ -27,33 +27,60 @@ import java.io.IOException;
 /**
  * InlineResponse2006
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-07T17:49:18.134057Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-07T17:52:38.075125Z[Etc/UTC]")
 public class InlineResponse2006 {
-  public static final String SERIALIZED_NAME_TOKEN = "token";
-  @SerializedName(SERIALIZED_NAME_TOKEN)
-  private String token;
+  public static final String SERIALIZED_NAME_WIM_STATUS = "wim_status";
+  @SerializedName(SERIALIZED_NAME_WIM_STATUS)
+  private String wimStatus;
+
+  public static final String SERIALIZED_NAME_WIM_STARTED = "wim_started";
+  @SerializedName(SERIALIZED_NAME_WIM_STARTED)
+  private Integer wimStarted;
 
 
-  public InlineResponse2006 token(String token) {
+  public InlineResponse2006 wimStatus(String wimStatus) {
     
-    this.token = token;
+    this.wimStatus = wimStatus;
     return this;
   }
 
    /**
-   * Token for this receipt. It might be extended as &#39;token&#39; parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token&#x3D;0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
-   * @return token
+   * Latest Status
+   * @return wimStatus
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)")
+  @ApiModelProperty(example = "Erfolgreiche Prüfung", value = "Latest Status")
 
-  public String getToken() {
-    return token;
+  public String getWimStatus() {
+    return wimStatus;
   }
 
 
-  public void setToken(String token) {
-    this.token = token;
+  public void setWimStatus(String wimStatus) {
+    this.wimStatus = wimStatus;
+  }
+
+
+  public InlineResponse2006 wimStarted(Integer wimStarted) {
+    
+    this.wimStarted = wimStarted;
+    return this;
+  }
+
+   /**
+   * Starting time of process
+   * @return wimStarted
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "1615914297977", value = "Starting time of process")
+
+  public Integer getWimStarted() {
+    return wimStarted;
+  }
+
+
+  public void setWimStarted(Integer wimStarted) {
+    this.wimStarted = wimStarted;
   }
 
 
@@ -66,19 +93,21 @@ public class InlineResponse2006 {
       return false;
     }
     InlineResponse2006 inlineResponse2006 = (InlineResponse2006) o;
-    return Objects.equals(this.token, inlineResponse2006.token);
+    return Objects.equals(this.wimStatus, inlineResponse2006.wimStatus) &&
+        Objects.equals(this.wimStarted, inlineResponse2006.wimStarted);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(token);
+    return Objects.hash(wimStatus, wimStarted);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2006 {\n");
-    sb.append("    token: ").append(toIndentedString(token)).append("\n");
+    sb.append("    wimStatus: ").append(toIndentedString(wimStatus)).append("\n");
+    sb.append("    wimStarted: ").append(toIndentedString(wimStarted)).append("\n");
     sb.append("}");
     return sb.toString();
   }

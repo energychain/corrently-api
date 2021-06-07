@@ -28,7 +28,6 @@ docs/InlineResponse2003.md
 docs/InlineResponse2004.md
 docs/InlineResponse2005.md
 docs/InlineResponse2006.md
-docs/InlineResponse2007.md
 docs/MarketData.md
 docs/MeteringDecoratorApi.md
 docs/Ommeters.md
@@ -97,13 +96,7 @@ src/main/java/org/openapitools/client/model/InlineResponse2003.java
 src/main/java/org/openapitools/client/model/InlineResponse2004.java
 src/main/java/org/openapitools/client/model/InlineResponse2005.java
 src/main/java/org/openapitools/client/model/InlineResponse2006.java
-src/main/java/org/openapitools/client/model/InlineResponse2007.java
 src/main/java/org/openapitools/client/model/MarketData.java
 src/main/java/org/openapitools/client/model/Ommeters.java
 src/main/java/org/openapitools/client/model/Tariffh0.java
 src/main/java/org/openapitools/client/model/Transactions.java
-src/test/java/org/openapitools/client/api/EaseeApiTest.java
-src/test/java/org/openapitools/client/api/StromQuittungApiTest.java
-src/test/java/org/openapitools/client/model/EaseeChargerTest.java
-src/test/java/org/openapitools/client/model/InlineObject4Test.java
-src/test/java/org/openapitools/client/model/InlineResponse2007Test.java

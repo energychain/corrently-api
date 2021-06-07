@@ -33,7 +33,6 @@ model/InlineResponse2003.ts
 model/InlineResponse2004.ts
 model/InlineResponse2005.ts
 model/InlineResponse2006.ts
-model/InlineResponse2007.ts
 model/MarketData.ts
 model/Ommeters.ts
 model/Tariffh0.ts

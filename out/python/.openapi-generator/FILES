@@ -26,7 +26,6 @@ docs/InlineResponse2003.md
 docs/InlineResponse2004.md
 docs/InlineResponse2005.md
 docs/InlineResponse2006.md
-docs/InlineResponse2007.md
 docs/MarketData.md
 docs/MeteringDecoratorApi.md
 docs/Ommeters.md
@@ -77,7 +76,6 @@ openapi_client/model/inline_response2003.py
 openapi_client/model/inline_response2004.py
 openapi_client/model/inline_response2005.py
 openapi_client/model/inline_response2006.py
-openapi_client/model/inline_response2007.py
 openapi_client/model/market_data.py
 openapi_client/model/ommeters.py
 openapi_client/model/tariffh0.py
@@ -90,9 +88,4 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
-test/test_easee_api.py
-test/test_easee_charger.py
-test/test_inline_object4.py
-test/test_inline_response2007.py
-test/test_strom_quittung_api.py
 tox.ini

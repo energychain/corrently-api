@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## QuittungCreate
 
-> InlineResponse2006 QuittungCreate(ctx).InlineObject4(inlineObject4).Execute()
+> string QuittungCreate(ctx).InlineObject4(inlineObject4).Execute()
 
 Create a receipt for an energy delivery (only valid in Germany).
 
@@ -38,7 +38,7 @@ func main() {
         fmt.Fprintf(os.Stderr, "Error when calling `StromQuittungApi.QuittungCreate``: %v\n", err)
         fmt.Fprintf(os.Stderr, "Full HTTP response: %v\n", r)
     }
-    // response from `QuittungCreate`: InlineResponse2006
+    // response from `QuittungCreate`: string
     fmt.Fprintf(os.Stdout, "Response from `StromQuittungApi.QuittungCreate`: %v\n", resp)
 }
 ```
@@ -58,7 +58,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+**string**
 
 ### Authorization
 

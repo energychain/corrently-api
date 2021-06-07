@@ -34,7 +34,6 @@ import InlineResponse2003 from './model/InlineResponse2003';
 import InlineResponse2004 from './model/InlineResponse2004';
 import InlineResponse2005 from './model/InlineResponse2005';
 import InlineResponse2006 from './model/InlineResponse2006';
-import InlineResponse2007 from './model/InlineResponse2007';
 import MarketData from './model/MarketData';
 import Ommeters from './model/Ommeters';
 import Tariffh0 from './model/Tariffh0';
@@ -214,12 +213,6 @@ export {
      * @property {module:model/InlineResponse2006}
      */
     InlineResponse2006,
-
-    /**
-     * The InlineResponse2007 model constructor.
-     * @property {module:model/InlineResponse2007}
-     */
-    InlineResponse2007,
 
     /**
      * The MarketData model constructor.

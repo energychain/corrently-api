@@ -38,7 +38,6 @@ docs/InlineResponse2003.md
 docs/InlineResponse2004.md
 docs/InlineResponse2005.md
 docs/InlineResponse2006.md
-docs/InlineResponse2007.md
 docs/MarketData.md
 docs/MeteringDecoratorApi.md
 docs/Ommeters.md
@@ -74,7 +73,6 @@ model_inline_response_200_3.go
 model_inline_response_200_4.go
 model_inline_response_200_5.go
 model_inline_response_200_6.go
-model_inline_response_200_7.go
 model_market_data.go
 model_ommeters.go
 model_tariffh0.go

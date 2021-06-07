@@ -60,7 +60,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'token' => 'string'
+        'wim_status' => 'string',
+        'wim_started' => 'int'
     ];
 
     /**
@@ -71,7 +72,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'token' => null
+        'wim_status' => null,
+        'wim_started' => null
     ];
 
     /**
@@ -101,7 +103,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'token' => 'token'
+        'wim_status' => 'wim_status',
+        'wim_started' => 'wim_started'
     ];
 
     /**
@@ -110,7 +113,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'token' => 'setToken'
+        'wim_status' => 'setWimStatus',
+        'wim_started' => 'setWimStarted'
     ];
 
     /**
@@ -119,7 +123,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'token' => 'getToken'
+        'wim_status' => 'getWimStatus',
+        'wim_started' => 'getWimStarted'
     ];
 
     /**
@@ -179,7 +184,8 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['token'] = $data['token'] ?? null;
+        $this->container['wim_status'] = $data['wim_status'] ?? null;
+        $this->container['wim_started'] = $data['wim_started'] ?? null;
     }
 
     /**
@@ -207,25 +213,49 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets token
+     * Gets wim_status
      *
      * @return string|null
      */
-    public function getToken()
+    public function getWimStatus()
     {
-        return $this->container['token'];
+        return $this->container['wim_status'];
     }
 
     /**
-     * Sets token
+     * Sets wim_status
      *
-     * @param string|null $token Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
+     * @param string|null $wim_status Latest Status
      *
      * @return self
      */
-    public function setToken($token)
+    public function setWimStatus($wim_status)
     {
-        $this->container['token'] = $token;
+        $this->container['wim_status'] = $wim_status;
+
+        return $this;
+    }
+
+    /**
+     * Gets wim_started
+     *
+     * @return int|null
+     */
+    public function getWimStarted()
+    {
+        return $this->container['wim_started'];
+    }
+
+    /**
+     * Sets wim_started
+     *
+     * @param int|null $wim_started Starting time of process
+     *
+     * @return self
+     */
+    public function setWimStarted($wim_started)
+    {
+        $this->container['wim_started'] = $wim_started;
 
         return $this;
     }

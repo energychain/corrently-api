@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="wimstatus"></a>
 # **wimstatus**
-> InlineResponse2007 wimstatus(vid)
+> InlineResponse2006 wimstatus(vid)
 
 WiM Proess Informtion
 
@@ -32,7 +32,7 @@ public class Example {
     WiMWechselprozesseImMesswesenStromStatusApiApi apiInstance = new WiMWechselprozesseImMesswesenStromStatusApiApi(defaultClient);
     String vid = "vid_example"; // String | VID key of the process.
     try {
-      InlineResponse2007 result = apiInstance.wimstatus(vid);
+      InlineResponse2006 result = apiInstance.wimstatus(vid);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling WiMWechselprozesseImMesswesenStromStatusApiApi#wimstatus");
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2007**](InlineResponse2007.md)
+[**InlineResponse2006**](InlineResponse2006.md)
 
 ### Authorization
 

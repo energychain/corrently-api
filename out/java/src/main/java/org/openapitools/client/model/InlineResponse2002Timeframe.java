@@ -28,7 +28,7 @@ import java.io.IOException;
  * Evaluated timeframe for this request
  */
 @ApiModel(description = "Evaluated timeframe for this request")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-07T17:49:18.134057Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-07T17:52:38.075125Z[Etc/UTC]")
 public class InlineResponse2002Timeframe {
   public static final String SERIALIZED_NAME_START = "start";
   @SerializedName(SERIALIZED_NAME_START)

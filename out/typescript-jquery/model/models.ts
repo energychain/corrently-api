@@ -19,7 +19,6 @@ export * from './InlineResponse2003';
 export * from './InlineResponse2004';
 export * from './InlineResponse2005';
 export * from './InlineResponse2006';
-export * from './InlineResponse2007';
 export * from './MarketData';
 export * from './Ommeters';
 export * from './Tariffh0';

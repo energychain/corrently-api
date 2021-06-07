@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `quittungCreate()`
 
 ```php
-quittungCreate($inline_object4): \OpenAPI\Client\Model\InlineResponse2006
+quittungCreate($inline_object4): string
 ```
 
 Create a receipt for an energy delivery (only valid in Germany).
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+**string**
 
 ### Authorization
 

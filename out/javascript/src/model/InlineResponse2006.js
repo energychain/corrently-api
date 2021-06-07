@@ -47,8 +47,11 @@ class InlineResponse2006 {
         if (data) {
             obj = obj || new InlineResponse2006();
 
-            if (data.hasOwnProperty('token')) {
-                obj['token'] = ApiClient.convertToType(data['token'], 'String');
+            if (data.hasOwnProperty('wim_status')) {
+                obj['wim_status'] = ApiClient.convertToType(data['wim_status'], 'String');
+            }
+            if (data.hasOwnProperty('wim_started')) {
+                obj['wim_started'] = ApiClient.convertToType(data['wim_started'], 'Number');
             }
         }
         return obj;
@@ -58,10 +61,16 @@ class InlineResponse2006 {
 }
 
 /**
- * Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
- * @member {String} token
+ * Latest Status
+ * @member {String} wim_status
  */
-InlineResponse2006.prototype['token'] = undefined;
+InlineResponse2006.prototype['wim_status'] = undefined;
+
+/**
+ * Starting time of process
+ * @member {Number} wim_started
+ */
+InlineResponse2006.prototype['wim_started'] = undefined;
 
 
 

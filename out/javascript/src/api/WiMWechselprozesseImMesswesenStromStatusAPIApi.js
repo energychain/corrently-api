@@ -13,7 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
-import InlineResponse2007 from '../model/InlineResponse2007';
+import InlineResponse2006 from '../model/InlineResponse2006';
 
 /**
 * WiMWechselprozesseImMesswesenStromStatusAPI service.
@@ -38,7 +38,7 @@ export default class WiMWechselprozesseImMesswesenStromStatusAPIApi {
      * Callback function to receive the result of the wimstatus operation.
      * @callback module:api/WiMWechselprozesseImMesswesenStromStatusAPIApi~wimstatusCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2007} data The data returned by the service call.
+     * @param {module:model/InlineResponse2006} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -48,7 +48,7 @@ export default class WiMWechselprozesseImMesswesenStromStatusAPIApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.vid VID key of the process.
      * @param {module:api/WiMWechselprozesseImMesswesenStromStatusAPIApi~wimstatusCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2007}
+     * data is of type: {@link module:model/InlineResponse2006}
      */
     wimstatus(opts, callback) {
       opts = opts || {};
@@ -67,7 +67,7 @@ export default class WiMWechselprozesseImMesswesenStromStatusAPIApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2007;
+      let returnType = InlineResponse2006;
       return this.apiClient.callApi(
         '/wim/status', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

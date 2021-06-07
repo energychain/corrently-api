@@ -34,7 +34,6 @@ docs/Model/InlineResponse2003.md
 docs/Model/InlineResponse2004.md
 docs/Model/InlineResponse2005.md
 docs/Model/InlineResponse2006.md
-docs/Model/InlineResponse2007.md
 docs/Model/MarketData.md
 docs/Model/Ommeters.md
 docs/Model/Tariffh0.md
@@ -74,7 +73,6 @@ lib/Model/InlineResponse2003.php
 lib/Model/InlineResponse2004.php
 lib/Model/InlineResponse2005.php
 lib/Model/InlineResponse2006.php
-lib/Model/InlineResponse2007.php
 lib/Model/MarketData.php
 lib/Model/ModelInterface.php
 lib/Model/Ommeters.php
@@ -82,8 +80,3 @@ lib/Model/Tariffh0.php
 lib/Model/Transactions.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
-test/Api/EaseeApiTest.php
-test/Api/StromQuittungApiTest.php
-test/Model/EaseeChargerTest.php
-test/Model/InlineObject4Test.php
-test/Model/InlineResponse2007Test.php

@@ -474,7 +474,9 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_6'
+                description: Token for this receipt. It might be extended as 'token'
+                  parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
+                type: string
           description: Success
       summary: Create a receipt for an energy delivery (only valid in Germany).
       tags:
@@ -500,7 +502,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_7'
+                $ref: '#/components/schemas/inline_response_200_6'
           description: Success
       summary: WiM Proess Informtion
       tags:
@@ -1254,15 +1256,6 @@ components:
           type: string
       type: object
     inline_response_200_6:
-      example:
-        token: token
-      properties:
-        token:
-          description: Token for this receipt. It might be extended as 'token' parameter
-            to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
-          type: string
-      type: object
-    inline_response_200_7:
       example:
         wim_started: 1615914297977
         wim_status: Erfolgreiche Prüfung

@@ -175,7 +175,6 @@ Class | Method | HTTP request | Description
  - [CorrentlyIo.InlineResponse2004](docs/InlineResponse2004.md)
  - [CorrentlyIo.InlineResponse2005](docs/InlineResponse2005.md)
  - [CorrentlyIo.InlineResponse2006](docs/InlineResponse2006.md)
- - [CorrentlyIo.InlineResponse2007](docs/InlineResponse2007.md)
  - [CorrentlyIo.MarketData](docs/MarketData.md)
  - [CorrentlyIo.Ommeters](docs/Ommeters.md)
  - [CorrentlyIo.Tariffh0](docs/Tariffh0.md)

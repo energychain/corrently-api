@@ -123,7 +123,6 @@ Class | Method | HTTP request | Description
 - [InlineResponse2004](docs/Model/InlineResponse2004.md)
 - [InlineResponse2005](docs/Model/InlineResponse2005.md)
 - [InlineResponse2006](docs/Model/InlineResponse2006.md)
-- [InlineResponse2007](docs/Model/InlineResponse2007.md)
 - [MarketData](docs/Model/MarketData.md)
 - [Ommeters](docs/Model/Ommeters.md)
 - [Tariffh0](docs/Model/Tariffh0.md)

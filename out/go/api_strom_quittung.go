@@ -38,7 +38,7 @@ func (r ApiQuittungCreateRequest) InlineObject4(inlineObject4 InlineObject4) Api
 	return r
 }
 
-func (r ApiQuittungCreateRequest) Execute() (InlineResponse2006, *_nethttp.Response, error) {
+func (r ApiQuittungCreateRequest) Execute() (string, *_nethttp.Response, error) {
 	return r.ApiService.QuittungCreateExecute(r)
 }
 
@@ -58,16 +58,16 @@ func (a *StromQuittungApiService) QuittungCreate(ctx _context.Context) ApiQuittu
 
 /*
  * Execute executes the request
- * @return InlineResponse2006
+ * @return string
  */
-func (a *StromQuittungApiService) QuittungCreateExecute(r ApiQuittungCreateRequest) (InlineResponse2006, *_nethttp.Response, error) {
+func (a *StromQuittungApiService) QuittungCreateExecute(r ApiQuittungCreateRequest) (string, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodPost
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2006
+		localVarReturnValue  string
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "StromQuittungApiService.QuittungCreate")

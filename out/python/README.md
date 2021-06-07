@@ -132,7 +132,6 @@ Class | Method | HTTP request | Description
  - [InlineResponse2004](docs/InlineResponse2004.md)
  - [InlineResponse2005](docs/InlineResponse2005.md)
  - [InlineResponse2006](docs/InlineResponse2006.md)
- - [InlineResponse2007](docs/InlineResponse2007.md)
  - [MarketData](docs/MarketData.md)
  - [Ommeters](docs/Ommeters.md)
  - [Tariffh0](docs/Tariffh0.md)

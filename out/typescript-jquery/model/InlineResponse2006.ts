@@ -14,8 +14,13 @@ import * as models from './models';
 
 export interface InlineResponse2006 {
     /**
-     * Token for this receipt. It might be extended as \'token\' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
+     * Latest Status
      */
-    token?: string;
+    wim_status?: string;
+
+    /**
+     * Starting time of process
+     */
+    wim_started?: number;
 
 }

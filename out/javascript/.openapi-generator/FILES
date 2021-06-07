@@ -26,7 +26,6 @@ docs/InlineResponse2003.md
 docs/InlineResponse2004.md
 docs/InlineResponse2005.md
 docs/InlineResponse2006.md
-docs/InlineResponse2007.md
 docs/MarketData.md
 docs/MeteringDecoratorApi.md
 docs/Ommeters.md
@@ -74,13 +73,7 @@ src/model/InlineResponse2003.js
 src/model/InlineResponse2004.js
 src/model/InlineResponse2005.js
 src/model/InlineResponse2006.js
-src/model/InlineResponse2007.js
 src/model/MarketData.js
 src/model/Ommeters.js
 src/model/Tariffh0.js
 src/model/Transactions.js
-test/api/EaseeApi.spec.js
-test/api/StromQuittungApi.spec.js
-test/model/EaseeCharger.spec.js
-test/model/InlineObject4.spec.js
-test/model/InlineResponse2007.spec.js

@@ -14,7 +14,6 @@
 
 import ApiClient from "../ApiClient";
 import InlineObject4 from '../model/InlineObject4';
-import InlineResponse2006 from '../model/InlineResponse2006';
 
 /**
 * StromQuittung service.
@@ -39,7 +38,7 @@ export default class StromQuittungApi {
      * Callback function to receive the result of the quittungCreate operation.
      * @callback module:api/StromQuittungApi~quittungCreateCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2006} data The data returned by the service call.
+     * @param {String} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -48,7 +47,7 @@ export default class StromQuittungApi {
      * Creates a full featured receipt (Quittung) for an energy delivery as it appears on a charging session or similar events. Allows to embed receipt generation directly into external services. 
      * @param {module:model/InlineObject4} inlineObject4 
      * @param {module:api/StromQuittungApi~quittungCreateCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2006}
+     * data is of type: {@link String}
      */
     quittungCreate(inlineObject4, callback) {
       let postBody = inlineObject4;
@@ -69,7 +68,7 @@ export default class StromQuittungApi {
       let authNames = [];
       let contentTypes = ['application/json'];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2006;
+      let returnType = 'String';
       return this.apiClient.callApi(
         '/quittung/create', 'POST',
         pathParams, queryParams, headerParams, formParams, postBody,

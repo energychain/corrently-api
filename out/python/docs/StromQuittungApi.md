@@ -8,7 +8,7 @@ Method | HTTP request | Description
 
 
 # **quittung_create**
-> InlineResponse2006 quittung_create(inline_object4)
+> str quittung_create(inline_object4)
 
 Create a receipt for an energy delivery (only valid in Germany).
 
@@ -20,7 +20,6 @@ Creates a full featured receipt (Quittung) for an energy delivery as it appears 
 import time
 import openapi_client
 from openapi_client.api import strom_quittung_api
-from openapi_client.model.inline_response2006 import InlineResponse2006
 from openapi_client.model.inline_object4 import InlineObject4
 from pprint import pprint
 # Defining the host is optional and defaults to https://api.corrently.io/v2.0
@@ -56,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+**str**
 
 ### Authorization
 

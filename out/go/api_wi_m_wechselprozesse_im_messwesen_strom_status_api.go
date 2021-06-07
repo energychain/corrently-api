@@ -38,7 +38,7 @@ func (r ApiWimstatusRequest) Vid(vid string) ApiWimstatusRequest {
 	return r
 }
 
-func (r ApiWimstatusRequest) Execute() (InlineResponse2007, *_nethttp.Response, error) {
+func (r ApiWimstatusRequest) Execute() (InlineResponse2006, *_nethttp.Response, error) {
 	return r.ApiService.WimstatusExecute(r)
 }
 
@@ -58,16 +58,16 @@ func (a *WiMWechselprozesseImMesswesenStromStatusAPIApiService) Wimstatus(ctx _c
 
 /*
  * Execute executes the request
- * @return InlineResponse2007
+ * @return InlineResponse2006
  */
-func (a *WiMWechselprozesseImMesswesenStromStatusAPIApiService) WimstatusExecute(r ApiWimstatusRequest) (InlineResponse2007, *_nethttp.Response, error) {
+func (a *WiMWechselprozesseImMesswesenStromStatusAPIApiService) WimstatusExecute(r ApiWimstatusRequest) (InlineResponse2006, *_nethttp.Response, error) {
 	var (
 		localVarHTTPMethod   = _nethttp.MethodGet
 		localVarPostBody     interface{}
 		localVarFormFileName string
 		localVarFileName     string
 		localVarFileBytes    []byte
-		localVarReturnValue  InlineResponse2007
+		localVarReturnValue  InlineResponse2006
 	)
 
 	localBasePath, err := a.client.cfg.ServerURLWithContext(r.ctx, "WiMWechselprozesseImMesswesenStromStatusAPIApiService.Wimstatus")

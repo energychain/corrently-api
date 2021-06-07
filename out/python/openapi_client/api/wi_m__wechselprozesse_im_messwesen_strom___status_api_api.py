@@ -22,7 +22,7 @@ from openapi_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from openapi_client.model.inline_response2007 import InlineResponse2007
+from openapi_client.model.inline_response2006 import InlineResponse2006
 
 
 class WiMWechselprozesseImMesswesenStromStatusAPIApi(object):
@@ -74,7 +74,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                InlineResponse2007
+                InlineResponse2006
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -101,7 +101,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi(object):
 
         self.wimstatus = _Endpoint(
             settings={
-                'response_type': (InlineResponse2007,),
+                'response_type': (InlineResponse2006,),
                 'auth': [],
                 'endpoint_path': '/wim/status',
                 'operation_id': 'wimstatus',

@@ -30,7 +30,7 @@ import org.openapitools.client.model.Transactions;
 /**
  * Balance
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-07T17:49:18.134057Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-07T17:52:38.075125Z[Etc/UTC]")
 public class Balance {
   public static final String SERIALIZED_NAME_SOLL = "soll";
   @SerializedName(SERIALIZED_NAME_SOLL)

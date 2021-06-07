@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**Token** | Pointer to **string** | Token for this receipt. It might be extended as &#39;token&#39; parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token&#x3D;0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc) | [optional] 
+**WimStatus** | Pointer to **string** | Latest Status | [optional] 
+**WimStarted** | Pointer to **int32** | Starting time of process | [optional] 
 
 ## Methods
 
@@ -25,30 +26,55 @@ NewInlineResponse2006WithDefaults instantiates a new InlineResponse2006 object
 This constructor will only assign default values to properties that have it defined,
 but it doesn't guarantee that properties required by API are set
 
-### GetToken
+### GetWimStatus
 
-`func (o *InlineResponse2006) GetToken() string`
+`func (o *InlineResponse2006) GetWimStatus() string`
 
-GetToken returns the Token field if non-nil, zero value otherwise.
+GetWimStatus returns the WimStatus field if non-nil, zero value otherwise.
 
-### GetTokenOk
+### GetWimStatusOk
 
-`func (o *InlineResponse2006) GetTokenOk() (*string, bool)`
+`func (o *InlineResponse2006) GetWimStatusOk() (*string, bool)`
 
-GetTokenOk returns a tuple with the Token field if it's non-nil, zero value otherwise
+GetWimStatusOk returns a tuple with the WimStatus field if it's non-nil, zero value otherwise
 and a boolean to check if the value has been set.
 
-### SetToken
+### SetWimStatus
 
-`func (o *InlineResponse2006) SetToken(v string)`
+`func (o *InlineResponse2006) SetWimStatus(v string)`
 
-SetToken sets Token field to given value.
+SetWimStatus sets WimStatus field to given value.
 
-### HasToken
+### HasWimStatus
 
-`func (o *InlineResponse2006) HasToken() bool`
+`func (o *InlineResponse2006) HasWimStatus() bool`
 
-HasToken returns a boolean if a field has been set.
+HasWimStatus returns a boolean if a field has been set.
+
+### GetWimStarted
+
+`func (o *InlineResponse2006) GetWimStarted() int32`
+
+GetWimStarted returns the WimStarted field if non-nil, zero value otherwise.
+
+### GetWimStartedOk
+
+`func (o *InlineResponse2006) GetWimStartedOk() (*int32, bool)`
+
+GetWimStartedOk returns a tuple with the WimStarted field if it's non-nil, zero value otherwise
+and a boolean to check if the value has been set.
+
+### SetWimStarted
+
+`func (o *InlineResponse2006) SetWimStarted(v int32)`
+
+SetWimStarted sets WimStarted field to given value.
+
+### HasWimStarted
+
+`func (o *InlineResponse2006) HasWimStarted() bool`
+
+HasWimStarted returns a boolean if a field has been set.
 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## quittungCreate
 
-> InlineResponse2006 quittungCreate(inlineObject4)
+> String quittungCreate(inlineObject4)
 
 Create a receipt for an energy delivery (only valid in Germany).
 
@@ -41,7 +41,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+**String**
 
 ### Authorization
 
