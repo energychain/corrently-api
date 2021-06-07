@@ -54,6 +54,10 @@ tags:
     description: Alternative access to OpenMeter Data.
   - name: easee
     description: Alternative access to EASEE.cloud Data.
+  - name: Strom-Quittung
+    description: >
+      Self-Service to create a full receipt (Quittung) for energy delivery in case of submetering.
+      Please refer to [Strom-Quittung](http://strom-quittung.de) for a sample usage.
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -79,6 +83,8 @@ paths:
     $ref: './paths/tariff-slph0.yaml'
   '/tariff/components':
     $ref: './paths/tariff-components.yaml'
+  '/quittung/create':
+    $ref: './paths/quittung-create.yaml'    
   '/wim/status':
     $ref: './paths/wim-status.yaml'
   '/gsi/bestHour':
@@ -90,4 +96,4 @@ paths:
   '/alternative/openmeter/readings':
     $ref: './paths/openmeter-readings.yaml'
   '/alternative/easee/lastSessions':
-    $ref: './paths/easee-lastSessions.yaml'    
+    $ref: './paths/easee-lastSessions.yaml'

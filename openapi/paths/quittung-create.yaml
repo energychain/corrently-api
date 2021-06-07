@@ -1,0 +1,28 @@
+post:
+  tags:
+    - Strom-Quittung
+  summary: Create a receipt for an energy delivery (only valid in Germany).
+  operationId: quittungCreate
+  description: >
+    Creates a full featured receipt (Quittung) for an energy delivery as it appears on a charging session or similar events. Allows to
+    embed receipt generation directly into external services.
+  requestBody:
+    required: true
+    content:
+       application/json:
+        schema:
+          type: object
+          properties:
+            email:
+              type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              token:
+                description: Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
+                type: string

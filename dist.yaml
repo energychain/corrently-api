@@ -76,6 +76,11 @@ tags:
     description: Alternative access to OpenMeter Data.
   - name: easee
     description: Alternative access to EASEE.cloud Data.
+  - name: Strom-Quittung
+    description: >
+      Self-Service to create a full receipt (Quittung) for energy delivery in
+      case of submetering. Please refer to
+      [Strom-Quittung](http://strom-quittung.de) for a sample usage.
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -631,6 +636,39 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/componentsh0'
+  /quittung/create:
+    post:
+      tags:
+        - Strom-Quittung
+      summary: Create a receipt for an energy delivery (only valid in Germany).
+      operationId: quittungCreate
+      description: >
+        Creates a full featured receipt (Quittung) for an energy delivery as it
+        appears on a charging session or similar events. Allows to embed receipt
+        generation directly into external services.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  token:
+                    description: >-
+                      Token for this receipt. It might be extended as 'token'
+                      parameter to retrieve actual receipt
+                      [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
+                    type: string
   /wim/status:
     get:
       tags:
