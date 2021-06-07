@@ -1,6 +1,6 @@
 /**
  * Corrently.io
- * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. 
+ * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. [Released SKDs for Download](https://github.com/energychain/corrently-api/releases) 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: dev@stromdao.com
@@ -52,7 +52,7 @@ export class WiMWechselprozesseImMesswesenStromStatusAPIApi {
      * @param vid VID key of the process.
      */
     public wimstatus(vid?: string, extraJQueryAjaxSettings?: JQueryAjaxSettings): JQuery.Promise<
-    { response: JQueryXHR; body: models.InlineResponse2006;  },
+    { response: JQueryXHR; body: models.InlineResponse2007;  },
     { response: JQueryXHR; errorThrown: string }
     > {
         let localVarPath = this.basePath + '/wim/status';
@@ -94,11 +94,11 @@ export class WiMWechselprozesseImMesswesenStromStatusAPIApi {
         }
 
         let dfd = $.Deferred<
-            { response: JQueryXHR; body: models.InlineResponse2006;  },
+            { response: JQueryXHR; body: models.InlineResponse2007;  },
             { response: JQueryXHR; errorThrown: string }
         >();
         $.ajax(requestOptions).then(
-            (data: models.InlineResponse2006, textStatus: string, jqXHR: JQueryXHR) =>
+            (data: models.InlineResponse2007, textStatus: string, jqXHR: JQueryXHR) =>
                 dfd.resolve({response: jqXHR, body: data}),
             (xhr: JQueryXHR, textStatus: string, errorThrown: string) =>
                 dfd.reject({response: xhr, errorThrown: errorThrown})

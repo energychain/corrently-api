@@ -661,14 +661,11 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  token:
-                    description: >-
-                      Token for this receipt. It might be extended as 'token'
-                      parameter to retrieve actual receipt
-                      [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
-                    type: string
+                type: string
+                description: >-
+                  Token for this receipt. It might be extended as 'token'
+                  parameter to retrieve actual receipt
+                  [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
   /wim/status:
     get:
       tags:

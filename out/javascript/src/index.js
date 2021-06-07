@@ -1,6 +1,6 @@
 /**
  * Corrently.io
- * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. 
+ * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. [Released SKDs for Download](https://github.com/energychain/corrently-api/releases) 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: dev@stromdao.com
@@ -16,11 +16,13 @@ import ApiClient from './ApiClient';
 import Balance from './model/Balance';
 import Componentsh0 from './model/Componentsh0';
 import DispatchLocation from './model/DispatchLocation';
+import EaseeCharger from './model/EaseeCharger';
 import ForecastItem from './model/ForecastItem';
 import InlineObject from './model/InlineObject';
 import InlineObject1 from './model/InlineObject1';
 import InlineObject2 from './model/InlineObject2';
 import InlineObject3 from './model/InlineObject3';
+import InlineObject4 from './model/InlineObject4';
 import InlineResponse200 from './model/InlineResponse200';
 import InlineResponse2001 from './model/InlineResponse2001';
 import InlineResponse2001Location from './model/InlineResponse2001Location';
@@ -32,22 +34,25 @@ import InlineResponse2003 from './model/InlineResponse2003';
 import InlineResponse2004 from './model/InlineResponse2004';
 import InlineResponse2005 from './model/InlineResponse2005';
 import InlineResponse2006 from './model/InlineResponse2006';
+import InlineResponse2007 from './model/InlineResponse2007';
 import MarketData from './model/MarketData';
 import Ommeters from './model/Ommeters';
 import Tariffh0 from './model/Tariffh0';
 import Transactions from './model/Transactions';
 import DispatchGreenEnergyDistributionAPIApi from './api/DispatchGreenEnergyDistributionAPIApi';
+import EaseeApi from './api/EaseeApi';
 import GreenPowerIndexGrnstromIndexApi from './api/GreenPowerIndexGrnstromIndexApi';
 import MeteringDecoratorApi from './api/MeteringDecoratorApi';
 import OpenMETERApi from './api/OpenMETERApi';
 import SmartHomeApi from './api/SmartHomeApi';
+import StromQuittungApi from './api/StromQuittungApi';
 import StromkontoLedgerApi from './api/StromkontoLedgerApi';
 import TariffPriceAPIApi from './api/TariffPriceAPIApi';
 import WiMWechselprozesseImMesswesenStromStatusAPIApi from './api/WiMWechselprozesseImMesswesenStromStatusAPIApi';
 
 
 /**
-* Corrently___from_italian_corrente_which_is_energy_IntroductionThe_Corrently_ecosystem_gets_maintained_by__STROMDAO_GmbH_https__www_stromdao_de__to_support_green_energy_services_for_prosumers_grid_operators_regulators_integrators_or_any_other_party_with_an_emerging_need_of_consensus_driven_management_As_the__energy_product_Corrently_https__www_corrently_de__got_first_launched_in_Germany_parts_of_this_documentation_provide_simple_translations_for_better_understanding_.<br>
+* Corrently___from_italian_corrente_which_is_energy_IntroductionThe_Corrently_ecosystem_gets_maintained_by__STROMDAO_GmbH_https__www_stromdao_de__to_support_green_energy_services_for_prosumers_grid_operators_regulators_integrators_or_any_other_party_with_an_emerging_need_of_consensus_driven_management_As_the__energy_product_Corrently_https__www_corrently_de__got_first_launched_in_Germany_parts_of_this_documentation_provide_simple_translations_for_better_understanding__Released_SKDs_for_Download_https__github_com_energychain_corrently_api_releases.<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
@@ -103,6 +108,12 @@ export {
     DispatchLocation,
 
     /**
+     * The EaseeCharger model constructor.
+     * @property {module:model/EaseeCharger}
+     */
+    EaseeCharger,
+
+    /**
      * The ForecastItem model constructor.
      * @property {module:model/ForecastItem}
      */
@@ -131,6 +142,12 @@ export {
      * @property {module:model/InlineObject3}
      */
     InlineObject3,
+
+    /**
+     * The InlineObject4 model constructor.
+     * @property {module:model/InlineObject4}
+     */
+    InlineObject4,
 
     /**
      * The InlineResponse200 model constructor.
@@ -199,6 +216,12 @@ export {
     InlineResponse2006,
 
     /**
+     * The InlineResponse2007 model constructor.
+     * @property {module:model/InlineResponse2007}
+     */
+    InlineResponse2007,
+
+    /**
      * The MarketData model constructor.
      * @property {module:model/MarketData}
      */
@@ -229,6 +252,12 @@ export {
     DispatchGreenEnergyDistributionAPIApi,
 
     /**
+    * The EaseeApi service constructor.
+    * @property {module:api/EaseeApi}
+    */
+    EaseeApi,
+
+    /**
     * The GreenPowerIndexGrnstromIndexApi service constructor.
     * @property {module:api/GreenPowerIndexGrnstromIndexApi}
     */
@@ -251,6 +280,12 @@ export {
     * @property {module:api/SmartHomeApi}
     */
     SmartHomeApi,
+
+    /**
+    * The StromQuittungApi service constructor.
+    * @property {module:api/StromQuittungApi}
+    */
+    StromQuittungApi,
 
     /**
     * The StromkontoLedgerApi service constructor.

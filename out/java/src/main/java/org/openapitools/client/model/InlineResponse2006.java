@@ -1,6 +1,6 @@
 /*
  * Corrently.io
- * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. 
+ * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. [Released SKDs for Download](https://github.com/energychain/corrently-api/releases) 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: dev@stromdao.com
@@ -27,60 +27,33 @@ import java.io.IOException;
 /**
  * InlineResponse2006
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-05T14:10:22.651304Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-07T17:49:18.134057Z[Etc/UTC]")
 public class InlineResponse2006 {
-  public static final String SERIALIZED_NAME_WIM_STATUS = "wim_status";
-  @SerializedName(SERIALIZED_NAME_WIM_STATUS)
-  private String wimStatus;
-
-  public static final String SERIALIZED_NAME_WIM_STARTED = "wim_started";
-  @SerializedName(SERIALIZED_NAME_WIM_STARTED)
-  private Integer wimStarted;
+  public static final String SERIALIZED_NAME_TOKEN = "token";
+  @SerializedName(SERIALIZED_NAME_TOKEN)
+  private String token;
 
 
-  public InlineResponse2006 wimStatus(String wimStatus) {
+  public InlineResponse2006 token(String token) {
     
-    this.wimStatus = wimStatus;
+    this.token = token;
     return this;
   }
 
    /**
-   * Latest Status
-   * @return wimStatus
+   * Token for this receipt. It might be extended as &#39;token&#39; parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token&#x3D;0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
+   * @return token
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "Erfolgreiche Prüfung", value = "Latest Status")
+  @ApiModelProperty(value = "Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)")
 
-  public String getWimStatus() {
-    return wimStatus;
+  public String getToken() {
+    return token;
   }
 
 
-  public void setWimStatus(String wimStatus) {
-    this.wimStatus = wimStatus;
-  }
-
-
-  public InlineResponse2006 wimStarted(Integer wimStarted) {
-    
-    this.wimStarted = wimStarted;
-    return this;
-  }
-
-   /**
-   * Starting time of process
-   * @return wimStarted
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1615914297977", value = "Starting time of process")
-
-  public Integer getWimStarted() {
-    return wimStarted;
-  }
-
-
-  public void setWimStarted(Integer wimStarted) {
-    this.wimStarted = wimStarted;
+  public void setToken(String token) {
+    this.token = token;
   }
 
 
@@ -93,21 +66,19 @@ public class InlineResponse2006 {
       return false;
     }
     InlineResponse2006 inlineResponse2006 = (InlineResponse2006) o;
-    return Objects.equals(this.wimStatus, inlineResponse2006.wimStatus) &&
-        Objects.equals(this.wimStarted, inlineResponse2006.wimStarted);
+    return Objects.equals(this.token, inlineResponse2006.token);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(wimStatus, wimStarted);
+    return Objects.hash(token);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class InlineResponse2006 {\n");
-    sb.append("    wimStatus: ").append(toIndentedString(wimStatus)).append("\n");
-    sb.append("    wimStarted: ").append(toIndentedString(wimStarted)).append("\n");
+    sb.append("    token: ").append(toIndentedString(token)).append("\n");
     sb.append("}");
     return sb.toString();
   }

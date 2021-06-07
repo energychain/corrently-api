@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 docs/assets/css/bootstrap-responsive.css
 docs/assets/css/bootstrap.css
 docs/assets/css/style.css
@@ -10,11 +9,13 @@ docs/index.html
 docs/models/Balance.html
 docs/models/Componentsh0.html
 docs/models/DispatchLocation.html
+docs/models/EaseeCharger.html
 docs/models/ForecastItem.html
 docs/models/InlineObject.html
 docs/models/InlineObject1.html
 docs/models/InlineObject2.html
 docs/models/InlineObject3.html
+docs/models/InlineObject4.html
 docs/models/InlineResponse200.html
 docs/models/InlineResponse2001.html
 docs/models/InlineResponse2001Location.html
@@ -26,15 +27,18 @@ docs/models/InlineResponse2003.html
 docs/models/InlineResponse2004.html
 docs/models/InlineResponse2005.html
 docs/models/InlineResponse2006.html
+docs/models/InlineResponse2007.html
 docs/models/MarketData.html
 docs/models/Ommeters.html
 docs/models/Tariffh0.html
 docs/models/Transactions.html
 docs/operations/DispatchGreenEnergyDistributionAPIApi.html
+docs/operations/EaseeApi.html
 docs/operations/GreenPowerIndexGrnstromIndexApi.html
 docs/operations/MeteringDecoratorApi.html
 docs/operations/OpenMETERApi.html
 docs/operations/SmartHomeApi.html
+docs/operations/StromQuittungApi.html
 docs/operations/StromkontoLedgerApi.html
 docs/operations/TariffPriceAPIApi.html
 docs/operations/WiMWechselprozesseImMesswesenStromStatusAPIApi.html

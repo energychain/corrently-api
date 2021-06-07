@@ -19,6 +19,8 @@ from openapi_client.api.green_power_index__grnstrom_index_api import GreenPowerI
 from openapi_client.api.metering__decorator_api import MeteringDecoratorApi
 from openapi_client.api.open_meter_api import OpenMETERApi
 from openapi_client.api.smart_home_api import SmartHomeApi
+from openapi_client.api.strom_quittung_api import StromQuittungApi
 from openapi_client.api.stromkonto__ledger_api import StromkontoLedgerApi
 from openapi_client.api.tariff__price_api_api import TariffPriceAPIApi
 from openapi_client.api.wi_m__wechselprozesse_im_messwesen_strom___status_api_api import WiMWechselprozesseImMesswesenStromStatusAPIApi
+from openapi_client.api.easee_api import EaseeApi

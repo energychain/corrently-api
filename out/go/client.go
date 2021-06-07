@@ -1,7 +1,7 @@
 /*
  * Corrently.io
  *
- * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. 
+ * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. [Released SKDs for Download](https://github.com/energychain/corrently-api/releases) 
  *
  * API version: 2.0.0
  * Contact: dev@stromdao.com
@@ -51,6 +51,8 @@ type APIClient struct {
 
 	DispatchGreenEnergyDistributionAPIApi *DispatchGreenEnergyDistributionAPIApiService
 
+	EaseeApi *EaseeApiService
+
 	GreenPowerIndexGrnstromIndexApi *GreenPowerIndexGrnstromIndexApiService
 
 	MeteringDecoratorApi *MeteringDecoratorApiService
@@ -58,6 +60,8 @@ type APIClient struct {
 	OpenMETERApi *OpenMETERApiService
 
 	SmartHomeApi *SmartHomeApiService
+
+	StromQuittungApi *StromQuittungApiService
 
 	StromkontoLedgerApi *StromkontoLedgerApiService
 
@@ -83,10 +87,12 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 
 	// API Services
 	c.DispatchGreenEnergyDistributionAPIApi = (*DispatchGreenEnergyDistributionAPIApiService)(&c.common)
+	c.EaseeApi = (*EaseeApiService)(&c.common)
 	c.GreenPowerIndexGrnstromIndexApi = (*GreenPowerIndexGrnstromIndexApiService)(&c.common)
 	c.MeteringDecoratorApi = (*MeteringDecoratorApiService)(&c.common)
 	c.OpenMETERApi = (*OpenMETERApiService)(&c.common)
 	c.SmartHomeApi = (*SmartHomeApiService)(&c.common)
+	c.StromQuittungApi = (*StromQuittungApiService)(&c.common)
 	c.StromkontoLedgerApi = (*StromkontoLedgerApiService)(&c.common)
 	c.TariffPriceAPIApi = (*TariffPriceAPIApiService)(&c.common)
 	c.WiMWechselprozesseImMesswesenStromStatusAPIApi = (*WiMWechselprozesseImMesswesenStromStatusAPIApiService)(&c.common)

@@ -1,7 +1,7 @@
 """
     Corrently.io
 
-    *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding.   # noqa: E501
+    *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. [Released SKDs for Download](https://github.com/energychain/corrently-api/releases)   # noqa: E501
 
     The version of the OpenAPI document: 2.0.0
     Contact: dev@stromdao.com
@@ -22,7 +22,7 @@ from openapi_client.model_utils import (  # noqa: F401
     none_type,
     validate_and_convert_types
 )
-from openapi_client.model.inline_response2006 import InlineResponse2006
+from openapi_client.model.inline_response2007 import InlineResponse2007
 
 
 class WiMWechselprozesseImMesswesenStromStatusAPIApi(object):
@@ -74,7 +74,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi(object):
                 async_req (bool): execute request asynchronously
 
             Returns:
-                InlineResponse2006
+                InlineResponse2007
                     If the method is called asynchronously, returns the request
                     thread.
             """
@@ -101,7 +101,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi(object):
 
         self.wimstatus = _Endpoint(
             settings={
-                'response_type': (InlineResponse2006,),
+                'response_type': (InlineResponse2007,),
                 'auth': [],
                 'endpoint_path': '/wim/status',
                 'operation_id': 'wimstatus',

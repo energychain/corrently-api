@@ -2,12 +2,13 @@
 
 Corrently.io
 - API version: 2.0.0
-  - Build date: 2021-06-05T14:10:22.651304Z[Etc/UTC]
+  - Build date: 2021-06-07T17:49:18.134057Z[Etc/UTC]
 
 *Corrently - from italian corrente, which is energy*
 # Introduction
 The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management.
 As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding.
+[Released SKDs for Download](https://github.com/energychain/corrently-api/releases)
 
 
   For more information, please visit [https://stromdao.de/kontakt](https://stromdao.de/kontakt)
@@ -114,6 +115,7 @@ All URIs are relative to *https://api.corrently.io/v2.0*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DispatchGreenEnergyDistributionApiApi* | [**gsiDispatch**](docs/DispatchGreenEnergyDistributionApiApi.md#gsiDispatch) | **GET** /gsi/dispatch | Dispatch (Green Energy Distribution Schedule)
+*EaseeApi* | [**easeeSessions**](docs/EaseeApi.md#easeeSessions) | **GET** /alternative/easee/lastSessions | Returns lastSession info for all easee wallboxes (chargers) given user has access to.
 *GreenPowerIndexGrnstromIndexApi* | [**gsiBesthour**](docs/GreenPowerIndexGrnstromIndexApi.md#gsiBesthour) | **GET** /gsi/bestHour | Get best hour (with most regional green energy) in a given timeframe.
 *GreenPowerIndexGrnstromIndexApi* | [**gsiDispatch**](docs/GreenPowerIndexGrnstromIndexApi.md#gsiDispatch) | **GET** /gsi/dispatch | Dispatch (Green Energy Distribution Schedule)
 *GreenPowerIndexGrnstromIndexApi* | [**gsiMarketdata**](docs/GreenPowerIndexGrnstromIndexApi.md#gsiMarketdata) | **GET** /gsi/marketdata | Marketdata
@@ -124,6 +126,7 @@ Class | Method | HTTP request | Description
 *OpenMeterApi* | [**omMeters**](docs/OpenMeterApi.md#omMeters) | **GET** /alternative/openmeter/meters | Public shared smart meters installed in Germany and available for subservices and exploration.
 *OpenMeterApi* | [**omReadings**](docs/OpenMeterApi.md#omReadings) | **GET** /alternative/openmeter/readings | Public shared smart meters installed in Germany and available for subservices and exploration.
 *SmartHomeApi* | [**gsiBesthour**](docs/SmartHomeApi.md#gsiBesthour) | **GET** /gsi/bestHour | Get best hour (with most regional green energy) in a given timeframe.
+*StromQuittungApi* | [**quittungCreate**](docs/StromQuittungApi.md#quittungCreate) | **POST** /quittung/create | Create a receipt for an energy delivery (only valid in Germany).
 *StromkontoLedgerApi* | [**prepareTransaction**](docs/StromkontoLedgerApi.md#prepareTransaction) | **POST** /stromkonto/prepareTransaction | Prepare Transaction
 *StromkontoLedgerApi* | [**stromkontoBalances**](docs/StromkontoLedgerApi.md#stromkontoBalances) | **GET** /stromkonto/balances | Balances
 *StromkontoLedgerApi* | [**stromkontoChoices**](docs/StromkontoLedgerApi.md#stromkontoChoices) | **GET** /stromkonto/choices | Selectable Choices for customer
@@ -139,11 +142,13 @@ Class | Method | HTTP request | Description
  - [Balance](docs/Balance.md)
  - [Componentsh0](docs/Componentsh0.md)
  - [DispatchLocation](docs/DispatchLocation.md)
+ - [EaseeCharger](docs/EaseeCharger.md)
  - [ForecastItem](docs/ForecastItem.md)
  - [InlineObject](docs/InlineObject.md)
  - [InlineObject1](docs/InlineObject1.md)
  - [InlineObject2](docs/InlineObject2.md)
  - [InlineObject3](docs/InlineObject3.md)
+ - [InlineObject4](docs/InlineObject4.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse2001Location](docs/InlineResponse2001Location.md)
@@ -155,6 +160,7 @@ Class | Method | HTTP request | Description
  - [InlineResponse2004](docs/InlineResponse2004.md)
  - [InlineResponse2005](docs/InlineResponse2005.md)
  - [InlineResponse2006](docs/InlineResponse2006.md)
+ - [InlineResponse2007](docs/InlineResponse2007.md)
  - [MarketData](docs/MarketData.md)
  - [Ommeters](docs/Ommeters.md)
  - [Tariffh0](docs/Tariffh0.md)

@@ -12,7 +12,7 @@
 /**
  * Corrently.io
  *
- * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding.
+ * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. [Released SKDs for Download](https://github.com/energychain/corrently-api/releases)
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: dev@stromdao.com
@@ -124,7 +124,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \OpenAPI\Client\Model\InlineResponse2006
+     * @return \OpenAPI\Client\Model\InlineResponse2007
      */
     public function wimstatus($vid = null)
     {
@@ -141,7 +141,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi
      *
      * @throws \OpenAPI\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \OpenAPI\Client\Model\InlineResponse2006, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \OpenAPI\Client\Model\InlineResponse2007, HTTP status code, HTTP response headers (array of strings)
      */
     public function wimstatusWithHttpInfo($vid = null)
     {
@@ -177,20 +177,20 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\OpenAPI\Client\Model\InlineResponse2006' === '\SplFileObject') {
+                    if ('\OpenAPI\Client\Model\InlineResponse2007' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InlineResponse2006', []),
+                        ObjectSerializer::deserialize($content, '\OpenAPI\Client\Model\InlineResponse2007', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
             }
 
-            $returnType = '\OpenAPI\Client\Model\InlineResponse2006';
+            $returnType = '\OpenAPI\Client\Model\InlineResponse2007';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -208,7 +208,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\OpenAPI\Client\Model\InlineResponse2006',
+                        '\OpenAPI\Client\Model\InlineResponse2007',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -250,7 +250,7 @@ class WiMWechselprozesseImMesswesenStromStatusAPIApi
      */
     public function wimstatusAsyncWithHttpInfo($vid = null)
     {
-        $returnType = '\OpenAPI\Client\Model\InlineResponse2006';
+        $returnType = '\OpenAPI\Client\Model\InlineResponse2007';
         $request = $this->wimstatusRequest($vid);
 
         return $this->client

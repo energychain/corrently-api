@@ -1,6 +1,6 @@
 /**
  * Corrently.io
- * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. 
+ * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. [Released SKDs for Download](https://github.com/energychain/corrently-api/releases) 
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: dev@stromdao.com
@@ -13,7 +13,7 @@
 
 
 import ApiClient from "../ApiClient";
-import InlineResponse2006 from '../model/InlineResponse2006';
+import InlineResponse2007 from '../model/InlineResponse2007';
 
 /**
 * WiMWechselprozesseImMesswesenStromStatusAPI service.
@@ -38,7 +38,7 @@ export default class WiMWechselprozesseImMesswesenStromStatusAPIApi {
      * Callback function to receive the result of the wimstatus operation.
      * @callback module:api/WiMWechselprozesseImMesswesenStromStatusAPIApi~wimstatusCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/InlineResponse2006} data The data returned by the service call.
+     * @param {module:model/InlineResponse2007} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -48,7 +48,7 @@ export default class WiMWechselprozesseImMesswesenStromStatusAPIApi {
      * @param {Object} opts Optional parameters
      * @param {String} opts.vid VID key of the process.
      * @param {module:api/WiMWechselprozesseImMesswesenStromStatusAPIApi~wimstatusCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/InlineResponse2006}
+     * data is of type: {@link module:model/InlineResponse2007}
      */
     wimstatus(opts, callback) {
       opts = opts || {};
@@ -67,7 +67,7 @@ export default class WiMWechselprozesseImMesswesenStromStatusAPIApi {
       let authNames = [];
       let contentTypes = [];
       let accepts = ['application/json'];
-      let returnType = InlineResponse2006;
+      let returnType = InlineResponse2007;
       return this.apiClient.callApi(
         '/wim/status', 'GET',
         pathParams, queryParams, headerParams, formParams, postBody,

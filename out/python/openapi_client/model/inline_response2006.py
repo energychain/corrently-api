@@ -1,7 +1,7 @@
 """
     Corrently.io
 
-    *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding.   # noqa: E501
+    *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. [Released SKDs for Download](https://github.com/energychain/corrently-api/releases)   # noqa: E501
 
     The version of the OpenAPI document: 2.0.0
     Contact: dev@stromdao.com
@@ -82,8 +82,7 @@ class InlineResponse2006(ModelNormal):
                 and the value is attribute type.
         """
         return {
-            'wim_status': (str,),  # noqa: E501
-            'wim_started': (int,),  # noqa: E501
+            'token': (str,),  # noqa: E501
         }
 
     @cached_property
@@ -92,8 +91,7 @@ class InlineResponse2006(ModelNormal):
 
 
     attribute_map = {
-        'wim_status': 'wim_status',  # noqa: E501
-        'wim_started': 'wim_started',  # noqa: E501
+        'token': 'token',  # noqa: E501
     }
 
     read_only_vars = {
@@ -137,8 +135,7 @@ class InlineResponse2006(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            wim_status (str): Latest Status. [optional]  # noqa: E501
-            wim_started (int): Starting time of process. [optional]  # noqa: E501
+            token (str): Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc). [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)
@@ -220,8 +217,7 @@ class InlineResponse2006(ModelNormal):
                                 Animal class but this time we won't travel
                                 through its discriminator because we passed in
                                 _visited_composed_classes = (Animal,)
-            wim_status (str): Latest Status. [optional]  # noqa: E501
-            wim_started (int): Starting time of process. [optional]  # noqa: E501
+            token (str): Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc). [optional]  # noqa: E501
         """
 
         _check_type = kwargs.pop('_check_type', True)

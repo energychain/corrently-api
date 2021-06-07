@@ -4,6 +4,7 @@
 # Introduction
 The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management.
 As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding.
+[Released SKDs for Download](https://github.com/energychain/corrently-api/releases)
 
 
 ## Overview
@@ -84,6 +85,7 @@ All URIs are relative to *https://api.corrently.io/v2.0*
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *DispatchGreenEnergyDistributionAPIApi* | [**GsiDispatch**](docs/DispatchGreenEnergyDistributionAPIApi.md#gsidispatch) | **Get** /gsi/dispatch | Dispatch (Green Energy Distribution Schedule)
+*EaseeApi* | [**EaseeSessions**](docs/EaseeApi.md#easeesessions) | **Get** /alternative/easee/lastSessions | Returns lastSession info for all easee wallboxes (chargers) given user has access to.
 *GreenPowerIndexGrnstromIndexApi* | [**GsiBesthour**](docs/GreenPowerIndexGrnstromIndexApi.md#gsibesthour) | **Get** /gsi/bestHour | Get best hour (with most regional green energy) in a given timeframe.
 *GreenPowerIndexGrnstromIndexApi* | [**GsiDispatch**](docs/GreenPowerIndexGrnstromIndexApi.md#gsidispatch) | **Get** /gsi/dispatch | Dispatch (Green Energy Distribution Schedule)
 *GreenPowerIndexGrnstromIndexApi* | [**GsiMarketdata**](docs/GreenPowerIndexGrnstromIndexApi.md#gsimarketdata) | **Get** /gsi/marketdata | Marketdata
@@ -94,6 +96,7 @@ Class | Method | HTTP request | Description
 *OpenMETERApi* | [**OmMeters**](docs/OpenMETERApi.md#ommeters) | **Get** /alternative/openmeter/meters | Public shared smart meters installed in Germany and available for subservices and exploration.
 *OpenMETERApi* | [**OmReadings**](docs/OpenMETERApi.md#omreadings) | **Get** /alternative/openmeter/readings | Public shared smart meters installed in Germany and available for subservices and exploration.
 *SmartHomeApi* | [**GsiBesthour**](docs/SmartHomeApi.md#gsibesthour) | **Get** /gsi/bestHour | Get best hour (with most regional green energy) in a given timeframe.
+*StromQuittungApi* | [**QuittungCreate**](docs/StromQuittungApi.md#quittungcreate) | **Post** /quittung/create | Create a receipt for an energy delivery (only valid in Germany).
 *StromkontoLedgerApi* | [**PrepareTransaction**](docs/StromkontoLedgerApi.md#preparetransaction) | **Post** /stromkonto/prepareTransaction | Prepare Transaction
 *StromkontoLedgerApi* | [**StromkontoBalances**](docs/StromkontoLedgerApi.md#stromkontobalances) | **Get** /stromkonto/balances | Balances
 *StromkontoLedgerApi* | [**StromkontoChoices**](docs/StromkontoLedgerApi.md#stromkontochoices) | **Get** /stromkonto/choices | Selectable Choices for customer
@@ -109,11 +112,13 @@ Class | Method | HTTP request | Description
  - [Balance](docs/Balance.md)
  - [Componentsh0](docs/Componentsh0.md)
  - [DispatchLocation](docs/DispatchLocation.md)
+ - [EaseeCharger](docs/EaseeCharger.md)
  - [ForecastItem](docs/ForecastItem.md)
  - [InlineObject](docs/InlineObject.md)
  - [InlineObject1](docs/InlineObject1.md)
  - [InlineObject2](docs/InlineObject2.md)
  - [InlineObject3](docs/InlineObject3.md)
+ - [InlineObject4](docs/InlineObject4.md)
  - [InlineResponse200](docs/InlineResponse200.md)
  - [InlineResponse2001](docs/InlineResponse2001.md)
  - [InlineResponse2001Location](docs/InlineResponse2001Location.md)
@@ -125,6 +130,7 @@ Class | Method | HTTP request | Description
  - [InlineResponse2004](docs/InlineResponse2004.md)
  - [InlineResponse2005](docs/InlineResponse2005.md)
  - [InlineResponse2006](docs/InlineResponse2006.md)
+ - [InlineResponse2007](docs/InlineResponse2007.md)
  - [MarketData](docs/MarketData.md)
  - [Ommeters](docs/Ommeters.md)
  - [Tariffh0](docs/Tariffh0.md)

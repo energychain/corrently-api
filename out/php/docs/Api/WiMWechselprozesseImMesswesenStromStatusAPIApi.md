@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `wimstatus()`
 
 ```php
-wimstatus($vid): \OpenAPI\Client\Model\InlineResponse2006
+wimstatus($vid): \OpenAPI\Client\Model\InlineResponse2007
 ```
 
 WiM Proess Informtion
@@ -48,7 +48,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\OpenAPI\Client\Model\InlineResponse2006**](../Model/InlineResponse2006.md)
+[**\OpenAPI\Client\Model\InlineResponse2007**](../Model/InlineResponse2007.md)
 
 ### Authorization
 

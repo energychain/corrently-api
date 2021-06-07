@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 ## wimstatus
 
-> InlineResponse2006 wimstatus(opts)
+> InlineResponse2007 wimstatus(opts)
 
 WiM Proess Informtion
 
@@ -43,7 +43,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse2006**](InlineResponse2006.md)
+[**InlineResponse2007**](InlineResponse2007.md)
 
 ### Authorization
 

@@ -183,7 +183,8 @@ font-style: italic;
     <div class="app-desc"><p><em>Corrently - from italian corrente, which is energy</em></p>
 <h1>Introduction</h1>
 <p>The Corrently ecosystem gets maintained by <a href="https://www.stromdao.de/">STROMDAO GmbH</a> to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management.
-As the <a href="https://www.corrently.de/">energy product Corrently</a> got first launched in Germany parts of this documentation provide simple translations for better understanding.</p>
+As the <a href="https://www.corrently.de/">energy product Corrently</a> got first launched in Germany parts of this documentation provide simple translations for better understanding.
+<a href="https://github.com/energychain/corrently-api/releases">Released SKDs for Download</a></p>
 </div>
     <div class="app-desc">More information: <a href="https://stromdao.de/kontakt">https://stromdao.de/kontakt</a></div>
     <div class="app-desc">Contact Info: <a href="dev@stromdao.com">dev@stromdao.com</a></div>
@@ -201,6 +202,10 @@ As the <a href="https://www.corrently.de/">energy product Corrently</a> got firs
   <h4><a href="#DispatchGreenEnergyDistributionAPI">DispatchGreenEnergyDistributionAPI</a></h4>
   <ul>
   <li><a href="#gsiDispatch"><code><span class="http-method">get</span> /gsi/dispatch</code></a></li>
+  </ul>
+  <h4><a href="#Easee">Easee</a></h4>
+  <ul>
+  <li><a href="#easeeSessions"><code><span class="http-method">get</span> /alternative/easee/lastSessions</code></a></li>
   </ul>
   <h4><a href="#GreenPowerIndexGrnstromIndex">GreenPowerIndexGrnstromIndex</a></h4>
   <ul>
@@ -223,6 +228,10 @@ As the <a href="https://www.corrently.de/">energy product Corrently</a> got firs
   <h4><a href="#SmartHome">SmartHome</a></h4>
   <ul>
   <li><a href="#gsiBesthour"><code><span class="http-method">get</span> /gsi/bestHour</code></a></li>
+  </ul>
+  <h4><a href="#StromQuittung">StromQuittung</a></h4>
+  <ul>
+  <li><a href="#quittungCreate"><code><span class="http-method">post</span> /quittung/create</code></a></li>
   </ul>
   <h4><a href="#StromkontoLedger">StromkontoLedger</a></h4>
   <ul>
@@ -315,6 +324,57 @@ Using the green power index (GrünstromIndex) we have received a tool to automat
     <h4 class="field-label">200</h4>
     Success
         <a href="#inline_response_200_2">inline_response_200_2</a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Easee">Easee</a></h1>
+  <div class="method"><a name="easeeSessions"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /alternative/easee/lastSessions</code></pre></div>
+    <div class="method-summary">Returns lastSession info for all easee wallboxes (chargers) given user has access to. (<span class="nickname">easeeSessions</span>)</div>
+    <div class="method-notes">Refer to easee.cloud API for details.</div>
+
+
+
+
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">username (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Username as used on easy.cloud default: null </div><div class="param">password (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Password as used on easy.cloud default: null </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#easee-charger">easee-charger</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "id" : "EH780684",
+  "lastSession" : "lastSession"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        
   </div> <!-- method -->
   <hr/>
   <h1><a name="GreenPowerIndexGrnstromIndex">GreenPowerIndexGrnstromIndex</a></h1>
@@ -879,6 +939,59 @@ Using the green power index (GrünstromIndex) we have received a tool to automat
         <a href="#Boolean">Boolean</a>
   </div> <!-- method -->
   <hr/>
+  <h1><a name="StromQuittung">StromQuittung</a></h1>
+  <div class="method"><a name="quittungCreate"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /quittung/create</code></pre></div>
+    <div class="method-summary">Create a receipt for an energy delivery (only valid in Germany). (<span class="nickname">quittungCreate</span>)</div>
+    <div class="method-notes">Creates a full featured receipt (Quittung) for an energy delivery as it appears on a charging session or similar events. Allows to embed receipt generation directly into external services.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">inline_object_4 <a href="#inline_object_4">inline_object_4</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash;  </div>
+
+    </div>  <!-- field-items -->
+
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#inline_response_200_6">inline_response_200_6</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "token" : "token"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Success
+        <a href="#inline_response_200_6">inline_response_200_6</a>
+  </div> <!-- method -->
+  <hr/>
   <h1><a name="StromkontoLedger">StromkontoLedger</a></h1>
   <div class="method"><a name="prepareTransaction"/>
     <div class="method-path">
@@ -1257,7 +1370,7 @@ Sample Request: https://api.corrently.io/v2.0/tariff/components?email=demo%40cor
 
     <h3 class="field-label">Return type</h3>
     <div class="return-type">
-      <a href="#inline_response_200_6">inline_response_200_6</a>
+      <a href="#inline_response_200_7">inline_response_200_7</a>
       
     </div>
 
@@ -1280,7 +1393,7 @@ Sample Request: https://api.corrently.io/v2.0/tariff/components?email=demo%40cor
     <h3 class="field-label">Responses</h3>
     <h4 class="field-label">200</h4>
     Success
-        <a href="#inline_response_200_6">inline_response_200_6</a>
+        <a href="#inline_response_200_7">inline_response_200_7</a>
   </div> <!-- method -->
   <hr/>
 
@@ -1296,10 +1409,12 @@ Sample Request: https://api.corrently.io/v2.0/tariff/components?email=demo%40cor
     <li><a href="#Tariffh0"><code>Tariffh0</code> - </a></li>
     <li><a href="#Transactions"><code>Transactions</code> - </a></li>
     <li><a href="#componentsh0"><code>componentsh0</code> - </a></li>
+    <li><a href="#easee-charger"><code>easee-charger</code> - </a></li>
     <li><a href="#inline_object"><code>inline_object</code> - </a></li>
     <li><a href="#inline_object_1"><code>inline_object_1</code> - </a></li>
     <li><a href="#inline_object_2"><code>inline_object_2</code> - </a></li>
     <li><a href="#inline_object_3"><code>inline_object_3</code> - </a></li>
+    <li><a href="#inline_object_4"><code>inline_object_4</code> - </a></li>
     <li><a href="#inline_response_200"><code>inline_response_200</code> - </a></li>
     <li><a href="#inline_response_200_1"><code>inline_response_200_1</code> - </a></li>
     <li><a href="#inline_response_200_1_location"><code>inline_response_200_1_location</code> - </a></li>
@@ -1311,6 +1426,7 @@ Sample Request: https://api.corrently.io/v2.0/tariff/components?email=demo%40cor
     <li><a href="#inline_response_200_4"><code>inline_response_200_4</code> - </a></li>
     <li><a href="#inline_response_200_5"><code>inline_response_200_5</code> - </a></li>
     <li><a href="#inline_response_200_6"><code>inline_response_200_6</code> - </a></li>
+    <li><a href="#inline_response_200_7"><code>inline_response_200_7</code> - </a></li>
     <li><a href="#ommeters"><code>ommeters</code> - </a></li>
   </ol>
 
@@ -1388,6 +1504,15 @@ Sample Request: https://api.corrently.io/v2.0/tariff/components?email=demo%40cor
     </div>  <!-- field-items -->
   </div>
   <div class="model">
+    <h3><a name="easee-charger"><code>easee-charger</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Given ID by easee api </div>
+<div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Name set for charger </div>
+<div class="param">lastSession (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> lastSession Info as given by easee API </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
     <h3><a name="inline_object"><code>inline_object</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
@@ -1427,6 +1552,13 @@ Sample Request: https://api.corrently.io/v2.0/tariff/components?email=demo%40cor
 <div class="param">value (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Alias for 1.8.0 </div>
 <div class="param">energy (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Alias for 1.8.0 </div>
 <div class="param">zip (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Zipcode (Postleitzahl) of metered location </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_object_4"><code>inline_object_4</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">email (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
     </div>  <!-- field-items -->
   </div>
   <div class="model">
@@ -1530,6 +1662,13 @@ Sample Request: https://api.corrently.io/v2.0/tariff/components?email=demo%40cor
   </div>
   <div class="model">
     <h3><a name="inline_response_200_6"><code>inline_response_200_6</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">token (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt <a href="https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc">sample</a> </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="inline_response_200_7"><code>inline_response_200_7</code> - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
       <div class="param">wim_status (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Latest Status </div>

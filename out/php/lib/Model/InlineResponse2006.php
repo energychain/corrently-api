@@ -13,7 +13,7 @@
 /**
  * Corrently.io
  *
- * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding.
+ * *Corrently - from italian corrente, which is energy* # Introduction The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management. As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding. [Released SKDs for Download](https://github.com/energychain/corrently-api/releases)
  *
  * The version of the OpenAPI document: 2.0.0
  * Contact: dev@stromdao.com
@@ -60,8 +60,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'wim_status' => 'string',
-        'wim_started' => 'int'
+        'token' => 'string'
     ];
 
     /**
@@ -72,8 +71,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'wim_status' => null,
-        'wim_started' => null
+        'token' => null
     ];
 
     /**
@@ -103,8 +101,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'wim_status' => 'wim_status',
-        'wim_started' => 'wim_started'
+        'token' => 'token'
     ];
 
     /**
@@ -113,8 +110,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'wim_status' => 'setWimStatus',
-        'wim_started' => 'setWimStarted'
+        'token' => 'setToken'
     ];
 
     /**
@@ -123,8 +119,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'wim_status' => 'getWimStatus',
-        'wim_started' => 'getWimStarted'
+        'token' => 'getToken'
     ];
 
     /**
@@ -184,8 +179,7 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(array $data = null)
     {
-        $this->container['wim_status'] = $data['wim_status'] ?? null;
-        $this->container['wim_started'] = $data['wim_started'] ?? null;
+        $this->container['token'] = $data['token'] ?? null;
     }
 
     /**
@@ -213,49 +207,25 @@ class InlineResponse2006 implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets wim_status
+     * Gets token
      *
      * @return string|null
      */
-    public function getWimStatus()
+    public function getToken()
     {
-        return $this->container['wim_status'];
+        return $this->container['token'];
     }
 
     /**
-     * Sets wim_status
+     * Sets token
      *
-     * @param string|null $wim_status Latest Status
+     * @param string|null $token Token for this receipt. It might be extended as 'token' parameter to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
      *
      * @return self
      */
-    public function setWimStatus($wim_status)
+    public function setToken($token)
     {
-        $this->container['wim_status'] = $wim_status;
-
-        return $this;
-    }
-
-    /**
-     * Gets wim_started
-     *
-     * @return int|null
-     */
-    public function getWimStarted()
-    {
-        return $this->container['wim_started'];
-    }
-
-    /**
-     * Sets wim_started
-     *
-     * @param int|null $wim_started Starting time of process
-     *
-     * @return self
-     */
-    public function setWimStarted($wim_started)
-    {
-        $this->container['wim_started'] = $wim_started;
+        $this->container['token'] = $token;
 
         return $this;
     }

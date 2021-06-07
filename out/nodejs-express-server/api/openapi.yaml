@@ -8,6 +8,7 @@ info:
     # Introduction
     The Corrently ecosystem gets maintained by [STROMDAO GmbH](https://www.stromdao.de/) to support green energy services for prosumers, grid operators, regulators, integrators or any other party with an emerging need of consensus driven management.
     As the [energy product Corrently](https://www.corrently.de/) got first launched in Germany parts of this documentation provide simple translations for better understanding.
+    [Released SKDs for Download](https://github.com/energychain/corrently-api/releases)
   license:
     name: Apache 2.0
     url: http://www.apache.org/licenses/LICENSE-2.0.html
@@ -43,6 +44,11 @@ tags:
   name: SmartHome
 - description: Alternative access to OpenMeter Data.
   name: OpenMETER
+- description: Alternative access to EASEE.cloud Data.
+  name: easee
+- description: |
+    Self-Service to create a full receipt (Quittung) for energy delivery in case of submetering. Please refer to [Strom-Quittung](http://strom-quittung.de) for a sample usage.
+  name: Strom-Quittung
 paths:
   /stromkonto/register:
     post:
@@ -444,6 +450,32 @@ paths:
       tags:
       - Tariff (Price API)
       x-eov-operation-handler: controllers/TariffPriceAPIController
+  /quittung/create:
+    post:
+      description: |
+        Creates a full featured receipt (Quittung) for an energy delivery as it appears on a charging session or similar events. Allows to embed receipt generation directly into external services.
+      operationId: quittungCreate
+      requestBody:
+        $ref: '#/components/requestBodies/inline_object_4'
+        content:
+          application/json:
+            schema:
+              properties:
+                email:
+                  type: string
+              type: object
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200_6'
+          description: Success
+      summary: Create a receipt for an energy delivery (only valid in Germany).
+      tags:
+      - Strom-Quittung
+      x-eov-operation-handler: controllers/StromQuittungController
   /wim/status:
     get:
       description: |
@@ -463,7 +495,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/inline_response_200_6'
+                $ref: '#/components/schemas/inline_response_200_7'
           description: Success
       summary: WiM Proess Informtion
       tags:
@@ -577,6 +609,42 @@ paths:
       tags:
       - OpenMETER
       x-eov-operation-handler: controllers/OpenMETERController
+  /alternative/easee/lastSessions:
+    get:
+      description: |
+        Refer to easee.cloud API for details.
+      operationId: easeeSessions
+      parameters:
+      - description: Username as used on easy.cloud
+        explode: true
+        in: query
+        name: username
+        required: false
+        schema:
+          type: string
+        style: form
+      - description: Password as used on easy.cloud
+        explode: true
+        in: query
+        name: password
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/easee-charger'
+                type: array
+          description: Success
+      summary: Returns lastSession info for all easee wallboxes (chargers) given user
+        has access to.
+      tags:
+      - easee
+      x-eov-operation-handler: controllers/EaseeController
 components:
   requestBodies:
     inline_object_1:
@@ -590,6 +658,12 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/inline_object'
+      required: true
+    inline_object_4:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/inline_object_4'
       required: true
     inline_object_3:
       content:
@@ -838,6 +912,23 @@ components:
           type: integer
         meta:
           description: Statistical metadata for this household
+          type: string
+      type: object
+    easee-charger:
+      example:
+        name: name
+        id: EH780684
+        lastSession: lastSession
+      properties:
+        id:
+          description: Given ID by easee api
+          example: EH780684
+          type: string
+        name:
+          description: Name set for charger
+          type: string
+        lastSession:
+          description: lastSession Info as given by easee API
           type: string
       type: object
     inline_object:
@@ -1152,7 +1243,21 @@ components:
             Ökostromtarif)
           type: integer
       type: object
+    inline_object_4:
+      properties:
+        email:
+          type: string
+      type: object
     inline_response_200_6:
+      example:
+        token: token
+      properties:
+        token:
+          description: Token for this receipt. It might be extended as 'token' parameter
+            to retrieve actual receipt [sample](https://corrently.de/service/quittung.html?token=0x3C4750bf93aa96e55A0d60be334B6b6E14DCe5bc)
+          type: string
+      type: object
+    inline_response_200_7:
       example:
         wim_started: 1615914297977
         wim_status: Erfolgreiche Prüfung
