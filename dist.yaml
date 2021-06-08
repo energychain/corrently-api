@@ -81,6 +81,9 @@ tags:
       Self-Service to create a full receipt (Quittung) for energy delivery in
       case of submetering. Please refer to
       [Strom-Quittung](http://strom-quittung.de) for a sample usage.
+  - name: Discovergy
+    description: >-
+      Provides access to [Discovergy APIs](https://api.discovergy.com/docs/) via Corrently Öko System
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -831,6 +834,148 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/easee-charger'
+  /alternative/discovergy/statistics:
+    get:
+      tags:
+        - Discovergy
+      summary: >-
+        Return various statistics calculated over all measurements for the specified Stromkonto account in the specified timeframe
+      description: |
+        Refer to Discovergy API Docs for details.
+      parameters:
+        - name: account
+          in: query
+          required: true
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+        - name: from
+          in: query
+          description: Begin time of timeframe to return statistics for, as a UNIX millisecond timestamp
+          required: true
+          schema:
+            type: integer
+        - name: to
+          in: query
+          description: End time of timeframe to return statistics for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discovergy-statistics'
+  /alternative/discovergy/activities:
+    get:
+      tags:
+        - Discovergy
+      summary: >-
+        Returns the activities recognised for the given Stromkonto account during the given timeframe
+      description: |
+        Refer to Discovergy API Docs for details.
+      parameters:
+        - name: account
+          in: query
+          required: true
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+        - name: from
+          in: query
+          description: Begin time of timeframe to return activities for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+        - name: to
+          in: query
+          description: End time of timeframe to return activities for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discovergy-activities'
+  /alternative/discovergy/readings:
+    get:
+      tags:
+        - Discovergy
+      summary: >-
+        Return the measurements for the specified Stromkonto account in the specified timeframe
+      description: |
+        Refer to Discovergy API Docs for details.
+      parameters:
+        - name: account
+          in: query
+          required: true
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+        - name: from
+          in: query
+          description: Begin time of timeframe to return activities for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+        - name: to
+          in: query
+          description: End time of timeframe to return activities for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+        - name: resolution
+          in: query
+          description: "Time distance between returned readings. Possible values: raw, three_minutes, fifteen_minutes, one_hour, one_day, one_week, one_month, one_year"
+          schema:
+            type: string
+            enum: [
+              "raw",
+              "three_minutes",
+              "fifteen_minutes",
+              "one_hour",
+              "one_day",
+              "one_week",
+              "one_month",
+              "one_year\n<table>\n<tr><th><code>resolution</code></th><th>maximum time span (<code>to - from</code>)</tr>\n<tr><td>raw</td><td>1 day</td></tr>\n<tr><td>three_minutes</td><td>10 days</td></tr>\n<tr><td>fifteen_minutes</td><td>31 days</td></tr>\n<tr><td>one_hour</td><td>93 days</td></tr>\n<tr><td>one_day</td><td>10 years</td></tr>\n<tr><td>one_week</td><td>20 years</td></tr>\n<tr><td>one_month</td><td>50 years</td></tr>\n<tr><td>one_year</td><td>100 years</td></tr>\n</table>"
+            ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discovergy-readings'
+  /alternative/discovergy/last_reading:
+    get:
+      tags:
+        - Discovergy
+      summary: >-
+        Return the last measurement for the specified Stromkonto account
+      description: |
+        Refer to Discovergy API Docs for details.
+      parameters:
+        - name: account
+          in: query
+          required: true
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discovergy-last_reading'
 components:
   schemas:
     Transactions:
@@ -1028,3 +1173,96 @@ components:
         lastSession:
           description: lastSession Info as given by easee API
           type: string
+    discovergy-statistics:
+      type: object
+      properties:
+        time:
+          type: integer
+          example: 0
+        values:
+          type: object
+          properties:
+            additionalProp1:
+              type: object
+            additionalProp2:
+              type: object
+            additionalProp3:
+              type: object
+    discovergy-activities:
+      type: object
+      properties:
+        deviceType:
+          type: string
+          example: "BASE_LOAD"
+        deviceId:
+          type: integer
+          example: 0
+        deviceName:
+          type: string
+          example: "string"
+        activityId:
+          type: integer
+          example: 0
+        beginTime:
+          type: integer
+          example: 0
+        endTime:
+          type: integer
+          example: 0
+        energy:
+          type: integer
+          example: 0
+        corrently:
+          type: object
+          properties:
+            gsi:
+              type: integer
+              example: 100
+            energyGSI:
+              type: integer
+              example: 0
+    discovergy-readings:
+      type: object
+      properties:
+        time:
+          type: integer
+          example: 0
+        values:
+          type: object
+          properties:
+            additionalProp1:
+              type: object
+            additionalProp2:
+              type: object
+            additionalProp3:
+              type: object
+        corrently:
+          type: object
+          properties:
+            gsi:
+              type: integer
+              example: 100
+            powerGSI:
+              type: integer
+              example: 0
+            energyCostRegional:
+              type: double
+              example: 0.00
+            energyCostSpotMarket:
+              type: double
+              example: 0.00
+    discovergy-last_reading:
+      type: object
+      properties:
+        time:
+          type: integer
+          example: 0
+        values:
+          type: object
+          properties:
+            additionalProp1:
+              type: object
+            additionalProp2:
+              type: object
+            additionalProp3:
+              type: object

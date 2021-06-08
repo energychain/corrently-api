@@ -58,6 +58,9 @@ tags:
     description: >
       Self-Service to create a full receipt (Quittung) for energy delivery in case of submetering.
       Please refer to [Strom-Quittung](http://strom-quittung.de) for a sample usage.
+  - name: Discovergy
+    description: >
+      Provides access to [Discovergy APIs](https://api.discovergy.com/docs/) via Corrently Öko System
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -97,3 +100,11 @@ paths:
     $ref: './paths/openmeter-readings.yaml'
   '/alternative/easee/lastSessions':
     $ref: './paths/easee-lastSessions.yaml'
+  '/alternative/discovergy/activities':
+    $ref: './paths/discovergy-activities.yaml'
+  '/alternative/discovergy/statistics':
+    $ref: './paths/discovergy-statistics.yaml'
+  '/alternative/discovergy/readings':
+    $ref: './paths/discovergy-readings.yaml'
+  '/alternative/discovergy/last_reading':
+    $ref: './paths/discovergy-last_reading.yaml'

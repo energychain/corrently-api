@@ -1,0 +1,32 @@
+type: object
+properties:
+  deviceType:
+    type: string
+    example: "BASE_LOAD"
+  deviceId:
+    type: integer
+    example: 0
+  deviceName:
+    type: string
+    example: "string"
+  activityId:
+    type: integer
+    example: 0
+  beginTime:
+    type: integer
+    example: 0
+  endTime:
+    type: integer
+    example: 0
+  energy:
+    type: integer
+    example: 0
+  corrently:
+    type: object
+    properties:
+      gsi:
+        type: integer
+        example: 100
+      energyGSI:
+        type: integer
+        example: 0

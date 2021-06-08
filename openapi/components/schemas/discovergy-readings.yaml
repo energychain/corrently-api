@@ -1,0 +1,29 @@
+type: object
+properties:
+  time:
+    type: integer
+    example: 0
+    values:
+      type: object
+      properties:
+        additionalProp1:
+          type: object
+        additionalProp2:
+          type: object
+        additionalProp3:
+          type: object
+        corrently:
+          type: object
+          properties:
+            gsi:
+              type: integer
+              example: 100
+            powerGSI:
+              type: integer
+              example: 0
+            energyCostRegional:
+              type: double
+              example: 0.00
+            energyCostSpotMarket:
+              type: double
+              example: 0.00
