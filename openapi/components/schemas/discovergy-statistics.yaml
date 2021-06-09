@@ -1,14 +1,140 @@
       type: object
       properties:
-        time:
-          type: integer
-          example: 0
-        values:
+        energy:
           type: object
           properties:
-            additionalProp1:
-              type: object
-            additionalProp2:
-              type: object
-            additionalProp3:
-              type: object
+            count:
+              description: Count number of energy measurement in wH
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of energy measurement in wH
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of energy measurement in wH
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of energy measurement in wH
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of energy measurement in wH
+              type: integer
+              example: 0
+        power:
+          type: object
+          properties:
+            count:
+              description: Count number of power measurement in w
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of power measurement in w
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of power measurement in w
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of power measurement in w
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of power measurement in w
+              type: integer
+              example: 0
+        power1:
+          type: object
+          properties:
+            count:
+              description: Count number of power phase 1 measurement in w
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of power phase 1 measurement in w
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of power phase 1 measurement in w
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of power phase 1 measurement in w
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of power phase 1 measurement in w
+              type: integer
+              example: 0
+        power2:
+          type: object
+          properties:
+            count:
+              description: Count number of power phase 2 measurement in w
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of power phase 2 measurement in w
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of power phase 2 measurement in w
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of power phase 2 measurement in w
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of power phase 2 measurement in w
+              type: integer
+              example: 0
+        power3:
+          type: object
+          properties:
+            count:
+              description: Count number of power phase 3 measurement in w
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of power phase 3 measurement in w
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of power phase 3 measurement in w
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of power phase 3 measurement in w
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of power phase 3 measurement in w
+              type: integer
+              example: 0
+        energyOut:
+          type: object
+          properties:
+            count:
+              description: Count number of produced energy measurement in wH
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of produced energy measurement in wH
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of produced energy measurement in wH
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of produced energy measurement in wH
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of produced energy measurement in wH
+              type: integer
+              example: 0
