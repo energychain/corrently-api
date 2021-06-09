@@ -1,0 +1,34 @@
+ get:
+      tags:
+        - Discovergy
+      summary: >-
+        Return various statistics calculated over all measurements for the specified Stromkonto account in the specified timeframe
+      description: |
+        Refer to Discovergy API Docs for details.
+      parameters:
+        - name: account
+          in: query
+          required: true
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+        - name: from
+          in: query
+          description: Begin time of timeframe to return statistics for, as a UNIX millisecond timestamp
+          required: true
+          schema:
+            type: integer
+        - name: to
+          in: query
+          description: End time of timeframe to return statistics for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/schemas/discovergy-statistics.yaml'

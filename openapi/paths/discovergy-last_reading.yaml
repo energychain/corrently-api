@@ -1,0 +1,22 @@
+      tags:
+        - Discovergy
+      summary: >-
+        Return the last measurement for the specified Stromkonto account
+      description: |
+        Refer to Discovergy API Docs for details.
+      parameters:
+        - name: account
+          in: query
+          required: true
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '../components/schemas/discovergy-last_reading.yaml'

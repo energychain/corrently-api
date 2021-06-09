@@ -1,0 +1,41 @@
+type: object
+properties:
+  deviceType:
+    description: Type of specific device
+    type: string
+    example: "BASE_LOAD"
+  deviceId:
+    description: ID of specific device
+    type: integer
+    example: 0
+  deviceName:
+    description: Name of specific device
+    type: string
+    example: "string"
+  activityId:
+    description: ID of specific activity
+    type: integer
+    example: 0
+  beginTime:
+    description: Begin time as UNIX millisecond timestamp
+    type: integer
+    example: 0
+  endTime:
+    description: End time as UNIX millisecond timestamp
+    type: integer
+    example: 0
+  energy:
+    description: Energy in wH
+    type: integer
+    example: 0
+  corrently:
+    type: object
+    properties:
+      gsi:
+        description: Actual GreenPowerIndex for given timeframe (between 0-100)
+        type: integer
+        example: 100
+      energyGSI:
+        description: Actual Grünstrombonus in wH for given timeframe
+        type: integer
+        example: 0

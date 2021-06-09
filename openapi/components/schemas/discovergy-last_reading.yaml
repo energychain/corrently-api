@@ -1,0 +1,52 @@
+      type: object
+      properties:
+        time:
+          description: Time of reading as UNIX millisecond timestamp
+          type: integer
+          example: 0
+        values:
+          type: object
+          properties:
+            power:
+              description: Power in w
+              type: integer
+              example: 0
+            power3:
+              description: Power in w of phase 3
+              type: integer
+              example: 0
+            energyOut:
+              description: Energy in wH of produced energy from renewable energy systems
+              type: integer
+              example: 0
+            power1:
+              description: Power in w of phase 1
+              type: integer
+              example: 0
+            energy:
+              description: Energy in wH of obtained energy from grid
+              type: integer
+              example: 0
+            power2:                        
+              description: Power in w of phase 2
+              type: integer
+              example: 0
+        corrently:
+          type: object
+          properties:
+            gsi:
+              description: Actual GreenPowerIndex for given time (between 0-100)
+              type: integer
+              example: 0
+            energyGSI:
+              description: Actual Grünstrombonus in wH for given time
+              type: integer
+              example: 0
+            energyCostRegional:
+              description: Energy cost in Euro/MWh, exkl. USt from Corrently
+              type: double
+              example: 0.0
+            energyCostSpotMarket:
+              description: Energy cost in Euro/MWh, exkl. USt from APEX Spot Market
+              type: double
+              example: 0.0

@@ -81,6 +81,9 @@ tags:
       Self-Service to create a full receipt (Quittung) for energy delivery in
       case of submetering. Please refer to
       [Strom-Quittung](http://strom-quittung.de) for a sample usage.
+  - name: Discovergy
+    description: >-
+      Provides access to [Discovergy APIs](https://api.discovergy.com/docs/) via Corrently Öko System
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -831,6 +834,148 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/easee-charger'
+  /alternative/discovergy/statistics:
+    get:
+      tags:
+        - Discovergy
+      summary: >-
+        Return various statistics calculated over all measurements for the specified Stromkonto account in the specified timeframe
+      description: |
+        Refer to Discovergy API Docs for details.
+      parameters:
+        - name: account
+          in: query
+          required: true
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+        - name: from
+          in: query
+          description: Begin time of timeframe to return statistics for, as a UNIX millisecond timestamp
+          required: true
+          schema:
+            type: integer
+        - name: to
+          in: query
+          description: End time of timeframe to return statistics for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discovergy-statistics'
+  /alternative/discovergy/activities:
+    get:
+      tags:
+        - Discovergy
+      summary: >-
+        Returns the activities recognised for the given Stromkonto account during the given timeframe
+      description: |
+        Refer to Discovergy API Docs for details.
+      parameters:
+        - name: account
+          in: query
+          required: true
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+        - name: from
+          in: query
+          description: Begin time of timeframe to return activities for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+        - name: to
+          in: query
+          description: End time of timeframe to return activities for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discovergy-activities'
+  /alternative/discovergy/readings:
+    get:
+      tags:
+        - Discovergy
+      summary: >-
+        Return the measurements for the specified Stromkonto account in the specified timeframe
+      description: |
+        Refer to Discovergy API Docs for details.
+      parameters:
+        - name: account
+          in: query
+          required: true
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+        - name: from
+          in: query
+          description: Begin time of timeframe to return activities for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+        - name: to
+          in: query
+          description: End time of timeframe to return activities for, as a UNIX millisecond timestamp
+          schema:
+            type: integer
+        - name: resolution
+          in: query
+          description: "Time distance between returned readings. Possible values: raw, three_minutes, fifteen_minutes, one_hour, one_day, one_week, one_month, one_year"
+          schema:
+            type: string
+            enum: [
+              "raw",
+              "three_minutes",
+              "fifteen_minutes",
+              "one_hour",
+              "one_day",
+              "one_week",
+              "one_month",
+              "one_year\n<table>\n<tr><th><code>resolution</code></th><th>maximum time span (<code>to - from</code>)</tr>\n<tr><td>raw</td><td>1 day</td></tr>\n<tr><td>three_minutes</td><td>10 days</td></tr>\n<tr><td>fifteen_minutes</td><td>31 days</td></tr>\n<tr><td>one_hour</td><td>93 days</td></tr>\n<tr><td>one_day</td><td>10 years</td></tr>\n<tr><td>one_week</td><td>20 years</td></tr>\n<tr><td>one_month</td><td>50 years</td></tr>\n<tr><td>one_year</td><td>100 years</td></tr>\n</table>"
+            ]
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discovergy-readings'
+  /alternative/discovergy/last_reading:
+    get:
+      tags:
+        - Discovergy
+      summary: >-
+        Return the last measurement for the specified Stromkonto account
+      description: |
+        Refer to Discovergy API Docs for details.
+      parameters:
+        - name: account
+          in: query
+          required: true
+          description: Any valid Stromkonto account (address).
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/discovergy-last_reading'
 components:
   schemas:
     Transactions:
@@ -1028,3 +1173,292 @@ components:
         lastSession:
           description: lastSession Info as given by easee API
           type: string
+    discovergy-statistics:
+      type: object
+      properties:
+        energy:
+          type: object
+          properties:
+            count:
+              description: Count number of energy measurement in wH
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of energy measurement in wH
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of energy measurement in wH
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of energy measurement in wH
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of energy measurement in wH
+              type: integer
+              example: 0
+        power:
+          type: object
+          properties:
+            count:
+              description: Count number of power measurement in w
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of power measurement in w
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of power measurement in w
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of power measurement in w
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of power measurement in w
+              type: integer
+              example: 0
+        power1:
+          type: object
+          properties:
+            count:
+              description: Count number of power phase 1 measurement in w
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of power phase 1 measurement in w
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of power phase 1 measurement in w
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of power phase 1 measurement in w
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of power phase 1 measurement in w
+              type: integer
+              example: 0
+        power2:
+          type: object
+          properties:
+            count:
+              description: Count number of power phase 2 measurement in w
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of power phase 2 measurement in w
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of power phase 2 measurement in w
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of power phase 2 measurement in w
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of power phase 2 measurement in w
+              type: integer
+              example: 0
+        power3:
+          type: object
+          properties:
+            count:
+              description: Count number of power phase 3 measurement in w
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of power phase 3 measurement in w
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of power phase 3 measurement in w
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of power phase 3 measurement in w
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of power phase 3 measurement in w
+              type: integer
+              example: 0
+        energyOut:
+          type: object
+          properties:
+            count:
+              description: Count number of produced energy measurement in wH
+              type: integer
+              example: 0
+            minimum:
+              description: Minimum value of produced energy measurement in wH
+              type: integer
+              example: 0
+            maximum:
+              description: Maximum value of produced energy measurement in wH
+              type: integer
+              example: 0
+            mean:
+              description: Mean value of produced energy measurement in wH
+              type: integer
+              example: 0
+            variance:
+              description: Variance value of produced energy measurement in wH
+              type: integer
+              example: 0
+    discovergy-activities:
+      type: object
+      properties:
+        deviceType:
+          description: Type of specific device
+          type: string
+          example: "BASE_LOAD"
+        deviceId:
+          description: ID of specific device
+          type: integer
+          example: 0
+        deviceName:
+          description: Name of specific device
+          type: string
+          example: "string"
+        activityId:
+          description: ID of specific activity
+          type: integer
+          example: 0
+        beginTime:
+          description: Begin time as UNIX millisecond timestamp
+          type: integer
+          example: 0
+        endTime:
+          description: End time as UNIX millisecond timestamp
+          type: integer
+          example: 0
+        energy:
+          description: Energy in wH
+          type: integer
+          example: 0
+        corrently:
+          type: object
+          properties:
+            gsi:
+              description: Actual GreenPowerIndex for given timeframe (between 0-100)
+              type: integer
+              example: 100
+            energyGSI:
+              description: Actual Grünstrombonus in wH for given timeframe
+              type: integer
+              example: 0
+    discovergy-readings:
+            type: object
+            properties:
+              time:
+                description: Time of reading as UNIX millisecond timestamp
+                type: integer
+                example: 0
+              values:
+                type: object
+                properties:
+                  power:
+                    description: Power in w 
+                    type: integer
+                    example: 0
+                  power3:
+                    description: Power in w of phase 3
+                    type: integer
+                    example: 0
+                  energyOut:
+                    description: Energy in wH of produced energy from renewable energy systems
+                    type: integer
+                    example: 0
+                  power1:
+                    description: Power in w of phase 1
+                    type: integer
+                    example: 0
+                  energy:
+                    description: Energy in wH of obtained energy from grid
+                    type: integer
+                    example: 0
+                  power2:                        
+                    description: Power in w of phase 2
+                    type: integer
+                    example: 0
+              corrently:
+                type: object
+                properties:
+                  gsi:
+                    description: Actual GreenPowerIndex for given time (between 0-100)
+                    type: integer
+                    example: 0
+                  energyGSI:
+                    description: Actual Grünstrombonus in wH for given time
+                    type: integer
+                    example: 0
+                  energyCostRegional:
+                    description: Energy cost in Euro/MWh, exkl. USt from Corrently
+                    type: double
+                    example: 0.0
+                  energyCostSpotMarket:
+                    description: Energy cost in Euro/MWh, exkl. USt from APEX Spot Market
+                    type: double
+                    example: 0.0
+    discovergy-last_reading:
+      type: object
+      properties:
+        time:
+          description: Time of reading as UNIX millisecond timestamp
+          type: integer
+          example: 0
+        values:
+          type: object
+          properties:
+            power:
+              description: Power in w
+              type: integer
+              example: 0
+            power3:
+              description: Power in w of phase 3
+              type: integer
+              example: 0
+            energyOut:
+              description: Energy in wH of produced energy from renewable energy systems
+              type: integer
+              example: 0
+            power1:
+              description: Power in w of phase 1
+              type: integer
+              example: 0
+            energy:
+              description: Energy in wH of obtained energy from grid
+              type: integer
+              example: 0
+            power2:                        
+              description: Power in w of phase 2
+              type: integer
+              example: 0
+        corrently:
+          type: object
+          properties:
+            gsi:
+              description: Actual GreenPowerIndex for given time (between 0-100)
+              type: integer
+              example: 0
+            energyGSI:
+              description: Actual Grünstrombonus in wH for given time
+              type: integer
+              example: 0
+            energyCostRegional:
+              description: Energy cost in Euro/MWh, exkl. USt from Corrently
+              type: double
+              example: 0.0
+            energyCostSpotMarket:
+              description: Energy cost in Euro/MWh, exkl. USt from APEX Spot Market
+              type: double
+              example: 0.0
