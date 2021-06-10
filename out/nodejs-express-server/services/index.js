@@ -2,6 +2,7 @@ const DispatchGreenEnergyDistributionAPIService = require('./DispatchGreenEnergy
 const EaseeService = require('./EaseeService');
 const GreenPowerIndexGrnstromIndexService = require('./GreenPowerIndexGrnstromIndexService');
 const MeteringDecoratorService = require('./MeteringDecoratorService');
+const OcppService = require('./OcppService');
 const OpenMETERService = require('./OpenMETERService');
 const SmartHomeService = require('./SmartHomeService');
 const StromQuittungService = require('./StromQuittungService');
@@ -14,6 +15,7 @@ module.exports = {
   EaseeService,
   GreenPowerIndexGrnstromIndexService,
   MeteringDecoratorService,
+  OcppService,
   OpenMETERService,
   SmartHomeService,
   StromQuittungService,

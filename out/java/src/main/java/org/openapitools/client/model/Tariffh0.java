@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Tariffh0
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-07T17:52:38.075125Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-06-10T22:14:05.124306Z[Etc/UTC]")
 public class Tariffh0 {
   public static final String SERIALIZED_NAME_AP = "ap";
   @SerializedName(SERIALIZED_NAME_AP)

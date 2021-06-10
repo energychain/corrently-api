@@ -7,6 +7,7 @@ controllers/DispatchGreenEnergyDistributionAPIController.js
 controllers/EaseeController.js
 controllers/GreenPowerIndexGrnstromIndexController.js
 controllers/MeteringDecoratorController.js
+controllers/OcppController.js
 controllers/OpenMETERController.js
 controllers/SmartHomeController.js
 controllers/StromQuittungController.js
@@ -22,6 +23,7 @@ services/DispatchGreenEnergyDistributionAPIService.js
 services/EaseeService.js
 services/GreenPowerIndexGrnstromIndexService.js
 services/MeteringDecoratorService.js
+services/OcppService.js
 services/OpenMETERService.js
 services/Service.js
 services/SmartHomeService.js

@@ -46,6 +46,8 @@ tags:
   name: OpenMETER
 - description: Alternative access to EASEE.cloud Data.
   name: easee
+- description: Alternative access to Corrently OCPP Data (hosted cloud backend).
+  name: ocpp
 - description: |
     Self-Service to create a full receipt (Quittung) for energy delivery in case of submetering. Please refer to [Strom-Quittung](http://strom-quittung.de) for a sample usage.
   name: Strom-Quittung
@@ -647,6 +649,25 @@ paths:
       tags:
       - easee
       x-eov-operation-handler: controllers/EaseeController
+  /alternative/ocpp/lastSessions:
+    get:
+      description: "Last session Info of managed EV charging stations connected to\
+        \ the correnty ecosystem.   \n"
+      operationId: ocppSessions
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/easee-charger'
+                type: array
+          description: Success
+      summary: Returns lastSession info of OCCP Cloud service for clearing in corrently
+        ecosystem. Might be tested via [OCPP cloud simulator](https://ocpp.corrently.cloud).
+      tags:
+      - ocpp
+      x-eov-operation-handler: controllers/OcppController
 components:
   requestBodies:
     inline_object_1:

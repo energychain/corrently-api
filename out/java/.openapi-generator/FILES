@@ -30,6 +30,7 @@ docs/InlineResponse2005.md
 docs/InlineResponse2006.md
 docs/MarketData.md
 docs/MeteringDecoratorApi.md
+docs/OcppApi.md
 docs/Ommeters.md
 docs/OpenMeterApi.md
 docs/SmartHomeApi.md
@@ -65,6 +66,7 @@ src/main/java/org/openapitools/client/api/DispatchGreenEnergyDistributionApiApi.
 src/main/java/org/openapitools/client/api/EaseeApi.java
 src/main/java/org/openapitools/client/api/GreenPowerIndexGrnstromIndexApi.java
 src/main/java/org/openapitools/client/api/MeteringDecoratorApi.java
+src/main/java/org/openapitools/client/api/OcppApi.java
 src/main/java/org/openapitools/client/api/OpenMeterApi.java
 src/main/java/org/openapitools/client/api/SmartHomeApi.java
 src/main/java/org/openapitools/client/api/StromQuittungApi.java
@@ -100,3 +102,4 @@ src/main/java/org/openapitools/client/model/MarketData.java
 src/main/java/org/openapitools/client/model/Ommeters.java
 src/main/java/org/openapitools/client/model/Tariffh0.java
 src/main/java/org/openapitools/client/model/Transactions.java
+src/test/java/org/openapitools/client/api/OcppApiTest.java

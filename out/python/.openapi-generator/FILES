@@ -28,6 +28,7 @@ docs/InlineResponse2005.md
 docs/InlineResponse2006.md
 docs/MarketData.md
 docs/MeteringDecoratorApi.md
+docs/OcppApi.md
 docs/Ommeters.md
 docs/OpenMETERApi.md
 docs/SmartHomeApi.md
@@ -44,6 +45,7 @@ openapi_client/api/dispatch__green_energy_distribution_api_api.py
 openapi_client/api/easee_api.py
 openapi_client/api/green_power_index__grnstrom_index_api.py
 openapi_client/api/metering__decorator_api.py
+openapi_client/api/ocpp_api.py
 openapi_client/api/open_meter_api.py
 openapi_client/api/smart_home_api.py
 openapi_client/api/strom_quittung_api.py
@@ -88,4 +90,5 @@ setup.cfg
 setup.py
 test-requirements.txt
 test/__init__.py
+test/test_ocpp_api.py
 tox.ini

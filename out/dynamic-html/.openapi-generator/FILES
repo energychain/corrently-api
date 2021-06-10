@@ -35,6 +35,7 @@ docs/operations/DispatchGreenEnergyDistributionAPIApi.html
 docs/operations/EaseeApi.html
 docs/operations/GreenPowerIndexGrnstromIndexApi.html
 docs/operations/MeteringDecoratorApi.html
+docs/operations/OcppApi.html
 docs/operations/OpenMETERApi.html
 docs/operations/SmartHomeApi.html
 docs/operations/StromQuittungApi.html

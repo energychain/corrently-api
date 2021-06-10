@@ -137,6 +137,7 @@ Class | Method | HTTP request | Description
 *CorrentlyIo.GreenPowerIndexGrnstromIndexApi* | [**gsiPrediction**](docs/GreenPowerIndexGrnstromIndexApi.md#gsiPrediction) | **GET** /gsi/prediction | Prediction
 *CorrentlyIo.MeteringDecoratorApi* | [**meteringGet**](docs/MeteringDecoratorApi.md#meteringGet) | **GET** /metering/reading | Meter Reading
 *CorrentlyIo.MeteringDecoratorApi* | [**meteringPost**](docs/MeteringDecoratorApi.md#meteringPost) | **POST** /metering/reading | Meter Reading
+*CorrentlyIo.OcppApi* | [**ocppSessions**](docs/OcppApi.md#ocppSessions) | **GET** /alternative/ocpp/lastSessions | Returns lastSession info of OCCP Cloud service for clearing in corrently ecosystem. Might be tested via [OCPP cloud simulator](https://ocpp.corrently.cloud).
 *CorrentlyIo.OpenMETERApi* | [**omActivities**](docs/OpenMETERApi.md#omActivities) | **GET** /alternative/openmeter/activities | Public shared smart meters installed in Germany and available for subservices and exploration.
 *CorrentlyIo.OpenMETERApi* | [**omMeters**](docs/OpenMETERApi.md#omMeters) | **GET** /alternative/openmeter/meters | Public shared smart meters installed in Germany and available for subservices and exploration.
 *CorrentlyIo.OpenMETERApi* | [**omReadings**](docs/OpenMETERApi.md#omReadings) | **GET** /alternative/openmeter/readings | Public shared smart meters installed in Germany and available for subservices and exploration.

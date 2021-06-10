@@ -107,6 +107,7 @@ Class | Method | HTTP request | Description
 *TariffPriceAPIApi* | [**tariffcomponents**](docs/TariffPriceAPIApi.md#tariffcomponents) | **GET** /tariff/components | Energy Tariff price components
 *WiMWechselprozesseImMesswesenStromStatusAPIApi* | [**wimstatus**](docs/WiMWechselprozesseImMesswesenStromStatusAPIApi.md#wimstatus) | **GET** /wim/status | WiM Proess Informtion
 *EaseeApi* | [**easee_sessions**](docs/EaseeApi.md#easee_sessions) | **GET** /alternative/easee/lastSessions | Returns lastSession info for all easee wallboxes (chargers) given user has access to.
+*OcppApi* | [**ocpp_sessions**](docs/OcppApi.md#ocpp_sessions) | **GET** /alternative/ocpp/lastSessions | Returns lastSession info of OCCP Cloud service for clearing in corrently ecosystem. Might be tested via [OCPP cloud simulator](https://ocpp.corrently.cloud).
 
 
 ## Documentation For Models

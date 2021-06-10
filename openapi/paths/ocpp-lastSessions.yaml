@@ -1,10 +1,12 @@
 get:
   tags:
-    - ocpp
-  summary: Returns lastSession info of OCCP Cloud service for clearing in corrently ecosystem. Might be tested via [OCPP cloud simulator](https://ocpp.corrently.cloud).
+    - OCPP
+  summary: Last Session Info
   operationId: ocppSessions
   description: >
-     Last session Info of managed EV charging stations connected to the correnty ecosystem.   
+     Returns lastSession info of OCCP Cloud service for clearing in corrently ecosystem. Might be tested via [OCPP cloud simulator](https://ocpp.corrently.cloud).
+  
+     Last session Info of managed EV charging stations connected to the correnty ecosystem.
   responses:
     '200':
       description: Success

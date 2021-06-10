@@ -42,6 +42,7 @@ import DispatchGreenEnergyDistributionAPIApi from './api/DispatchGreenEnergyDist
 import EaseeApi from './api/EaseeApi';
 import GreenPowerIndexGrnstromIndexApi from './api/GreenPowerIndexGrnstromIndexApi';
 import MeteringDecoratorApi from './api/MeteringDecoratorApi';
+import OcppApi from './api/OcppApi';
 import OpenMETERApi from './api/OpenMETERApi';
 import SmartHomeApi from './api/SmartHomeApi';
 import StromQuittungApi from './api/StromQuittungApi';
@@ -261,6 +262,12 @@ export {
     * @property {module:api/MeteringDecoratorApi}
     */
     MeteringDecoratorApi,
+
+    /**
+    * The OcppApi service constructor.
+    * @property {module:api/OcppApi}
+    */
+    OcppApi,
 
     /**
     * The OpenMETERApi service constructor.

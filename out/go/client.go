@@ -57,6 +57,8 @@ type APIClient struct {
 
 	MeteringDecoratorApi *MeteringDecoratorApiService
 
+	OcppApi *OcppApiService
+
 	OpenMETERApi *OpenMETERApiService
 
 	SmartHomeApi *SmartHomeApiService
@@ -90,6 +92,7 @@ func NewAPIClient(cfg *Configuration) *APIClient {
 	c.EaseeApi = (*EaseeApiService)(&c.common)
 	c.GreenPowerIndexGrnstromIndexApi = (*GreenPowerIndexGrnstromIndexApiService)(&c.common)
 	c.MeteringDecoratorApi = (*MeteringDecoratorApiService)(&c.common)
+	c.OcppApi = (*OcppApiService)(&c.common)
 	c.OpenMETERApi = (*OpenMETERApiService)(&c.common)
 	c.SmartHomeApi = (*SmartHomeApiService)(&c.common)
 	c.StromQuittungApi = (*StromQuittungApiService)(&c.common)

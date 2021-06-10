@@ -28,6 +28,7 @@ docs/InlineResponse2005.md
 docs/InlineResponse2006.md
 docs/MarketData.md
 docs/MeteringDecoratorApi.md
+docs/OcppApi.md
 docs/Ommeters.md
 docs/OpenMETERApi.md
 docs/SmartHomeApi.md
@@ -45,6 +46,7 @@ src/api/DispatchGreenEnergyDistributionAPIApi.js
 src/api/EaseeApi.js
 src/api/GreenPowerIndexGrnstromIndexApi.js
 src/api/MeteringDecoratorApi.js
+src/api/OcppApi.js
 src/api/OpenMETERApi.js
 src/api/SmartHomeApi.js
 src/api/StromQuittungApi.js
@@ -77,3 +79,4 @@ src/model/MarketData.js
 src/model/Ommeters.js
 src/model/Tariffh0.js
 src/model/Transactions.js
+test/api/OcppApi.spec.js

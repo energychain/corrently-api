@@ -2,6 +2,7 @@ api/DispatchGreenEnergyDistributionAPIApi.ts
 api/EaseeApi.ts
 api/GreenPowerIndexGrnstromIndexApi.ts
 api/MeteringDecoratorApi.ts
+api/OcppApi.ts
 api/OpenMETERApi.ts
 api/SmartHomeApi.ts
 api/StromQuittungApi.ts

@@ -7,6 +7,7 @@ docs/Api/DispatchGreenEnergyDistributionAPIApi.md
 docs/Api/EaseeApi.md
 docs/Api/GreenPowerIndexGrnstromIndexApi.md
 docs/Api/MeteringDecoratorApi.md
+docs/Api/OcppApi.md
 docs/Api/OpenMETERApi.md
 docs/Api/SmartHomeApi.md
 docs/Api/StromQuittungApi.md
@@ -43,6 +44,7 @@ lib/Api/DispatchGreenEnergyDistributionAPIApi.php
 lib/Api/EaseeApi.php
 lib/Api/GreenPowerIndexGrnstromIndexApi.php
 lib/Api/MeteringDecoratorApi.php
+lib/Api/OcppApi.php
 lib/Api/OpenMETERApi.php
 lib/Api/SmartHomeApi.php
 lib/Api/StromQuittungApi.php
@@ -80,3 +82,4 @@ lib/Model/Tariffh0.php
 lib/Model/Transactions.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
+test/Api/OcppApiTest.php

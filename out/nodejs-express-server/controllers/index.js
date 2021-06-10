@@ -2,6 +2,7 @@ const DispatchGreenEnergyDistributionAPIController = require('./DispatchGreenEne
 const EaseeController = require('./EaseeController');
 const GreenPowerIndexGrnstromIndexController = require('./GreenPowerIndexGrnstromIndexController');
 const MeteringDecoratorController = require('./MeteringDecoratorController');
+const OcppController = require('./OcppController');
 const OpenMETERController = require('./OpenMETERController');
 const SmartHomeController = require('./SmartHomeController');
 const StromQuittungController = require('./StromQuittungController');
@@ -14,6 +15,7 @@ module.exports = {
   EaseeController,
   GreenPowerIndexGrnstromIndexController,
   MeteringDecoratorController,
+  OcppController,
   OpenMETERController,
   SmartHomeController,
   StromQuittungController,

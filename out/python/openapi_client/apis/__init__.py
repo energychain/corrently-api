@@ -24,3 +24,4 @@ from openapi_client.api.stromkonto__ledger_api import StromkontoLedgerApi
 from openapi_client.api.tariff__price_api_api import TariffPriceAPIApi
 from openapi_client.api.wi_m__wechselprozesse_im_messwesen_strom___status_api_api import WiMWechselprozesseImMesswesenStromStatusAPIApi
 from openapi_client.api.easee_api import EaseeApi
+from openapi_client.api.ocpp_api import OcppApi

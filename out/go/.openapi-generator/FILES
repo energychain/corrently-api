@@ -6,6 +6,7 @@ api_dispatch_green_energy_distribution_api.go
 api_easee.go
 api_green_power_index_grnstrom_index.go
 api_metering_decorator.go
+api_ocpp.go
 api_open_meter.go
 api_smart_home.go
 api_strom_quittung.go
@@ -40,6 +41,7 @@ docs/InlineResponse2005.md
 docs/InlineResponse2006.md
 docs/MarketData.md
 docs/MeteringDecoratorApi.md
+docs/OcppApi.md
 docs/Ommeters.md
 docs/OpenMETERApi.md
 docs/SmartHomeApi.md

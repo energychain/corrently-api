@@ -54,7 +54,7 @@ tags:
     description: Alternative access to OpenMeter Data.
   - name: easee
     description: Alternative access to EASEE.cloud Data.
-  - name: ocpp
+  - name: OCPP
     description: Alternative access to Corrently OCPP Data (hosted cloud backend).
   - name: Strom-Quittung
     description: >
@@ -100,4 +100,4 @@ paths:
   '/alternative/easee/lastSessions':
     $ref: './paths/easee-lastSessions.yaml'
   '/alternative/ocpp/lastSessions':
-    $ref: './paths/ocpp-lastSessions.yaml'    
+    $ref: './paths/ocpp-lastSessions.yaml'

@@ -2,7 +2,7 @@
 
 Corrently.io
 - API version: 2.0.0
-  - Build date: 2021-06-07T17:52:38.075125Z[Etc/UTC]
+  - Build date: 2021-06-10T22:14:05.124306Z[Etc/UTC]
 
 *Corrently - from italian corrente, which is energy*
 # Introduction
@@ -122,6 +122,7 @@ Class | Method | HTTP request | Description
 *GreenPowerIndexGrnstromIndexApi* | [**gsiPrediction**](docs/GreenPowerIndexGrnstromIndexApi.md#gsiPrediction) | **GET** /gsi/prediction | Prediction
 *MeteringDecoratorApi* | [**meteringGet**](docs/MeteringDecoratorApi.md#meteringGet) | **GET** /metering/reading | Meter Reading
 *MeteringDecoratorApi* | [**meteringPost**](docs/MeteringDecoratorApi.md#meteringPost) | **POST** /metering/reading | Meter Reading
+*OcppApi* | [**ocppSessions**](docs/OcppApi.md#ocppSessions) | **GET** /alternative/ocpp/lastSessions | Returns lastSession info of OCCP Cloud service for clearing in corrently ecosystem. Might be tested via [OCPP cloud simulator](https://ocpp.corrently.cloud).
 *OpenMeterApi* | [**omActivities**](docs/OpenMeterApi.md#omActivities) | **GET** /alternative/openmeter/activities | Public shared smart meters installed in Germany and available for subservices and exploration.
 *OpenMeterApi* | [**omMeters**](docs/OpenMeterApi.md#omMeters) | **GET** /alternative/openmeter/meters | Public shared smart meters installed in Germany and available for subservices and exploration.
 *OpenMeterApi* | [**omReadings**](docs/OpenMeterApi.md#omReadings) | **GET** /alternative/openmeter/readings | Public shared smart meters installed in Germany and available for subservices and exploration.

@@ -86,6 +86,7 @@ Class | Method | HTTP request | Description
 *GreenPowerIndexGrnstromIndexApi* | [**gsiPrediction**](docs/Api/GreenPowerIndexGrnstromIndexApi.md#gsiprediction) | **GET** /gsi/prediction | Prediction
 *MeteringDecoratorApi* | [**meteringGet**](docs/Api/MeteringDecoratorApi.md#meteringget) | **GET** /metering/reading | Meter Reading
 *MeteringDecoratorApi* | [**meteringPost**](docs/Api/MeteringDecoratorApi.md#meteringpost) | **POST** /metering/reading | Meter Reading
+*OcppApi* | [**ocppSessions**](docs/Api/OcppApi.md#ocppsessions) | **GET** /alternative/ocpp/lastSessions | Returns lastSession info of OCCP Cloud service for clearing in corrently ecosystem. Might be tested via [OCPP cloud simulator](https://ocpp.corrently.cloud).
 *OpenMETERApi* | [**omActivities**](docs/Api/OpenMETERApi.md#omactivities) | **GET** /alternative/openmeter/activities | Public shared smart meters installed in Germany and available for subservices and exploration.
 *OpenMETERApi* | [**omMeters**](docs/Api/OpenMETERApi.md#ommeters) | **GET** /alternative/openmeter/meters | Public shared smart meters installed in Germany and available for subservices and exploration.
 *OpenMETERApi* | [**omReadings**](docs/Api/OpenMETERApi.md#omreadings) | **GET** /alternative/openmeter/readings | Public shared smart meters installed in Germany and available for subservices and exploration.
