@@ -76,6 +76,8 @@ tags:
     description: Alternative access to OpenMeter Data.
   - name: easee
     description: Alternative access to EASEE.cloud Data.
+  - name: ocpp
+    description: Alternative access to Corrently OCPP Data (hosted cloud backend).
   - name: Strom-Quittung
     description: >
       Self-Service to create a full receipt (Quittung) for energy delivery in
@@ -822,6 +824,27 @@ paths:
           description: Password as used on easy.cloud
           schema:
             type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/easee-charger'
+  /alternative/ocpp/lastSessions:
+    get:
+      tags:
+        - ocpp
+      summary: >-
+        Returns lastSession info of OCCP Cloud service for clearing in corrently
+        ecosystem. Might be tested via [OCPP cloud
+        simulator](https://ocpp.corrently.cloud).
+      operationId: ocppSessions
+      description: >
+        Last session Info of managed EV charging stations connected to the
+        correnty ecosystem.   
       responses:
         '200':
           description: Success
