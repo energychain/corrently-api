@@ -54,6 +54,8 @@ tags:
     description: Alternative access to OpenMeter Data.
   - name: easee
     description: Alternative access to EASEE.cloud Data.
+  - name: ocpp
+    description: Alternative access to Corrently OCPP Data (hosted cloud backend).
   - name: Strom-Quittung
     description: >
       Self-Service to create a full receipt (Quittung) for energy delivery in case of submetering.
@@ -84,7 +86,7 @@ paths:
   '/tariff/components':
     $ref: './paths/tariff-components.yaml'
   '/quittung/create':
-    $ref: './paths/quittung-create.yaml'    
+    $ref: './paths/quittung-create.yaml'
   '/wim/status':
     $ref: './paths/wim-status.yaml'
   '/gsi/bestHour':
@@ -97,3 +99,5 @@ paths:
     $ref: './paths/openmeter-readings.yaml'
   '/alternative/easee/lastSessions':
     $ref: './paths/easee-lastSessions.yaml'
+  '/alternative/ocpp/lastSessions':
+    $ref: './paths/ocpp-lastSessions.yaml'    
