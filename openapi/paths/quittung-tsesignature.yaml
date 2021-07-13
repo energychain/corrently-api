@@ -1,0 +1,17 @@
+post:
+  tags:
+    - Strom-Quittung
+    - TSE
+  summary: Retrieve TSE (Technische Sicherheitseinrichtung) Signature only for a given receipt (Strom-Quittung).
+  operationId: quittungTSEsignature
+  description: >
+    Allows to retrieve digital signature for a given receipt.
+  parameters:
+    - name: account
+      in: query
+      description: Quittung Identifier  (serialnumber generated during receipt generation process)
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success

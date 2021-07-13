@@ -60,6 +60,8 @@ tags:
     description: >
       Self-Service to create a full receipt (Quittung) for energy delivery in case of submetering.
       Please refer to [Strom-Quittung](http://strom-quittung.de) for a sample usage.
+  - name: TSE
+    description: Technische Sicherheitseinrichtung - use in context of strom-quittungen to get digitaly signed receipts.
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
@@ -87,6 +89,12 @@ paths:
     $ref: './paths/tariff-components.yaml'
   '/quittung/create':
     $ref: './paths/quittung-create.yaml'
+  '/quittung/tse':
+    $ref: './paths/quittung-tse.yaml'
+  '/quittung/tsedata':
+    $ref: './paths/quittung-tsedata.yaml'
+  '/quittung/tsesignature':
+    $ref: './paths/quittung-tsesignature.yaml'
   '/wim/status':
     $ref: './paths/wim-status.yaml'
   '/gsi/bestHour':

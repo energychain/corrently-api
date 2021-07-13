@@ -1,0 +1,68 @@
+post:
+  tags:
+    - Strom-Quittung
+    - TSE
+  summary: Retrieve TSE (Technische Sicherheitseinrichtung) Data for a given receipt (Strom-Quittung).
+  operationId: quittungTSE
+  description: >
+    Allows to retrieve all relevant data assiciated to a TSE service call. E.q. Input parameters, public key and signature.
+  parameters:
+    - name: account
+      in: query
+      description: Quittung Identifier  (serialnumber generated during receipt generation process)
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              data:
+                description: JSON object that got signed by TSE.
+                schema:
+                  type: object
+                  properties:
+                    txcnt:
+                      description: Sequential number of this transaction (requester)
+                      type: integer
+                      example: 1
+                    start:
+                      description: Starting timestamp of signature process by TSE service in UTC ISO Format.
+                      type: string
+                      example: "2021-07-12T18:43:05.582Z"
+                    end:
+                      description: Finishing timestamp of signature process by TSE service in UTC ISO Format.
+                      type: string
+                      example: "2021-07-12T18:43:05.582Z"
+                    serialnumber:
+                      description: Quittung Identifier  (serialnumber generated during receipt generation process)
+                      type: string
+                      example: "0x29fB5aeE3Ca29f239E7f771280cf4e2fD3999DF3"
+                    clientid:
+                      description: Digital Identity of transaction system.
+                      type: string
+                      example: "1D2323CDEF"
+                    signaturecnt:
+                      description: Sequential number of signed transactions by TSE service.
+                      type: integer
+                      example: 2
+                    timeformat:
+                      description: Format of Timestamp to aply to  KassenSichV regulation
+                      type: string
+                      example: "utcTime"
+                    algorithmus:
+                      description: Standard used for signing and hashing of input values
+                      type: string
+                      example: "RSA-SHA512"
+              raw:
+                description: Datastring of JSON Object as it got used to create signature.
+                type: string
+              signature:
+                description: Resulting signature by signing raw datastring using private key of TSE.
+                type: string
+              publickey:
+                description: Public Key of TSE
+                type: string
