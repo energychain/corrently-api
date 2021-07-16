@@ -642,6 +642,37 @@ paths:
               schema:
                 type: object
                 $ref: '#/components/schemas/componentsh0'
+  /quittung/prepare:
+    post:
+      tags:
+        - Strom-Quittung
+      summary: >-
+        Allows to collect data with several requests (or a single) for a
+        receipt.
+      operationId: quittungPrepare
+      description: >
+        During the first call an account parameter will be returned within the
+        result object. Any other parameter will be set inside the preperation.
+        If account is put into body/request in following requests, the existing
+        collection will be extended/updated with the provided body
+        parameters/values.
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+                description: All collected values for an account (eq. session).
   /quittung/create:
     post:
       tags:
