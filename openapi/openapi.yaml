@@ -88,7 +88,9 @@ paths:
   '/tariff/components':
     $ref: './paths/tariff-components.yaml'
   '/quittung/prepare':
-    $ref: './paths/quittung-prepare.yaml'    
+    $ref: './paths/quittung-prepare.yaml'
+  '/quittung/commit':
+    $ref: './paths/quittung-commit.yaml'      
   '/quittung/create':
     $ref: './paths/quittung-create.yaml'
   '/quittung/tse':
