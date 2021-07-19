@@ -673,6 +673,39 @@ paths:
               schema:
                 type: string
                 description: All collected values for an account (eq. session).
+  /quittung/commit:
+    post:
+      tags:
+        - Strom-Quittung
+      summary: >-
+        Finishs a collection of data and finalizes receipt. Use this method
+        after collecting all data via quittung/prepare
+      operationId: quittungComit
+      description: >
+        Uses collected fields or provided fields to create a final receipt
+        (Strom-Quittung).
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                account:
+                  type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+                description: >-
+                  Unique ID of a receipt. It might be used via
+                  https://api.corrently.io/v2.0/quittung/pdf?token= to retrieve
+                  a PDF version of receipt or via  
+                  https://corrently.de/service/quittung.html?token= to get
+                  online version.
   /quittung/create:
     post:
       tags:
