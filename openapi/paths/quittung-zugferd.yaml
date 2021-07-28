@@ -1,0 +1,17 @@
+post:
+  tags:
+    - Strom-Quittung
+    - TSE
+  summary: Retrieve Zugferd XML for a given receipt (Strom-Quittung).
+  operationId: quittungZugferd
+  description: >
+    Allows to retrieve XML of the zugferd invoice.
+  parameters:
+    - name: account
+      in: query
+      description: Quittung Identifier  (serialnumber generated during receipt generation process)
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Success

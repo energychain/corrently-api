@@ -90,7 +90,7 @@ paths:
   '/quittung/prepare':
     $ref: './paths/quittung-prepare.yaml'
   '/quittung/commit':
-    $ref: './paths/quittung-commit.yaml'      
+    $ref: './paths/quittung-commit.yaml'
   '/quittung/create':
     $ref: './paths/quittung-create.yaml'
   '/quittung/tse':
@@ -99,6 +99,8 @@ paths:
     $ref: './paths/quittung-tsedata.yaml'
   '/quittung/tsesignature':
     $ref: './paths/quittung-tsesignature.yaml'
+  '/quittung/zugferd':
+    $ref: './paths/quittung-zugferd.yaml'    
   '/wim/status':
     $ref: './paths/wim-status.yaml'
   '/gsi/bestHour':
