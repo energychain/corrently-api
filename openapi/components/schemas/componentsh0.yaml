@@ -2,7 +2,7 @@ type: object
 properties:
   sum:
     description: Total sum in Euro for this price component.
-    type: double
+    type: number
     example: 22.12
   describtion:
     description: What is this price component about
@@ -14,7 +14,7 @@ properties:
     example: month
   per:
     description: Single unit price multiyplier is based on
-    type: double
+    type: number
     example: 0.012
   components:
     description: Sub components of this price

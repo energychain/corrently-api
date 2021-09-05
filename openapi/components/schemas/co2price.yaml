@@ -2,7 +2,7 @@ type: object
 properties:
   priceCent:
     description: EUR Cent price of co2 offset certificate
-    type: number
+    type: integer
     example: 371
   priceEUR:
     description: EUR price of co2 offset certificate

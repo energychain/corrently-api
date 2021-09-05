@@ -152,19 +152,19 @@ paths:
           in: query
           description: Liter of fuel to compensate.
           schema:
-            type: number
+            type: integer
           example: '30'
         - name: co2
           in: query
           description: CO2 equivalence in gram to compensate
           schema:
-            type: number
+            type: integer
           example: '12345'
         - name: kwh
           in: query
           description: Kilo Watt hours of electricity to co2 offset.
           schema:
-            type: number
+            type: integer
           example: '30'
       responses:
         '200':
@@ -181,16 +181,9 @@ paths:
       operationId: co2sources
       description: |
         Valid and certified sources of co2 compensation.
-      parameters: null
       responses:
         '200':
           description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Tariffh0'
   /stromkonto/register:
     post:
       tags:
@@ -1192,7 +1185,7 @@ components:
       properties:
         priceCent:
           description: EUR Cent price of co2 offset certificate
-          type: number
+          type: integer
           example: 371
         priceEUR:
           description: EUR price of co2 offset certificate
@@ -1209,21 +1202,6 @@ components:
         remainCO2:
           description: Remaining CO2 (getCO2-reqCO2)
           type: number
-    Tariffh0:
-      type: object
-      properties:
-        ap:
-          description: >-
-            Energy price in cent per kwh. (Arbeitspreis) including all taxes and
-            fees.
-          type: integer
-          example: 22.12
-        gp:
-          description: >-
-            Base price in euro per montah (Grundpreis) including all taxes and
-            fees.
-          type: integer
-          example: 7.5
     Transactions:
       type: object
       properties:
@@ -1332,12 +1310,27 @@ components:
           description: Actual Marketprice for regional green power in EUR per MWh
           type: number
           example: 43
+    Tariffh0:
+      type: object
+      properties:
+        ap:
+          description: >-
+            Energy price in cent per kwh. (Arbeitspreis) including all taxes and
+            fees.
+          type: integer
+          example: 22.12
+        gp:
+          description: >-
+            Base price in euro per montah (Grundpreis) including all taxes and
+            fees.
+          type: integer
+          example: 7.5
     componentsh0:
       type: object
       properties:
         sum:
           description: Total sum in Euro for this price component.
-          type: double
+          type: number
           example: 22.12
         describtion:
           description: What is this price component about
@@ -1349,7 +1342,7 @@ components:
           example: month
         per:
           description: Single unit price multiyplier is based on
-          type: double
+          type: number
           example: 0.012
         components:
           description: Sub components of this price

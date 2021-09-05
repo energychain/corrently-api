@@ -10,19 +10,19 @@ get:
       in: query
       description: Liter of fuel to compensate.
       schema:
-        type: number
+        type: integer
       example: '30'
     - name: co2
       in: query
       description: CO2 equivalence in gram to compensate
       schema:
-        type: number
+        type: integer
       example: '12345'
     - name: kwh
       in: query
       description: Kilo Watt hours of electricity to co2 offset.
       schema:
-        type: number
+        type: integer
       example: '30'
   responses:
     '200':

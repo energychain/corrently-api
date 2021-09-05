@@ -5,13 +5,6 @@ get:
   operationId: co2sources
   description: >
     Valid and certified sources of co2 compensation.
-  parameters:
   responses:
     '200':
       description: Success
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: ../components/schemas/Tariffh0.yaml
