@@ -1,0 +1,19 @@
+type: object
+properties:
+  priceCent:
+    description: EUR Cent price of co2 offset certificate
+    type: number
+    example: 371
+  priceEUR:
+    description: EUR price of co2 offset certificate
+    type: string
+    example: "3.71"
+  reqCO2:
+    description: Requested CO2 to offset
+    type: number
+  getCO2:
+    description: CO2 offset you receive. Might be more than requested, due to minimum requirements on the market.
+    type: number
+  remainCO2:
+    description: Remaining CO2 (getCO2-reqCO2)
+    type: number

@@ -1,0 +1,35 @@
+get:
+  tags:
+    - CO2-Offset
+  summary: Checkout (buy) co2 compensation
+  operationId: co2compensate
+  description: >
+    You might call the /price API endpoint prior to a checkout to get latest pricing information. This method returns a URL for direct checkout using Stripe. All CO2 offset prices are based on VCS Verified CO2 Emission Reduction In accordance with the requirements of ISO 14064-1. CO2 prices are actual market prices and may change every hour.
+  parameters:
+    - name: liter
+      in: query
+      description: Liter of fuel to compensate.
+      schema:
+        type: number
+      example: '30'
+    - name: co2
+      in: query
+      description: CO2 equivalence in gram to compensate
+      schema:
+        type: number
+      example: '12345'
+    - name: kwh
+      in: query
+      description: Kilo Watt hours of electricity to co2 offset.
+      schema:
+        type: number
+      example: '30'
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: ../components/schemas/co2compensate.yaml

@@ -60,11 +60,20 @@ tags:
     description: >
       Self-Service to create a full receipt (Quittung) for energy delivery in case of submetering.
       Please refer to [Strom-Quittung](http://strom-quittung.de) for a sample usage.
+  - name: CO2-Offset
+    description: >
+      VCS Verified CO2 Emission Reduction in accordance with the requirements of ISO 14064-1 (Gold Standard). Calculate and get certificates, validate existing certificates.
   - name: TSE
     description: Technische Sicherheitseinrichtung - use in context of strom-quittungen to get digitaly signed receipts.
 servers:
   - url: 'https://api.corrently.io/v2.0'
 paths:
+  '/co2/compensate':
+        $ref: './paths/co2-compensate.yaml'
+  '/co2/price':
+      $ref: './paths/co2-price.yaml'
+  '/co2/sources':
+      $ref: './paths/co2-sources.yaml'      
   '/stromkonto/register':
     $ref: './paths/stromkonto-register.yaml'
   '/stromkonto/login':
@@ -100,7 +109,7 @@ paths:
   '/quittung/tsesignature':
     $ref: './paths/quittung-tsesignature.yaml'
   '/quittung/zugferd':
-    $ref: './paths/quittung-zugferd.yaml'    
+    $ref: './paths/quittung-zugferd.yaml'
   '/wim/status':
     $ref: './paths/wim-status.yaml'
   '/gsi/bestHour':
