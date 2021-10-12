@@ -2,7 +2,7 @@
   "name": "corrently-green-energy-api",
   "version": "1.0.0",
   "dependencies": {
-    "@redocly/openapi-cli": "^1.0.0-beta.25"
+    "@redocly/openapi-cli": "^1.0.0-beta.59"
   },
   "private": true,
   "scripts": {
