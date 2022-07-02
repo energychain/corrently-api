@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: 2.0.0
+  version: 2.0.1
   title: Corrently.io
   termsOfService: 'https://corrently.io/terms/'
   contact:
@@ -56,6 +56,8 @@ tags:
     description: Alternative access to EASEE.cloud Data.
   - name: OCPP
     description: Alternative access to Corrently OCPP Data (hosted cloud backend).
+  - name: GHGS
+    description: Track and Tŕace of EV-Charging for Greenhouse Gas Saving certification
   - name: Strom-Quittung
     description: >
       Self-Service to create a full receipt (Quittung) for energy delivery in case of submetering.
@@ -73,7 +75,7 @@ paths:
   '/co2/price':
       $ref: './paths/co2-price.yaml'
   '/co2/sources':
-      $ref: './paths/co2-sources.yaml'      
+      $ref: './paths/co2-sources.yaml'
   '/stromkonto/register':
     $ref: './paths/stromkonto-register.yaml'
   '/stromkonto/login':
@@ -110,6 +112,8 @@ paths:
     $ref: './paths/quittung-tsesignature.yaml'
   '/quittung/zugferd':
     $ref: './paths/quittung-zugferd.yaml'
+  '/bucket/create':
+    $ref: './paths/ghgs-create.yaml'
   '/wim/status':
     $ref: './paths/wim-status.yaml'
   '/gsi/bestHour':

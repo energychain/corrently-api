@@ -1,6 +1,6 @@
 openapi: 3.0.2
 info:
-  version: 2.0.0
+  version: 2.0.1
   title: Corrently.io
   termsOfService: 'https://corrently.io/terms/'
   contact:
@@ -78,6 +78,8 @@ tags:
     description: Alternative access to EASEE.cloud Data.
   - name: OCPP
     description: Alternative access to Corrently OCPP Data (hosted cloud backend).
+  - name: GHGS
+    description: Track and Tŕace of EV-Charging for Greenhouse Gas Saving certification
   - name: Strom-Quittung
     description: >
       Self-Service to create a full receipt (Quittung) for energy delivery in
@@ -797,7 +799,7 @@ paths:
                 description: >-
                   Unique ID of a receipt. It might be used via
                   https://api.corrently.io/v2.0/quittung/pdf?token= to retrieve
-                  a PDF version of receipt or via  
+                  a PDF version of receipt or via
                   https://corrently.de/service/quittung.html?token= to get
                   online version.
   /quittung/create:
@@ -984,6 +986,93 @@ paths:
       responses:
         '200':
           description: Success
+  /bucket/create:
+    post:
+      tags:
+        - GHGS
+      summary: Create an ownable GHGS charging receipt.
+      operationId: ghgsCreate
+      description: >
+        Creates a bucketset DID with meta information of a EV-charging event and
+        calculates GHG saving.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                payload:
+                  type: object
+                  properties:
+                    chargingPoint:
+                      type: string
+                    idTag:
+                      type: string
+                    period:
+                      type: object
+                      properties:
+                        start:
+                          type: string
+                        stop:
+                          type: string
+                    metering:
+                      type: object
+                      properties:
+                        meterStart:
+                          type: number
+                        meterStop:
+                          type: number
+                        energy:
+                          type: number
+                    ghg:
+                      type: object
+                      properties:
+                        emission:
+                          type: object
+                          properties:
+                            value:
+                              type: number
+                            factor:
+                              type: number
+                        saving:
+                          type: object
+                          properties:
+                            value:
+                              type: number
+                            factor:
+                              type: number
+                public:
+                  type: object
+                  properties:
+                    assets:
+                      type: object
+                    public:
+                      type: object
+                      properties:
+                        subject:
+                          type: string
+                        payload:
+                          type: object
+                        period:
+                          type: object
+                          properties:
+                            start:
+                              type: string
+                            stop:
+                              type: string
+                    rp:
+                      type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+                description: >-
+                  Token for this Greenhouse Gas Savings receipt.  It might be
+                  used to claim ownerhip
   /wim/status:
     get:
       tags:
