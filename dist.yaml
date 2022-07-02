@@ -799,7 +799,7 @@ paths:
                 description: >-
                   Unique ID of a receipt. It might be used via
                   https://api.corrently.io/v2.0/quittung/pdf?token= to retrieve
-                  a PDF version of receipt or via
+                  a PDF version of receipt or via  
                   https://corrently.de/service/quittung.html?token= to get
                   online version.
   /quittung/create:
@@ -1069,10 +1069,13 @@ paths:
           content:
             application/json:
               schema:
-                type: string
+                type: object
                 description: >-
                   Token for this Greenhouse Gas Savings receipt.  It might be
                   used to claim ownerhip
+                properties:
+                  did:
+                    type: string
   /wim/status:
     get:
       tags:
