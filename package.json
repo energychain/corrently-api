@@ -1,13 +1,29 @@
 {
-  "name": "corrently-green-energy-api",
-  "version": "1.0.0",
-  "dependencies": {
-    "@redocly/openapi-cli": "^1.0.0-beta.25"
-  },
-  "private": true,
+  "name": "corrently-api",
+  "version": "2.0.0",
+  "description": "Corrently Green Energy API Client",
+  "main": "corrently-client.cjs",
   "scripts": {
-    "start": "openapi preview-docs",
-    "build": "openapi bundle -o dist",
-    "test": "openapi lint"
-  }
+    "test": "node test.cjs"
+  },
+  "keywords": [
+    "corrently",
+    "api",
+    "energy",
+    "stromdao"
+  ],
+  "bugs": {
+    "url": "https://github.com/energychain/corrently-api/issues"
+  },
+  "homepage": "https://github.com/energychain/corrently-api#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/energychain/corrently-api.git"
+  },
+  "dependencies": {
+    "axios": "^1.6.2",
+    "jsonwebtoken": "^9.0.2"
+  },
+  "author": "STROMDAO GmbH <dev@stromdao.com>",
+  "license": "Apache-2.0"
 }
