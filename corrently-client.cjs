@@ -92,7 +92,7 @@ class CorrentlyClient {
   async renewToken() {
     try {
       const response = await axios.post(`${this.config.baseUrl}/v2.0/auth/requestToken`, {
-        appid:appid
+        appid:this.config.appid
       });
       this.token = response.data.token;
     } catch (error) {

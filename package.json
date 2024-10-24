@@ -1,6 +1,6 @@
 {
   "name": "corrently-api",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Corrently Green Energy API Client",
   "main": "corrently-client.cjs",
   "scripts": {
