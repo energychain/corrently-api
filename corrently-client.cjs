@@ -2,6 +2,17 @@ const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const appid = "0x21d4246b502A31DA473CB991b094ee6A74715de6";
 
+
+/**
+ * The CorrentlyClient class is a client for interacting with the Corrently API. It handles token management, API requests, and provides access to various API endpoints through its subclasses.
+ *
+ * Class Methods
+ * - constructor(config): Initializes the client with a configuration object, sets up the API endpoint, and creates instances of API subclasses.
+ * - getValidToken(): Returns a valid token, renewing it if necessary.
+ * - isTokenExpiring(): Checks if the current token is expiring or has expired.
+ * -renewToken(): Renews the token by making a request to the API.
+ * - getTokenPayload(): Returns the decoded token payload.
+ */
 class CorrentlyClient {
   constructor(config) {
     this.config = {
@@ -65,6 +76,8 @@ class CorrentlyClient {
     this.co2meter = new CO2MeterAPI(this);
     this.phevChargeOrFuel = new PHEVChargeOrFuelAPI(this);
     this.gsi = new GruenstromIndexAPI(this);
+    this.dispatch = new DispatchAPI(this);
+    this.marketdata = new MarketdataAPI(this);
     //
   }
 
@@ -240,4 +253,168 @@ class GruenstromIndexAPI {
   }
 }
 
+class DispatchAPI {
+  constructor(client) {
+    this.client = client;
+  }
+
+  /**
+   * Get renewable energy dispatch information for a specific location
+   * @param {string} zip - Postal Code of a city/location in Germany
+   * @returns {Promise<object>} Detailed dispatch information
+   */
+  async getDispatch(zip) {
+    if (!zip) {
+      throw new Error('Zip code is required');
+    }
+
+    return await this.client.api.get('/v2.0/gsi/dispatch', {
+      params: { zip }
+    });
+  }
+
+  /**
+   * Helper method to analyze the energy mix for a location
+   * @param {string} zip - Postal Code of the location
+   * @returns {Promise<object>} Analyzed energy mix with percentages and comparisons
+   */
+  async analyzeEnergyMix(zip) {
+    const dispatch = await this.getDispatch(zip);
+    
+    // Calculate total percentages for each energy source
+    const totalMix = {};
+    for (const source in dispatch.postmix) {
+      totalMix[source] = {
+        current: dispatch.postmix[source] * 100,
+        previous: dispatch.premix[source] * 100,
+        change: ((dispatch.postmix[source] - dispatch.premix[source]) * 100).toFixed(2)
+      };
+    }
+
+    // Analyze dispatch patterns
+    const mainSources = dispatch.dispatch_from
+      .sort((a, b) => b.energy - a.energy)
+      .slice(0, 3)
+      .map(source => ({
+        location: source.location.prettyLabel,
+        percentage: (source.energy * 100).toFixed(2)
+      }));
+
+    const mainDestinations = dispatch.dispatch_to
+      .sort((a, b) => b.energy - a.energy)
+      .slice(0, 3)
+      .map(dest => ({
+        location: dest.location.prettyLabel,
+        percentage: (dest.energy * 100).toFixed(2)
+      }));
+
+    return {
+      location: {
+        city: dispatch.center.city,
+        zip: dispatch.center.zip,
+        coordinates: dispatch.center.coordinates
+      },
+      energyMix: totalMix,
+      distribution: {
+        mainSources,
+        mainDestinations,
+        averageDistance: dispatch.avg_distance_km
+      },
+      timeframe: {
+        start: new Date(dispatch.timeframe.start),
+        end: new Date(dispatch.timeframe.end)
+      }
+    };
+  }
+}
+
+
+class MarketdataAPI {
+  constructor(client) {
+    this.client = client;
+  }
+
+  /**
+   * Get energy price information for a specific location
+   * @param {string} zip - Zipcode (Postleitzahl) of a city in Germany
+   * @returns {Promise<object>} Energy price information
+   */
+  async getPrices(zip) {
+    if (!zip) {
+      throw new Error('Zip code is required');
+    }
+
+    return await this.client.api.get('/v2.0/marketdata', {
+      params: { zip }
+    });
+  }
+
+  /**
+   * Helper method to analyze price data and find optimal pricing periods
+   * @param {string} zip - Zipcode of the location
+   * @returns {Promise<object>} Analyzed price data with insights
+   */
+  async analyzePrices(zip) {
+    const priceData = await this.getPrices(zip);
+    
+    // Sort periods by price
+    const sortedPeriods = [...priceData.data].sort((a, b) => a.localprice - b.localprice);
+
+    // Find best and worst periods
+    const bestPeriods = sortedPeriods.slice(0, 3);
+    const worstPeriods = sortedPeriods.slice(-3).reverse();
+
+    // Calculate average prices
+    const avgMarketPrice = priceData.data.reduce((sum, period) => sum + period.marketprice, 0) / priceData.data.length;
+    const avgLocalPrice = priceData.data.reduce((sum, period) => sum + period.localprice, 0) / priceData.data.length;
+
+    // Find periods with negative prices (potential energy surplus)
+    const negativePricePeriods = priceData.data.filter(period => period.localprice < 0);
+
+    // Calculate price spread between market and local prices
+    const priceSpreadAnalysis = priceData.data.map(period => ({
+      timestamp: new Date(period.start_timestamp),
+      spread: period.localprice - period.marketprice,
+      marketPrice: period.marketprice,
+      localPrice: period.localprice
+    }));
+
+    return {
+      location: priceData.data[0]?.localcell,
+      summary: {
+        averagePrices: {
+          market: avgMarketPrice.toFixed(2),
+          local: avgLocalPrice.toFixed(2),
+          difference: (avgLocalPrice - avgMarketPrice).toFixed(2)
+        },
+        bestPeriods: bestPeriods.map(period => ({
+          time: new Date(period.start_timestamp),
+          price: period.localprice,
+          savings: (avgLocalPrice - period.localprice).toFixed(2)
+        })),
+        worstPeriods: worstPeriods.map(period => ({
+          time: new Date(period.start_timestamp),
+          price: period.localprice,
+          excess: (period.localprice - avgLocalPrice).toFixed(2)
+        }))
+      },
+      negativePrices: {
+        count: negativePricePeriods.length,
+        periods: negativePricePeriods.map(period => ({
+          time: new Date(period.start_timestamp),
+          price: period.localprice
+        }))
+      },
+      priceSpread: {
+        analysis: priceSpreadAnalysis,
+        maxSpread: Math.max(...priceSpreadAnalysis.map(p => Math.abs(p.spread))).toFixed(2)
+      },
+      metadata: {
+        timezone: priceData.timezone,
+        documentation: priceData.documentation,
+        support: priceData.support
+      }
+    };
+  }
+}
 module.exports = CorrentlyClient;
