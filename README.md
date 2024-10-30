@@ -14,3 +14,6 @@ The Renewable Energy Dispatch API provides detailed insights into the flow and c
 
 ### [Marketdata](https://console.corrently.io/marketdata.html)
 Provides real-time and forecasted electricity pricing data for both the general market and localized regions, based on ZIP codes. This API is designed to offer valuable insights into energy costs, making it a powerful tool for energy-conscious consumers, businesses, and developers working with energy management systems.
+
+### [CO2 Advisor](https://console.corrently.io/co2advisor.html)
+This API provides insights into the carbon footprint per kilowatt-hour of electricity in German cities or villages. It includes a 24-hour forecast to optimize electricity consumption, for example when charging a car.

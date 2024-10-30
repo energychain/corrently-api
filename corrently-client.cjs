@@ -78,6 +78,7 @@ class CorrentlyClient {
     this.gsi = new GruenstromIndexAPI(this);
     this.dispatch = new DispatchAPI(this);
     this.marketdata = new MarketdataAPI(this);
+    this.co2advisor = new CO2AdvisorAPI(this);
     //
   }
 
@@ -328,6 +329,111 @@ class DispatchAPI {
   }
 }
 
+class CO2AdvisorAPI {
+  constructor(client) {
+    this.client = client;
+  }
+
+  /**
+   * Get CO2 forecast and consumption advice for a location
+   * @param {string} zip - Postal code of the location in Germany
+   * @returns {Promise<object>} CO2 forecast and consumption advice
+   */
+  async getAdvice(zip) {
+    if (!zip) {
+      throw new Error('Zip code is required');
+    }
+
+    return await this.client.api.get('/v2.0/gsi/advisor', {
+      params: { q: zip }
+    });
+  }
+
+  /**
+   * Helper method to analyze CO2 data and find optimal consumption periods
+   * @param {string} zip - Postal code of the location
+   * @returns {Promise<object>} Analyzed CO2 data with recommendations
+   */
+  async analyzeConsumptionPeriods(zip) {
+    const advisory = await this.getAdvice(zip);
+    
+    // Group periods by advice level
+    const periodsByAdvice = {
+      green: [],
+      yellow: [],
+      red: []
+    };
+
+    advisory.data.forEach(period => {
+      periodsByAdvice[period.advice].push({
+        time: new Date(period.time),
+        co2: period.co2
+      });
+    });
+
+    // Find best consecutive periods for consumption
+    const findBestConsecutivePeriods = (periods, minLength = 2) => {
+      if (periods.length < minLength) return [];
+      
+      let bestStart = 0;
+      let currentStart = 0;
+      let maxLength = 0;
+      let currentLength = 1;
+
+      for (let i = 1; i < periods.length; i++) {
+        const timeDiff = periods[i].time - periods[i-1].time;
+        if (timeDiff <= 3600000) { // 1 hour in milliseconds
+          currentLength++;
+          if (currentLength > maxLength) {
+            maxLength = currentLength;
+            bestStart = currentStart;
+          }
+        } else {
+          currentLength = 1;
+          currentStart = i;
+        }
+      }
+
+      if (maxLength >= minLength) {
+        return periods.slice(bestStart, bestStart + maxLength);
+      }
+      return [];
+    };
+
+    const bestGreenPeriods = findBestConsecutivePeriods(periodsByAdvice.green);
+
+    return {
+      location: {
+        city: advisory.location.city,
+        zip: advisory.location.zip
+      },
+      thresholds: advisory.tresholds,
+      recommendations: {
+        ...advisory.info,
+        bestConsumptionWindow: bestGreenPeriods.length > 0 ? {
+          start: bestGreenPeriods[0].time,
+          end: bestGreenPeriods[bestGreenPeriods.length - 1].time,
+          averageCO2: bestGreenPeriods.reduce((sum, p) => sum + p.co2, 0) / bestGreenPeriods.length
+        } : null
+      },
+      statistics: {
+        greenPeriods: periodsByAdvice.green.length,
+        yellowPeriods: periodsByAdvice.yellow.length,
+        redPeriods: periodsByAdvice.red.length,
+        averageCO2: advisory.data.reduce((sum, p) => sum + p.co2, 0) / advisory.data.length,
+        lowestCO2: Math.min(...advisory.data.map(p => p.co2)),
+        highestCO2: Math.max(...advisory.data.map(p => p.co2))
+      },
+      periodsByHour: advisory.data.map(period => ({
+        time: new Date(period.time),
+        co2: period.co2,
+        advice: period.advice,
+        relativeLevel: ((period.co2 - advisory.tresholds.green.low) / 
+                       (advisory.tresholds.red.high - advisory.tresholds.green.low) * 100).toFixed(1)
+      }))
+    };
+  }
+}
 
 class MarketdataAPI {
   constructor(client) {
