@@ -79,6 +79,7 @@ class CorrentlyClient {
     this.dispatch = new DispatchAPI(this);
     this.marketdata = new MarketdataAPI(this);
     this.co2advisor = new CO2AdvisorAPI(this);
+    this.schedule = new EnergyScheduleAPI(this);    
     //
   }
 
@@ -523,4 +524,145 @@ class MarketdataAPI {
     };
   }
 }
+
+class EnergyScheduleAPI {
+  constructor(client) {
+    this.client = client;
+  }
+
+  /**
+   * Create a new energy schedule
+   * @param {object} params - Schedule creation parameters
+   * @param {string} params.zip - 5-digit postal code
+   * @param {object} params.requirements - Schedule requirements
+   * @param {string} params.requirements.law - Optimization law (comfort|price|solar|emission)
+   * @param {number} [params.requirements.activeHours] - Number of active hours required
+   * @param {boolean} [params.requirements.consecutiveHours] - Whether hours must be consecutive
+   * @param {number} [params.requirements.energyDemand] - Total energy demand
+   * @param {number} [params.requirements.maxLoad] - Maximum power load
+   * @param {number} [params.requirements.avgLoad] - Average power load
+   * @param {string} [params.date] - Schedule date (YYYY-MM-DD)
+   * @param {number} [params.coverageHours] - Hours to cover (1-36)
+   * @returns {Promise<object>} Created schedule
+   */
+  async createSchedule(params) {
+    if (!params.zip || !params.requirements || !params.requirements.law) {
+      throw new Error('Zip code and optimization law are required');
+    }
+
+    return await this.client.api.put('/v2.0/gsi/schedule', params);
+  }
+
+  /**
+   * Retrieve an existing schedule
+   * @param {string} scheduleId - Unique identifier of the schedule
+   * @returns {Promise<object>} Schedule details
+   */
+  async getSchedule(scheduleId) {
+    if (!scheduleId) {
+      throw new Error('Schedule ID is required');
+    }
+
+    return await this.client.api.get('/v2.0/gsi/schedule', {
+      params: { scheduleId }
+    });
+  }
+
+  /**
+   * Update consumption for a schedule
+   * @param {string} scheduleId - Schedule identifier
+   * @param {object} consumption - Consumption data
+   * @returns {Promise<object>} Updated schedule
+   */
+  async updateConsumption(scheduleId, consumption) {
+    if (!scheduleId || !consumption) {
+      throw new Error('Schedule ID and consumption data are required');
+    }
+
+    return await this.client.api.post('/v2.0/gsi/schedule', {
+      scheduleId,
+      type: 'status_update',
+      consumption
+    });
+  }
+
+  /**
+   * Update requirements for a schedule
+   * @param {string} scheduleId - Schedule identifier
+   * @param {object} requirements - New requirements
+   * @returns {Promise<object>} Updated schedule
+   */
+  async updateRequirements(scheduleId, requirements) {
+    if (!scheduleId || !requirements) {
+      throw new Error('Schedule ID and requirements are required');
+    }
+
+    return await this.client.api.post('/v2.0/gsi/schedule', {
+      scheduleId,
+      type: 'requirement_update',
+      requirements
+    });
+  }
+
+  /**
+   * Helper method to analyze schedule optimization
+   * @param {object} schedule - Schedule object
+   * @returns {object} Schedule analysis
+   */
+  analyzeSchedule(schedule) {
+    const activeSlots = schedule.schedule.timeSlots.filter(slot => slot.state === 'on');
+    const totalSlots = schedule.schedule.timeSlots.length;
+    
+    // Calculate average metrics for active periods
+    const averageMetrics = activeSlots.reduce((acc, slot) => {
+      Object.entries(slot.metrics).forEach(([key, value]) => {
+        acc[key] = (acc[key] || 0) + value;
+      });
+      return acc;
+    }, {});
+
+    Object.keys(averageMetrics).forEach(key => {
+      averageMetrics[key] = averageMetrics[key] / activeSlots.length;
+    });
+
+    // Find optimal and worst periods based on the optimization law
+    const law = schedule.schedule.requirements.law;
+    const metricKey = {
+      price: 'price',
+      emission: 'co2_g_standard',
+      solar: 'esolar',
+      comfort: 'gsi'
+    }[law];
+
+    const sortedSlots = [...activeSlots].sort((a, b) => {
+      if (law === 'solar') {
+        return b.metrics[metricKey] - a.metrics[metricKey];
+      }
+      return a.metrics[metricKey] - b.metrics[metricKey];
+    });
+
+    return {
+      overview: {
+        status: schedule.status,
+        optimizationLaw: law,
+        activeSlots: activeSlots.length,
+        totalSlots,
+        utilization: ((activeSlots.length / totalSlots) * 100).toFixed(1) + '%'
+      },
+      progress: schedule.progress || {
+        completedSlots: 0,
+        totalSlots: activeSlots.length,
+        completionPercentage: "0%"
+      },
+      optimization: {
+        averageMetrics,
+        bestPeriod: sortedSlots[0],
+        worstPeriod: sortedSlots[sortedSlots.length - 1]
+      },
+      currentRecommendation: schedule.schedule.currentRecommendation || null,
+      expectedEnergy: activeSlots.reduce((sum, slot) => sum + (slot.expectedEnergy || 0), 0)
+    };
+  }
+}
+
 module.exports = CorrentlyClient;

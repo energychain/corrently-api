@@ -17,3 +17,6 @@ Provides real-time and forecasted electricity pricing data for both the general 
 
 ### [CO2 Advisor](https://console.corrently.io/co2advisor.html)
 This API provides insights into the carbon footprint per kilowatt-hour of electricity in German cities or villages. It includes a 24-hour forecast to optimize electricity consumption, for example when charging a car.
+
+### [Energy Schedule API ](https://console.corrently.io/schedule.html)
+The Energy Schedule API enables intelligent control of energy-consuming devices by providing optimized operation schedules based on real-time grid conditions, prices, and environmental factors. Whether you're charging electric vehicles, managing heat pumps, or controlling industrial processes, our API helps you optimize energy consumption for cost, sustainability, and efficiency..
