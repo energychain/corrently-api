@@ -80,6 +80,7 @@ class CorrentlyClient {
     this.marketdata = new MarketdataAPI(this);
     this.co2advisor = new CO2AdvisorAPI(this);
     this.schedule = new EnergyScheduleAPI(this);    
+    this.strommix = new StrommixAPI(this);
     //
   }
 
@@ -662,6 +663,151 @@ class EnergyScheduleAPI {
       currentRecommendation: schedule.schedule.currentRecommendation || null,
       expectedEnergy: activeSlots.reduce((sum, slot) => sum + (slot.expectedEnergy || 0), 0)
     };
+  }
+}
+
+class StrommixAPI {
+  constructor(client) {
+    this.client = client;
+    
+    // Energy type mapping
+    this.energyTypes = {
+      B01: 'Biomass',
+      B02: 'Fossil Brown coal/Lignite',
+      B03: 'Fossil Coal-derived gas',
+      B04: 'Fossil Gas',
+      B05: 'Fossil Hard coal',
+      B06: 'Fossil Oil',
+      B07: 'Fossil Oil shale',
+      B08: 'Fossil Peat',
+      B09: 'Geothermal',
+      B10: 'Hydro Pumped Storage',
+      B11: 'Hydro Run-of-river and poundage',
+      B12: 'Hydro Water Reservoir',
+      B13: 'Marine',
+      B14: 'Nuclear',
+      B15: 'Other renewable',
+      B16: 'Solar',
+      B17: 'Waste',
+      B18: 'Wind Offshore',
+      B19: 'Wind Onshore',
+      B20: 'Other'
+    };
+  }
+
+  /**
+   * Get energy production mix data
+   * @param {object} [params] - Query parameters
+   * @param {string} [params.period] - Predefined time period (e.g., 'lastmonth', 'last30days')
+   * @param {string} [params.from] - Start date (ISO 8601 format or timestamp)
+   * @param {string} [params.to] - End date (ISO 8601 format or timestamp)
+   * @returns {Promise<object>} Energy mix data
+   */
+  async getEnergyMix(params = {}) {
+    return await this.client.api.get('v2.0/gsi/strommix', {
+      params: {
+        period: params.period,
+        from: params.from,
+        to: params.to
+      }
+    });
+  }
+
+  /**
+   * Helper method to analyze energy mix data
+   * @param {object} mixData - Energy mix data from API
+   * @returns {object} Analyzed energy mix data
+   */
+  analyzeEnergyMix(mixData) {
+    // Group energy sources
+    const groupedSources = {
+      renewable: ['B01', 'B09', 'B11', 'B12', 'B13', 'B15', 'B16', 'B18', 'B19'],
+      fossil: ['B02', 'B03', 'B04', 'B05', 'B06', 'B07', 'B08'],
+      nuclear: ['B14'],
+      other: ['B10', 'B17', 'B20']
+    };
+
+    // Calculate totals for each group
+    const groupTotals = Object.entries(groupedSources).reduce((acc, [group, types]) => {
+      const groupData = mixData.mix.filter(item => types.includes(item.type));
+      acc[group] = {
+        total: groupData.reduce((sum, item) => sum + item.value, 0),
+        percentage: groupData.reduce((sum, item) => sum + item.percentage, 0),
+        sources: groupData.map(item => ({
+          name: item.name,
+          value: item.value,
+          percentage: item.percentage
+        }))
+      };
+      return acc;
+    }, {});
+
+    // Find dominant sources
+    const dominantSources = [...mixData.mix]
+      .sort((a, b) => b.value - a.value)
+      .slice(0, 3)
+      .map(source => ({
+        name: source.name,
+        percentage: source.percentage,
+        value: source.value
+      }));
+
+    return {
+      period: {
+        start: new Date(mixData.period.from),
+        end: new Date(mixData.period.to),
+        type: mixData.period.requested
+      },
+      summary: {
+        totalProduction: mixData.total,
+        timestamp: new Date(mixData.timestamp),
+        dominantSources
+      },
+      distribution: {
+        renewable: groupTotals.renewable,
+        fossil: groupTotals.fossil,
+        nuclear: groupTotals.nuclear,
+        other: groupTotals.other
+      },
+      sustainability: {
+        renewablePercentage: groupTotals.renewable.percentage,
+        fossilPercentage: groupTotals.fossil.percentage,
+        carbonIntensity: this.calculateCarbonIntensity(mixData.mix)
+      }
+    };
+  }
+
+  /**
+   * Helper method to calculate approximate carbon intensity
+   * @private
+   * @param {Array} mix - Energy mix data
+   * @returns {number} Approximate carbon intensity in gCO2/kWh
+   */
+  calculateCarbonIntensity(mix) {
+    // Approximate CO2 emissions per kWh for different sources
+    const carbonFactors = {
+      B01: 230,  // Biomass
+      B02: 1000, // Lignite
+      B03: 350,  // Coal-derived gas
+      B04: 490,  // Natural gas
+      B05: 820,  // Hard coal
+      B06: 740,  // Oil
+      B16: 41,   // Solar
+      B18: 12,   // Wind Offshore
+      B19: 11    // Wind Onshore
+    };
+
+    let totalEmissions = 0;
+    let totalPercentage = 0;
+
+    mix.forEach(source => {
+      if (carbonFactors[source.type]) {
+        totalEmissions += carbonFactors[source.type] * (source.percentage / 100);
+        totalPercentage += source.percentage / 100;
+      }
+    });
+
+    return totalEmissions / (totalPercentage || 1);
   }
 }
 
